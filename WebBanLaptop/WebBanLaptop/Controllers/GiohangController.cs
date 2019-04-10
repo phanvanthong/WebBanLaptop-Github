@@ -14,7 +14,7 @@ namespace WebBanLaptop.Controllers
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
         public List<Giohang> LayGioHang()
         {
-            List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>;
+            List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>; //ép kiểu session kiểu giỏ hàng
             if (lstGioHang == null)
             {
                 //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
@@ -126,6 +126,13 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult DatHang(Order order)
         {
+            List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>;
+            if (lstGioHang == null)
+            {
+                //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
+                lstGioHang = new List<Giohang>();
+                Session["GioHang"] = lstGioHang;
+            }
             //Thêm đơn hàng
             //Order order = new Order();
             order.ngaytao = DateTime.Now;
@@ -151,7 +158,8 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult DonDatHang()
         {
-            return View();
+            List<Giohang> lstGioHang = LayGioHang();
+            return View(lstGioHang);
         }
     }
 }

@@ -43,14 +43,18 @@
                         </li>
                         <li>
                             <label>Tình trạng:</label>
+                            @{ int a = 0;}
                             @{
+
                                 if (Model.Soluong > 0)
                                 {
-                                    <span> Còn hàng</span>
+                                    <span style="color:red;font-weight:bold;font-size:18px"> Còn hàng</span>
+                                    a = 0;
                                 }
                                 else
                                 {
-                                    <span> Hết hàng</span>
+                                    <span style="color:red;font-weight:bold;font-size:18px;text-decoration:underline"> Hết hàng</span>
+                                    a = 1;
                                 }
                             }
 
@@ -78,10 +82,31 @@
                     </ul>*@
                                 @*<a href="@Url.Action("Index","GioHang")"><button class="muangay" title="Mua ngay">Mua ngay</button></a>*@
                                 <div class="pull-right">
-                                    <a class="btn btn-primary" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP = Model.Products_id, @strURl = Request.Url.ToString() })">Thêm vào giỏ hàng</a>
+                                    @{
+                                        if (a == 1)
+                                        {
+                                            <a class="btn btn-primary" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP = Model.Products_id, @strURl = Request.Url.ToString() })" disabled="disabled" style="background-color:#ffc527;color:wheat">Thêm vào giỏ hàng</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-primary" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP = Model.Products_id, @strURl = Request.Url.ToString() })" >Thêm vào giỏ hàng</a>
+                                        }
+
+                                    }
                                 </div>
                                 <div class="pull-right" style="padding-right:8px;padding-left:10px;">
-                                            <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" >Mua ngay</a>
+                                    @{
+                                        if (a == 1)
+                                        {
+                                            <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" disabled="disabled" style="background-color:#ffc527;color:wheat">Mua ngay</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-primary" href="@Url.Action("Index","GioHang")">Mua ngay</a>
+                                        }
+
+                                    }
+
                                 </div>
                                 @*<a href="@Url.Action("Index","GioHang")" role="button">Mua ngay</a>*@
                                 @*<a href="@Url.Action("Index","GioHang",new {@iMaSP = Model.products_id , @strURl = Request.Url.ToString() })"><button class="themgio" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</button></a>*@
