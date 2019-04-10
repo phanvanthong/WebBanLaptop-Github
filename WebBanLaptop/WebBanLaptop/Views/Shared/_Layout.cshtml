@@ -1,0 +1,267 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/NguoiDungCssLayout/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/responsive.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/stylesheet.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header style="margin-bottom:100px">
+
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="top-left pull-left">
+                            <div class="wel-come-msg"> Chào mừng bạn đã đến với MoonStore! </div>
+                            <div id="txtTimkiem">
+                                @*@using (Html.BeginForm())
+                                    {
+                                       @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "  Nhập vào từ khóa cần tìm...    " })
+                                    }*@
+                                <input type="text" name="txtTimKiem" placeholder="  Nhập vào từ khóa cần tìm..." style="width:300px" />
+                                <a href="#"><i class="fa fa-search"></i></a>
+                            </div>
+                            @*<div class="dkydnhap" style="float:left; padding-left:366px; padding-top:11px ">
+                                <a href="#" class="DKDN">Đăng Ký</a><a href="#">Đăng Nhập</a>
+                            </div>*@
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-inner">
+                <div class="col-sm-3 col-xs-3 header-left">
+                    <div id="logo"> <a href="@Url.Action("index","Home")"><img src="~/Content/Images/logo.png" title="E-Commerce" alt="E-Commerce" class="img-logo" /></a> </div>
+                </div>
+                <div class="col-sm-9 col-xs-9 header-right">
+                    <nav id="menu" class="navbar">
+                        <div class="nav-inner">
+                            <div class="navbar-header">
+                                <span id="category" class="visible-xs">Categories</span>
+                                <button type="button" class="btn btn-navbar navbar-toggle"><i class="fa fa-bars"></i></button>
+                            </div>
+                            <div class="navbar-collapse pull-left">
+                                <ul class="main-navigation">
+                                    <li>
+                                        <a  class="active parent" id="Laptop-id">Laptop</a>
+                                        <ul>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=1 })">Laptop Apple-Macbook</a></li>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=2 })">Laptop Dell</a></li>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=3 })">Laptop Asus</a></li>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=4 })">Laptop Hp</a></li>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=5 })">Laptop Lennovo</a></li>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=6 })">Laptop Acer</a></li>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=7 })">Laptop MSI</a></li>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=8 })">Laptop Thinkpad</a></li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="active parent" id="Phukien-id" >Phụ kiện laptop</a>
+                                        <ul>
+                                            <li><a href="@Url.Action("RAM","Phukien")">Ram máy tính</a></li>
+                                            <li><a href="@Url.Action("HDD","Phukien")">Ổ HDD</a></li>
+                                            <li><a href="@Url.Action("SSD","Phukien")">Ổ SDD</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("index","Suachua")" class="parent" id="Suachua-id">Sửa chữa laptop</a>
+                                    </li>
+                                    <li><a href="@Url.Action("index","Khuyenmai")" class="parent" id="Khuyenmai-id">Khuyến mại</a></li>
+                                    <li>
+                                        <a  class="active parent" id="Diadiem-id">Địa điểm</a>
+                                        <ul>
+                                            <li><a href="@Url.Action("index","Home")">Bắc Ninh</a></li>
+                                            <li><a href="@Url.Action("index","Home")">Hà Nội</a></li>
+                                            <li><a href="@Url.Action("index","Home")">Hồ Chí Minh</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div id="cart" class="btn-group btn-block">
+                        @*<button type="button" class="btn btn-inverse btn-block btn-lg dropdown-toggle cart-dropdown-button">
+                                <div id="cart-total">
+                                    <a href="#"><img src="~/Content/Images/icon-thiet-ke-website-ban-do-noi-that.png" style="width:50px; height:auto" /></a>
+                                    <span>Giỏ hàng</span><br>
+                                </div>
+                            </button>*@
+                        <div id="giohang"><a href="@Url.Action("index","Giohang")"><img src="~/Content/Images/icon-thiet-ke-website-ban-do-noi-that.png" style="width:50px; height:auto" /></a></div>
+                        <ul class="dropdown-menu pull-right cart-dropdown-menu">
+                            <li>
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center"><a href="#"><img class="img-thumbnail" title="lorem ippsum dolor dummy" alt="lorem ippsum dolor dummy" src="image/product/7product56x72.jpg"></a></td>
+                                            <td class="text-left"><a href="#">lorem ippsum dolor dummy</a></td>
+                                            <td class="text-right">x 1</td>
+                                            <td class="text-right">$254.00</td>
+                                            <td class="text-center"><button class="btn btn-danger btn-xs" title="Remove" type="button"><i class="fa fa-times"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li>
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center"><a href="#"><img class="img-thumbnail" title="lorem ippsum dolor dummy" alt="lorem ippsum dolor dummy" src="image/product/7product56x72.jpg"></a></td>
+                                            <td class="text-left"><a href="#">lorem ippsum dolor dummy</a></td>
+                                            <td class="text-right">x 1</td>
+                                            <td class="text-right">$254.00</td>
+                                            <td class="text-center"><button class="btn btn-danger btn-xs" title="Remove" type="button"><i class="fa fa-times"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li>
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center"><a href="#"><img class="img-thumbnail" title="lorem ippsum dolor dummy" alt="lorem ippsum dolor dummy" src="image/product/7product56x72.jpg"></a></td>
+                                            <td class="text-left"><a href="#">lorem ippsum dolor dummy</a></td>
+                                            <td class="text-right">x 1</td>
+                                            <td class="text-right">$254.00</td>
+                                            <td class="text-center"><button class="btn btn-danger btn-xs" title="Remove" type="button"><i class="fa fa-times"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li>
+                                <div>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-right"><strong>Sub-Total</strong></td>
+                                                <td class="text-right">$210.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
+                                                <td class="text-right">$2.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right"><strong>VAT (20%)</strong></td>
+                                                <td class="text-right">$42.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right"><strong>Total</strong></td>
+                                                <td class="text-right">$254.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-right"> <span class="btn-viewcart"><a href="cart.html"><strong><i class="fa fa-shopping-cart"></i> View Cart</strong></a></span> <span class="btn-checkout"><a href="checkout.html"><strong><i class="fa fa-share"></i> Checkout</strong></a></span> </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <footer style="margin-top:100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 footer-block">
+                    <h5 class="footer-title">Giới thiêu</h5>
+                    <ul class="list-unstyled ul-wrapper">
+                        <li>Trang chủ</li>
+                        <li>Về Moonstore</li>
+                        <li>Điều khoản giao dịch</li>
+                        <li>Bảo mật công ty</li>
+                        <li>Bảo mật thông tin</li>
+                        <li>Tuyển dụng</li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 footer-block">
+                    <h5 class="footer-title">Chính sách công ty</h5>
+                    <ul class="list-unstyled ul-wrapper">
+                        <li>Chính sách giao nhận</li>
+                        <li>Chính sách đổi trả hàng</li>
+                        <li>Phương thức thanh toán</li>
+                        <li>Chế độ bảo hành</li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 footer-block">
+                    <h5 class="footer-title">Hỗ trợ khách hàng</h5>
+                    <ul class="list-unstyled ul-wrapper">
+                        <li>Bảo hành: 0355596666</li>
+                        <li>Gửi yêu cầu khách hàng</li>
+                        <li>P.Kinh doanh:<br>Moonstore@gmail.com</li>
+                        <li>P.Hỗ trợ khách hàng:<br>support@gmail.com</li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 footer-block">
+                    <div class="content_footercms_right">
+                        <div class="footer-contact">
+                            <h5 class="contact-title footer-title">CTY MOONSTORE</h5>
+                            <ul class="ul-wrapper">
+                                <li>
+                                    @*<i class="fa fa-map-marker"></i>*@
+                                    <span>
+                                        <b>Bắc Ninh:</b> 217, Ngô Gia Tự, P. Suối Hoa, Thành phố Bắc Ninh.<br />
+                                        <b>Mở cửa:</b>9h đến 20h - DĐ:0915305350<br /><br />
+                                    </span>
+                                </li>
+                                <li>
+                                    <span>
+                                        <strong>Hà Nội:</strong> 10A1, Linh Lang, Quận Ba Đình.<br>
+                                        <b>Mở cửa:</b>9h đến 20h - DĐ:0909305350
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div id="bottom-footer">
+                    <ul class="footer-link">
+                        <li>Home</li>
+                        <li>About</li>
+                        <li>Work</li>
+                        <li>Team</li>
+                        <li>Pricing</li>
+                        <li>Blog</li>
+                        <li>Contact</li>
+                    </ul>
+                    <div class="copyright"> Copyright - Created by PVT &copy; 2019</div>
+                    <div class="footer-bottom-cms">
+                        <div class="footer-payment">
+                            <ul>
+                                <li class="mastero"><img alt="" src="image/payment/mastero.jpg"></li>
+                                <li class="visa"><img alt="" src="image/payment/visa.jpg"></li>
+                                <li class="currus"><img alt="" src="image/payment/currus.jpg"></li>
+                                <li class="discover"><img alt="" src="image/payment/discover.jpg"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a id="scrollup">Scroll</a>
+    </footer>
+
+    <script src="~/Content/NguoiDungCssLayout/javascript/jquery.parallax.js"></script>
+    <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/template_js/jstree.min.js"></script>
+    <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/template_js/template.js"></script>
+    <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/common.js"></script>
+    <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/global.js"></script>
+    <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/owl-carousel/owl.carousel.min.js"></script>
+   
+</body>
+</html>

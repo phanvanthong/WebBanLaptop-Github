@@ -1,0 +1,92 @@
+﻿
+
+@using WebBanLaptop.Models
+@model  List<Giohang>
+@{
+    ViewBag.Title = "DonDatHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div id="column-left" class="col-sm-3 hidden-xs column-left">
+
+        </div>
+        <div class="col-sm-9" id="content">
+            <form enctype="multipart/form-data" method="post" action="#">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td style="text-align:center" class="text-center">Họ tên</td>
+                                <td style="text-align:center" class="text-center">Ảnh</td>
+                                <td style="text-align:center" class="text-left">Tên sản phẩm</td>
+                                <td style="text-align:center" class="text-left">Mã sản phẩm</td>
+                                <td style="text-align:center" class="text-left">Số lượng</td>
+                                <td style="text-align:center" class="text-right">Tổng tiền</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="text-align:center"><input type="checkbox" name="chonsp" value="" /></td>
+                                    <td style="text-align:center" class="text-center"><a href="product.html"><img class="img-thumbnail" title="iPhone" alt="iPhone" src="image/product/2product56x72.jpg"></a></td>
+                                    <td style="text-align:center" class="text-left"><a href="product.html">@item.sTenSP</a></td>
+                                    <td style="text-align:center" class="text-left">@item.iMaSP</td>
+                                    <td style="text-align:center" class="text-left">
+                                        <div style="max-width: 200px;" class="input-group btn-block">
+                                            <input type="number" class="form-control quantity" id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px">
+                                        </div>
+                                    </td>
+                                    <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dDonGia)</td>
+                                    <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dThanhTien)</td>
+                                    <td class="text-right" style="margin-right:-3px;text-align:center">
+                                        <div class="pull-right">
+                                            <a class="btn btn-primary" href="@Url.Action("XoaGioHang","GioHang",new {@iMaSP=item.iMaSP })">Xóa</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+
+            <br>
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-8">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-right"><strong>Tiền sản phẩm:</strong></td>
+                                <td class="text-right">$210.00</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right"><strong>Mã khuyến mại:</strong></td>
+                                <td class="text-right">$2.00</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right"><strong>VAT (10%):</strong></td>
+                                <td class="text-right">$42.00</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right"><strong>Tổng tiền thanh toán:</strong></td>
+                                <td class="text-right">$254.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="pull-left"><a class="btn btn-primary" href="@Url.Action("Index","Home")" title="Tiếp tục mua sắm">Tiếp tục mua sắm</a></div>
+                <div class="pull-left"><a class="btn btn-primary" href="@Url.Action("Index","Home")" title="Đơn hàng đã đặt" style="float:left;margin-left:15px">Đơn hàng đã đặt</a></div>
+                <div class="pull-right"><a class="btn btn-primary" href="@Url.Action("ThongTinKH","GioHang")" title="Mua hàng">Mua hàng</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,124 @@
+﻿
+
+@using WebBanLaptop.Models;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="content col-sm-12">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="thumbnails">
+                        <div><a class="thumbnail fancybox" href="#" title="Casual Shirt With Ruffle Hem"><img src="~/Content/Images/i3/DELL Inspiron 3476 8J61P11_11390k/trc.jpg" title="@Model.Name" alt="iPod Classic" /></a></div>
+                        <div class="anhsp" style="padding-left:80px;">
+                            
+                            <span><img src="~/Content/Images/i3/DELL Inspiron 3476 8J61P11_11390k/trc.jpg"  alt="iPod Classic" /></span>
+                            <span><img src="~/Content/Images/i3/DELL Inspiron 3476 8J61P11_11390k/trc.jpg"  alt="iPod Classic" /></span>
+                            <span><img src="~/Content/Images/i3/DELL Inspiron 3476 8J61P11_11390k/trc.jpg"  alt="iPod Classic" /></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7 prodetail">
+                    <h1 class="productpage-title">@Model.Name</h1>
+
+                    <ul class="list-unstyled productinfo-details-top">
+                        <li>
+                            <h2 class="productpage-price">@string.Format("{0:0,0đ}", @Model.Gia)</h2>
+                        </li>
+                    </ul>
+                    <hr>
+                    <ul class="list-unstyled product_info">
+                        <li>
+                            <label>Nhà sản xuất:</label>
+                            <span> @ViewBag.Hangsx</span>
+                        </li>
+                        <li>
+                            <label>Mã sản phẩm:</label>
+                            <span>@Model.Products_id</span>
+                        </li>
+                        <li>
+                            <label>Tình trạng:</label>
+                            @{
+                                if (Model.Soluong > 0)
+                                {
+                                    <span> Còn hàng</span>
+                                }
+                                else
+                                {
+                                    <span> Hết hàng</span>
+                                }
+                            }
+
+                        </li>
+                    </ul>
+                    <br /><br />
+                    <h2>Mô tả sản phẩm</h2>
+                    <hr>
+                    <p class="product-desc">
+                        @Model.Motasp
+                    </p>
+                    <div id="product">
+                        <div class="form-group">
+                            <div class="qty">
+                                <label>Số lượng</label>
+                                <input id="qty" placeholder="1" type="number" name="iSoLuong">
+                                @*<ul class="button-group list-btn">
+                        <li>
+                            <button title="" data-placement="top" data-toggle="tooltip" class="muangay" type="button">Mua ngay</button>
+                        </li>
+                        <li>
+                            <button title="" data-placement="top" data-toggle="tooltip" class="themgio" type="button">Thêm vào giỏ hàng</button>
+                        </li>
+
+                    </ul>*@
+                                @*<a href="@Url.Action("Index","GioHang")"><button class="muangay" title="Mua ngay">Mua ngay</button></a>*@
+                                <div class="pull-right">
+                                    <a class="btn btn-primary" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP = Model.Products_id, @strURl = Request.Url.ToString() })">Thêm vào giỏ hàng</a>
+                                </div>
+                                <div class="pull-right" style="padding-right:8px;padding-left:10px;">
+                                            <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" >Mua ngay</a>
+                                </div>
+                                @*<a href="@Url.Action("Index","GioHang")" role="button">Mua ngay</a>*@
+                                @*<a href="@Url.Action("Index","GioHang",new {@iMaSP = Model.products_id , @strURl = Request.Url.ToString() })"><button class="themgio" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</button></a>*@
+                                @*<a href="#"><input type="submit" value="abc" /></a>*@
+                                @*@using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = Model.Products_id, @strURl = Request.Url.ToString() }))
+                                { <button class="themgio" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</button> }*@
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="productinfo-tab">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-description" data-toggle="tab">Thông số chi tiết</a></li>
+                    @*<li><a href="#tab-review" data-toggle="tab">Reviews (1)</a></li>*@
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab-description">
+                        <div class="cpt_product_description ">
+                            <div>
+                                <p> <strong>More room to move.</strong></p>
+                                <p> With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.</p>
+                                <p> <strong>Cover Flow.</strong></p>
+                                <p> Browse through your music collection by flipping through album art. Select an album to turn it over and see the track list.</p>
+                                <p> <strong>Enhanced interface.</strong></p>
+                                <p> Experience a whole new way to browse and view your music and video.</p>
+                                <p> <strong>Sleeker design.</strong></p>
+                                <p> Beautiful, durable, and sleeker than ever, iPod classic now features an anodized aluminum and polished stainless steel enclosure with rounded edges.</p>
+                            </div>
+                        </div>
+                        <!-- cpt_container_end -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

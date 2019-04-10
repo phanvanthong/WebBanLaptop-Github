@@ -1,0 +1,161 @@
+﻿@model WebBanLaptop.Models.Product
+
+@{
+    ViewBag.Title = "HienThiLaptop";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div>
+    <h4>Hiển thị sản phẩm laptop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Products_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Products_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HangCPU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangCPU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CNCPU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNCPU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TocDoMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TocDoMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemoryRam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemoryRam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiRam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiRam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusRam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusRam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KheRam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KheRam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ODia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ODia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DungLuongODia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DungLuongODia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardDohoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardDohoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManhHinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManhHinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dophangiai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dophangiai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discount_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discount_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hangsx_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hangsx_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "ChinhSuaLaptop", new { @id=Model.Products_id }) |
+    @Html.ActionLink("Trở lại danh sách", "Index")
+</p>

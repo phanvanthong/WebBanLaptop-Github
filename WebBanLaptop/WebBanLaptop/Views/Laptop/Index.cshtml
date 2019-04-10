@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<WebBanLaptop.Models.Product>
+
+
+<div class="container">
+    <div class="mainbanner">
+        @*<div id="main-banner" class="owl-carousel home-slider">
+            <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner1.jpg" alt="main-banner1" class="img-banner" /></a> </div>
+
+        </div>*@
+    </div>
+
+    <div class="row content">
+        @{
+            foreach (var item in Model)
+            {
+                <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="item">
+                        <div class="product-thumb">
+                            <div class="image product-imageblock">
+                                <a href="@Url.Action("index","ChiTietSanpham",new { @id=item.Products_id })"> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/trc.png" alt="iPod Classic" title="iPod Classic" class="img-responsive" /> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/cheo.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" /> </a>
+                                <ul class="button-group">
+                                    <li>
+                                        <button type="button" class="addtocart-btn" title="Mua ngay"> Mua ngay </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" data-original-title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></button>
+                                        @*@using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSP = item.Products_id, @strURl = Request.Url.ToString() }))
+                                        {<button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" data-original-title="Thêam vào giỏ hàng" style="text-align:center"><i class="fa fa-cart-plus"></i></button>}*@
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="caption product-detail">
+
+                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">@item.Name</a></h4>
+                                <p class="price product-price">@item.Gia<span class="price-tax">Ex Tax: $100.00</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        <div class="viewmore">
+            @*<div class="btn">Xem thêm</div>*@
+            @*Tạo link liên kết các trang*@
+            @*<br />Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
+            <div class="Menutrang" style="margin-left:50px;">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { @page = page }))
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const a = document.querySelector('#Laptop-id');
+    a.style.color = '#ffc527';
+</script>
+
+
+

@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="pwd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="level" Type="Int32" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="products" Relationship="Self.FK__products__produc__3FD07829" FromRole="category" ToRole="products" />
+  </EntityType>
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="users_id" Type="Int32" />
+    <Property Name="comments" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product" Relationship="Self.FK__comments__produc__398D8EEE" FromRole="comments" ToRole="products" />
+    <NavigationProperty Name="user" Relationship="Self.FK__comments__users___3A81B327" FromRole="comments" ToRole="users" />
+  </EntityType>
+  <EntityType Name="discount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK__products__discou__40C49C62" FromRole="discount" ToRole="products" />
+  </EntityType>
+  <EntityType Name="image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="product_id" Type="Int32" />
+    <NavigationProperty Name="product" Relationship="Self.FK__image__product_i__2EA5EC27" FromRole="image" ToRole="products" />
+  </EntityType>
+  <EntityType Name="order_detail">
+    <Key>
+      <PropertyRef Name="order_id" />
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="money" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="order" Relationship="Self.FK__order_det__order__3B75D760" FromRole="order_detail" ToRole="orders" />
+    <NavigationProperty Name="product" Relationship="Self.FK__order_det__produ__3C69FB99" FromRole="order_detail" ToRole="products" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="users_id" Type="Int32" />
+    <Property Name="total_money" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date_create" Type="DateTime" Precision="3" />
+    <Property Name="method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="order_detail" Relationship="Self.FK__order_det__order__3B75D760" FromRole="orders" ToRole="order_detail" />
+    <NavigationProperty Name="user" Relationship="Self.FK__orders__users_id__3E52440B" FromRole="orders" ToRole="users" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sku" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Ghz" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="security" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="color" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sensor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cpu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ram" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="storage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="camera_front" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="camera_rear" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="battery" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="display" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="sim" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="activate" Type="Int32" />
+    <Property Name="product_cate_id" Type="Int32" />
+    <Property Name="discount_id" Type="Int32" />
+    <NavigationProperty Name="category" Relationship="Self.FK__products__produc__3FD07829" FromRole="products" ToRole="category" />
+    <NavigationProperty Name="comments" Relationship="Self.FK__comments__produc__398D8EEE" FromRole="products" ToRole="comments" />
+    <NavigationProperty Name="discount" Relationship="Self.FK__products__discou__40C49C62" FromRole="products" ToRole="discount" />
+    <NavigationProperty Name="images" Relationship="Self.FK__image__product_i__2EA5EC27" FromRole="products" ToRole="image" />
+    <NavigationProperty Name="order_detail" Relationship="Self.FK__order_det__produ__3C69FB99" FromRole="products" ToRole="order_detail" />
+    <NavigationProperty Name="reviews" Relationship="Self.FK__reviews__product__44FF419A" FromRole="products" ToRole="reviews" />
+  </EntityType>
+  <EntityType Name="review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int32" />
+    <Property Name="users_id" Type="Int32" />
+    <Property Name="reviews" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="product" Relationship="Self.FK__reviews__product__44FF419A" FromRole="reviews" ToRole="products" />
+    <NavigationProperty Name="user" Relationship="Self.FK__reviews__users_i__45F365D3" FromRole="reviews" ToRole="users" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="pwd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="activated" Type="Int32" />
+    <NavigationProperty Name="comments" Relationship="Self.FK__comments__users___3A81B327" FromRole="users" ToRole="comments" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__users_id__3E52440B" FromRole="users" ToRole="orders" />
+    <NavigationProperty Name="reviews" Relationship="Self.FK__reviews__users_i__45F365D3" FromRole="users" ToRole="reviews" />
+  </EntityType>
+  <Association Name="FK__products__produc__3FD07829">
+    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="products" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="product_cate_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comments__produc__398D8EEE">
+    <End Role="products" Type="Self.product" Multiplicity="0..1" />
+    <End Role="comments" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comments">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__comments__users___3A81B327">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="comments" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comments">
+        <PropertyRef Name="users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__products__discou__40C49C62">
+    <End Role="discount" Type="Self.discount" Multiplicity="0..1" />
+    <End Role="products" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="discount">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="discount_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__image__product_i__2EA5EC27">
+    <End Role="products" Type="Self.product" Multiplicity="0..1" />
+    <End Role="image" Type="Self.image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="image">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_det__order__3B75D760">
+    <End Role="orders" Type="Self.order" Multiplicity="1" />
+    <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_detail">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_det__produ__3C69FB99">
+    <End Role="products" Type="Self.product" Multiplicity="1" />
+    <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_detail">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__users_id__3E52440B">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__reviews__product__44FF419A">
+    <End Role="products" Type="Self.product" Multiplicity="0..1" />
+    <End Role="reviews" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reviews">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__reviews__users_i__45F365D3">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="reviews" Type="Self.review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reviews">
+        <PropertyRef Name="users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="comments" EntityType="Self.comment" />
+    <EntitySet Name="discounts" EntityType="Self.discount" />
+    <EntitySet Name="images" EntityType="Self.image" />
+    <EntitySet Name="order_detail" EntityType="Self.order_detail" />
+    <EntitySet Name="orders" EntityType="Self.order" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="reviews" EntityType="Self.review" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK__products__produc__3FD07829" Association="Self.FK__products__produc__3FD07829">
+      <End Role="category" EntitySet="categories" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comments__produc__398D8EEE" Association="Self.FK__comments__produc__398D8EEE">
+      <End Role="products" EntitySet="products" />
+      <End Role="comments" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__comments__users___3A81B327" Association="Self.FK__comments__users___3A81B327">
+      <End Role="users" EntitySet="users" />
+      <End Role="comments" EntitySet="comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__products__discou__40C49C62" Association="Self.FK__products__discou__40C49C62">
+      <End Role="discount" EntitySet="discounts" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__image__product_i__2EA5EC27" Association="Self.FK__image__product_i__2EA5EC27">
+      <End Role="products" EntitySet="products" />
+      <End Role="image" EntitySet="images" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_det__order__3B75D760" Association="Self.FK__order_det__order__3B75D760">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_detail" EntitySet="order_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_det__produ__3C69FB99" Association="Self.FK__order_det__produ__3C69FB99">
+      <End Role="products" EntitySet="products" />
+      <End Role="order_detail" EntitySet="order_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__users_id__3E52440B" Association="Self.FK__orders__users_id__3E52440B">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__reviews__product__44FF419A" Association="Self.FK__reviews__product__44FF419A">
+      <End Role="products" EntitySet="products" />
+      <End Role="reviews" EntitySet="reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__reviews__users_i__45F365D3" Association="Self.FK__reviews__users_i__45F365D3">
+      <End Role="users" EntitySet="users" />
+      <End Role="reviews" EntitySet="reviews" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

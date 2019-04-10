@@ -1,0 +1,34 @@
+﻿@model WebBanLaptop.Models.Hangsx
+
+@{
+    ViewBag.Title = "HienThiHangsx";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<div>
+    <h4>Hiển thị hãng </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hangsx_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hangsx_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenhang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenhang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "ChinhSuaHangsx", new { @id=Model.Hangsx_id }) |
+    @Html.ActionLink("Trở về danh sách", "Listhangsx")
+</p>

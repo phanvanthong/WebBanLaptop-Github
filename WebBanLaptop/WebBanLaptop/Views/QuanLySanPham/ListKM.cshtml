@@ -1,0 +1,53 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<WebBanLaptop.Models.Discount>
+
+@{
+    ViewBag.Title = "ListKM";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Thêm mới khuyến mại", "ThemMoiKM")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Discount_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().value)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.value)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "ChinhSuaKM", new { @id = item.Discount_id }) |
+                @Html.ActionLink("Hiển thị", "HienThiKM", new { @id = item.Discount_id }) |
+                @Html.ActionLink("Xóa", "XoaKM", new { @id = item.Discount_id })
+            </td>
+        </tr>
+    }
+
+</table>
+@*Tạo link liên kết các trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="Menutrang">
+    @Html.PagedListPager(Model, page => Url.Action("ListKM", new { @page = page }))
+</div>
+<style>
+    .Menutrang li {
+        padding-left: 8px;
+        display: inline;
+    }
+</style>

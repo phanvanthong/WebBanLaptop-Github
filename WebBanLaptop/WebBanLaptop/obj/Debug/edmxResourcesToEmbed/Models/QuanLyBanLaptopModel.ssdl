@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Web_ban_laptopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="pwd" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="level_" Type="int" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Discount">
+    <Key>
+      <PropertyRef Name="Discount_id" />
+    </Key>
+    <Property Name="Discount_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="value" Type="float" />
+  </EntityType>
+  <EntityType Name="Hangsx">
+    <Key>
+      <PropertyRef Name="Hangsx_id" />
+    </Key>
+    <Property Name="Hangsx_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenhang" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="nhanvien_id" />
+    </Key>
+    <Property Name="nhanvien_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="nvarchar" MaxLength="50" />
+    <Property Name="tuoi" Type="int" />
+    <Property Name="chucvu" Type="nvarchar" MaxLength="50" />
+    <Property Name="ngayvaolam" Type="date" />
+    <Property Name="luong" Type="float" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Order_id" />
+    </Key>
+    <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenkhachhang" Type="nvarchar" MaxLength="50" />
+    <Property Name="sdt" Type="nvarchar" MaxLength="50" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="255" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="tongtien" Type="float" />
+    <Property Name="ngaytao" Type="date" />
+    <Property Name="giaohang" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Orders_Details">
+    <Key>
+      <PropertyRef Name="Orders_id" />
+      <PropertyRef Name="Products_id" />
+    </Key>
+    <Property Name="Orders_id" Type="int" Nullable="false" />
+    <Property Name="Products_id" Type="int" Nullable="false" />
+    <Property Name="Soluong" Type="int" />
+    <Property Name="Gia" Type="float" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Products_id" />
+    </Key>
+    <Property Name="Products_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="HangCPU" Type="nvarchar" MaxLength="50" />
+    <Property Name="CNCPU" Type="nvarchar" MaxLength="255" />
+    <Property Name="TocDoMax" Type="nvarchar" MaxLength="50" />
+    <Property Name="MemoryRam" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoaiRam" Type="nvarchar" MaxLength="50" />
+    <Property Name="BusRam" Type="nvarchar" MaxLength="50" />
+    <Property Name="KheRam" Type="int" />
+    <Property Name="ODia" Type="nvarchar" MaxLength="50" />
+    <Property Name="DungLuongODia" Type="nvarchar" MaxLength="50" />
+    <Property Name="CardDohoa" Type="nvarchar" MaxLength="255" />
+    <Property Name="ManhHinh" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dophangiai" Type="nvarchar" MaxLength="50" />
+    <Property Name="Motasp" Type="nvarchar" MaxLength="255" />
+    <Property Name="Gia" Type="float" />
+    <Property Name="Soluong" Type="int" />
+    <Property Name="Discount_id" Type="int" />
+    <Property Name="Hangsx_id" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Orders_Details_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+    <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="Order_id" />
+      </Principal>
+      <Dependent Role="Orders_Details">
+        <PropertyRef Name="Orders_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Details_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Products_id" />
+      </Principal>
+      <Dependent Role="Orders_Details">
+        <PropertyRef Name="Products_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pro_dis">
+    <End Role="Discount" Type="Self.Discount" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discount">
+        <PropertyRef Name="Discount_id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="Discount_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pro_hangsx">
+    <End Role="Hangsx" Type="Self.Hangsx" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hangsx">
+        <PropertyRef Name="Hangsx_id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="Hangsx_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Web_ban_laptopModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hangsx" EntityType="Self.Hangsx" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Orders_Details_Orders" Association="Self.FK_Orders_Details_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Orders_Details" EntitySet="Orders_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Details_Products" Association="Self.FK_Orders_Details_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Orders_Details" EntitySet="Orders_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pro_dis" Association="Self.FK_Pro_dis">
+      <End Role="Discount" EntitySet="Discount" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pro_hangsx" Association="Self.FK_Pro_hangsx">
+      <End Role="Hangsx" EntitySet="Hangsx" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

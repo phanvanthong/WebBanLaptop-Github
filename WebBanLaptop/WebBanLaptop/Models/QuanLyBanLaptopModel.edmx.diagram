@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c9bf3babe2e641c8b9a9ba04334437a3" Name="Diagram1">
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Admin" Width="1.5" PointX="5.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Discount" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Hangsx" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.NhanVien" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Order" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Orders_Details" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Product" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.sysdiagram" Width="1.5" PointX="7.75" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="Web_ban_laptopModel.FK_Pro_dis" ManuallyRouted="false" />
+        <AssociationConnector Association="Web_ban_laptopModel.FK_Pro_hangsx" ManuallyRouted="false" />
+        <AssociationConnector Association="Web_ban_laptopModel.FK_Orders_Details_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="Web_ban_laptopModel.FK_Orders_Details_Products" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
