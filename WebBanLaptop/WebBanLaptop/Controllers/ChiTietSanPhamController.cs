@@ -19,7 +19,8 @@ namespace WebBanLaptop.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
-            ViewBag.Hangsx = db.Hangsxes.Single(n => n.Hangsx_id == id).tenhang;
+            Hangsx hangsx = db.Hangsxes.SingleOrDefault(n => n.Hangsx_id == product.Hangsx_id);
+            ViewBag.Hangsx = hangsx.tenhang;
             return View(product);
         }
     }

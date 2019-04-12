@@ -127,11 +127,12 @@ namespace WebBanLaptop.Controllers
         public ActionResult DatHang(Order order)
         {
             List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>;
+            Session["DonHangDaDat"] = Session["GioHang"];
             if (lstGioHang == null)
             {
                 //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
                 lstGioHang = new List<Giohang>();
-                Session["GioHang"] = lstGioHang;
+                Session["DonHangDaDat"] = lstGioHang;
             }
             //Thêm đơn hàng
             //Order order = new Order();
@@ -156,9 +157,21 @@ namespace WebBanLaptop.Controllers
             return Redirect("Index");
         }
 
+        public List<Giohang> LayDonHangDaDat()
+        {
+            List<Giohang> lstDonHangDaDat = Session["DonHangDaDat"] as List<Giohang>; //ép kiểu session kiểu giỏ hàng
+            if (lstDonHangDaDat == null)
+            {
+                //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
+                lstDonHangDaDat = new List<Giohang>();
+                Session["DonHangDaDat"] = lstDonHangDaDat;
+            }
+            return lstDonHangDaDat;
+        }
+
         public ActionResult DonDatHang()
         {
-            List<Giohang> lstGioHang = LayGioHang();
+            List<Giohang> lstGioHang = LayDonHangDaDat();
             return View(lstGioHang);
         }
     }
