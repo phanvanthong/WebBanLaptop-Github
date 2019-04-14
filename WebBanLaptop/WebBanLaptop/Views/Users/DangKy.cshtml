@@ -8,22 +8,22 @@
     <div class="row">
         <div class="col-sm-3 hidden-xs column-left" id="column-left">
             <div class="Categories left-sidebar-widget">
-                <div class="columnblock-title">Account</div>
+                <div class="columnblock-title">Tài khoản</div>
                 <div class="category_block">
                     <ul class="box-category">
-                        <li><a href="login.html">Đăng nhập</a></li>
-                        <li><a href="register.html">Đăng ký</a></li>
-                        <li><a href="forgetpassword.html">Quên mật khẩu</a></li>
+                        <li><a href="@Url.Action("DangNhap","Users")">Đăng nhập</a></li>
+                        <li><a href="@Url.Action("DangKy","Users")">Đăng ký</a></li>
+                        <li><a href="@Url.Action("QuenMatKhau","Users")">Quên mật khẩu</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         
         <div class="col-sm-9" id="content">
-                <p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>
+                @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
                 <form class="form-horizontal" enctype="multipart/form-data" method="post" action="DangKy" name="FormDky">
                     <fieldset id="account">
-                        <legend>Your Personal Details</legend>
+                        <legend>Nhập thông tin cá nhân của bạn</legend>
                         <div class="form-group required">
                             <label for="input-firstname" class="col-sm-2 control-label">Họ và tên</label>
                             <div class="col-sm-10">
@@ -447,10 +447,21 @@
 
                     <div class="buttons">
                         <div class="pull-right">
-                            I have read and agree to the <a class="agree" href="#"><b>Privacy Policy</b></a>
-                            <input type="checkbox" value="1" name="agree">
+                            Bạn có đồng ý  <a class="agree" href="#"><b>Điều Khoản</b></a> của trang web
+                            <input type="checkbox" value="" name="agree" onclick="KtraAgree()" checked>
                             &nbsp;
-                            <input type="submit" class="btn btn-primary" value="Tạo">
+                            <input type="submit" class="btn btn-primary" value="Tạo" >
+                            
+                                
+                            @*<input type="submit" class="btn btn-primary" value="Tạo" disabled>
+                            <script>
+                                function KtraAgree() {
+                                    var Agree = document.getElementById('agree');
+                                    if (Agree.checked == true) return true;
+
+                                    else return false;
+                                }
+                            </script>*@
                         </div>
                     </div>
                 </form>
@@ -461,11 +472,4 @@
 
 </div>
 
-<script type="text/javascript">
-    function Kiemtra() {
-        var pwd = document.forms["FormDky","pwd"];
-        var pwdconfirm = document.forms["FormDky", "pwdconfirm"];
-        if(pwd!=pwdconfirm)
-    }
 
-</script>

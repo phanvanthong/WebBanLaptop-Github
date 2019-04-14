@@ -1,0 +1,12 @@
+﻿
+@using WebBanLaptop.Models;
+@model List<Discount>
+
+@*@{ var category = (List<Discount>)ViewBag.View; }*@
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("Index","KhuyeMai",new { @id=item.Discount_id , @page=1 })"> @item.value</a></li>
+}
+
+

@@ -12,22 +12,23 @@ namespace WebBanLaptop.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public User()
         {
-            this.Orders_Details = new HashSet<Orders_Details>();
+            this.Orders = new HashSet<Order>();
         }
     
-        public int Order_id { get; set; }
-        public Nullable<int> Users_id { get; set; }
-        public Nullable<double> tongtien { get; set; }
-        public Nullable<System.DateTime> ngaytao { get; set; }
-        public string giaohang { get; set; }
+        public int Users_id { get; set; }
+        public string username { get; set; }
+        public string pwd { get; set; }
+        public string fullname { get; set; }
+        public string email { get; set; }
+        public string address { get; set; }
+        public string phone { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders_Details> Orders_Details { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

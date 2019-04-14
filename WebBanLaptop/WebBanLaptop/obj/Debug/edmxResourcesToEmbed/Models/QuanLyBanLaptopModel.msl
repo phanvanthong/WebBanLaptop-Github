@@ -47,10 +47,7 @@
       <EntityTypeMapping TypeName="Web_ban_laptopModel.Order">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="Order_id" ColumnName="Order_id" />
-          <ScalarProperty Name="tenkhachhang" ColumnName="tenkhachhang" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Users_id" ColumnName="Users_id" />
           <ScalarProperty Name="tongtien" ColumnName="tongtien" />
           <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
           <ScalarProperty Name="giaohang" ColumnName="giaohang" />
@@ -60,10 +57,10 @@
     <EntitySetMapping Name="Orders_Details">
       <EntityTypeMapping TypeName="Web_ban_laptopModel.Orders_Details">
         <MappingFragment StoreEntitySet="Orders_Details">
-          <ScalarProperty Name="Orders_id" ColumnName="Orders_id" />
-          <ScalarProperty Name="Products_id" ColumnName="Products_id" />
-          <ScalarProperty Name="Soluong" ColumnName="Soluong" />
-          <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+          <ScalarProperty Name="products_id" ColumnName="products_id" />
+          <ScalarProperty Name="soluongsp" ColumnName="soluongsp" />
+          <ScalarProperty Name="tongtien" ColumnName="tongtien" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -100,6 +97,19 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Web_ban_laptopModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Users_id" ColumnName="Users_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

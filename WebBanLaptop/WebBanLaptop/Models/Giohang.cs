@@ -26,7 +26,7 @@ namespace WebBanLaptop.Models
             sTenSP = product.Name;
             Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == product.Discount_id);
             dKhuyenMai = (Double)discount.value;
-            //sHinhAnh = product.
+            sHinhAnh = "img";
             dDonGia = (Double)product.Gia; /*Double.Parse(product.Gia.ToString())*/
             iSoLuong = 1;
         }

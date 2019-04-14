@@ -1,0 +1,11 @@
+﻿
+@using WebBanLaptop.Models;
+@model List<Hangsx>
+
+@*@{ var category = (List<Hangsx>)ViewBag.View; }*@
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("Index","Laptop",new { @id=item.Hangsx_id , @page=1 })">Laptop @item.tenhang</a></li>
+}
+

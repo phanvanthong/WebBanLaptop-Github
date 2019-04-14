@@ -14,10 +14,10 @@ namespace WebBanLaptop.Models
     
     public partial class Orders_Details
     {
-        public int Orders_id { get; set; }
-        public int Products_id { get; set; }
-        public Nullable<int> Soluong { get; set; }
-        public Nullable<double> Gia { get; set; }
+        public int Order_id { get; set; }
+        public int products_id { get; set; }
+        public Nullable<int> soluongsp { get; set; }
+        public Nullable<double> tongtien { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }

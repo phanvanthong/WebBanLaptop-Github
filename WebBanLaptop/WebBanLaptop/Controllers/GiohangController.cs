@@ -14,12 +14,11 @@ namespace WebBanLaptop.Controllers
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
         public List<Giohang> LayGioHang()
         {
-            List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>; //ép kiểu session kiểu giỏ hàng
+            List<Giohang> lstGioHang = Session["GioHang"+Session["DangNhap"]] as List<Giohang>; //ép kiểu session kiểu giỏ hàng
             if (lstGioHang == null)
             {
-                //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
                 lstGioHang = new List<Giohang>();
-                Session["GioHang"] = lstGioHang;
+                Session["GioHang" + Session["DangNhap"]] = lstGioHang;
             }
             return lstGioHang;
         }
@@ -27,6 +26,10 @@ namespace WebBanLaptop.Controllers
         //Thêm giỏ hang
         public ActionResult ThemGioHang(int iMaSP,string strURL )
         {
+            if (Session["DangNhap"] == null)
+            {
+                return RedirectToAction("DangNhap", "Users");
+            }
             Product product = db.Products.SingleOrDefault(n => n.Products_id == iMaSP);
             if(product==null)
             {
@@ -91,6 +94,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult Index()
         {
+            if (Session["DangNhap"] == null)
+            {
+                return RedirectToAction("DangNhap", "Users");
+            }
             List<Giohang> lstGioHang = LayGioHang();
             return View(lstGioHang);
         }
@@ -98,7 +105,7 @@ namespace WebBanLaptop.Controllers
         private int TongSoLuong()
         {
             int iSoLuong = 0;
-            List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>;
+            List<Giohang> lstGioHang = Session["GioHang" + Session["DangNhap"]] as List<Giohang>;
             if(lstGioHang!=null)
             {
                 iSoLuong = lstGioHang.Sum(n => n.iSoLuong);
@@ -110,7 +117,7 @@ namespace WebBanLaptop.Controllers
         private Double TongTien()
         {
             double iTongTien = 0;
-            List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>;
+            List<Giohang> lstGioHang = Session["GioHang" + Session["DangNhap"]] as List<Giohang>;
             if (lstGioHang != null)
             {
                 iTongTien = lstGioHang.Sum(n => n.dThanhTien) ;
@@ -126,30 +133,36 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult DatHang(Order order)
         {
-            List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>;
-            Session["DonHangDaDat"] = Session["GioHang"];
+            List<Giohang> lstGioHang1 = Session["GioHang" + Session["DangNhap"]] as List<Giohang>;
+            List<Giohang> lstGioHang = Session["DonHangDaDat" + Session["DangNhap"]] as List<Giohang>;
+            foreach(var item in lstGioHang1)
+            {
+                lstGioHang.Add(item); //lỗi
+            }
             if (lstGioHang == null)
             {
                 //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
                 lstGioHang = new List<Giohang>();
-                Session["DonHangDaDat"] = lstGioHang;
+                Session["DonHangDaDat" + Session["DangNhap"]] = lstGioHang;
             }
+            Session["GioHang" + Session["DangNhap"]] = null;
             //Thêm đơn hàng
             //Order order = new Order();
+            order.Users_id =(int) Session["User_id"];
             order.ngaytao = DateTime.Now;
             order.tongtien = 100000;
-            db.Orders.Add(order);
             order.giaohang = "COD";
+            db.Orders.Add(order);
             db.SaveChanges();
             List<Giohang> gh = LayGioHang();
             
             foreach(var item in gh)
             {
                 Orders_Details ordersD = new Orders_Details();
-                ordersD.Orders_id = order.Order_id;
-                ordersD.Products_id = item.iMaSP;
-                ordersD.Soluong = item.iSoLuong;
-                ordersD.Gia = item.dThanhTien;
+                ordersD.Order_id = order.Order_id;
+                ordersD.products_id = item.iMaSP;
+                ordersD.soluongsp = item.iSoLuong;
+                ordersD.tongtien = item.dThanhTien;
                 db.Orders_Details.Add(ordersD);
                 //XoaGioHang(item.iMaSP);
             }
@@ -159,12 +172,12 @@ namespace WebBanLaptop.Controllers
 
         public List<Giohang> LayDonHangDaDat()
         {
-            List<Giohang> lstDonHangDaDat = Session["DonHangDaDat"] as List<Giohang>; //ép kiểu session kiểu giỏ hàng
+            List<Giohang> lstDonHangDaDat = Session["DonHangDaDat" + Session["DangNhap"]] as List<Giohang>; //ép kiểu session kiểu giỏ hàng
             if (lstDonHangDaDat == null)
             {
                 //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
                 lstDonHangDaDat = new List<Giohang>();
-                Session["DonHangDaDat"] = lstDonHangDaDat;
+                Session["DonHangDaDat" + Session["DangNhap"]] = lstDonHangDaDat;
             }
             return lstDonHangDaDat;
         }

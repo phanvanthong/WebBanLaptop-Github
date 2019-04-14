@@ -43,23 +43,20 @@
       <PropertyRef Name="Order_id" />
     </Key>
     <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tenkhachhang" Type="nvarchar" MaxLength="50" />
-    <Property Name="sdt" Type="nvarchar" MaxLength="50" />
-    <Property Name="diachi" Type="nvarchar" MaxLength="255" />
-    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Users_id" Type="int" />
     <Property Name="tongtien" Type="float" />
     <Property Name="ngaytao" Type="date" />
     <Property Name="giaohang" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Orders_Details">
     <Key>
-      <PropertyRef Name="Orders_id" />
-      <PropertyRef Name="Products_id" />
+      <PropertyRef Name="Order_id" />
+      <PropertyRef Name="products_id" />
     </Key>
-    <Property Name="Orders_id" Type="int" Nullable="false" />
-    <Property Name="Products_id" Type="int" Nullable="false" />
-    <Property Name="Soluong" Type="int" />
-    <Property Name="Gia" Type="float" />
+    <Property Name="Order_id" Type="int" Nullable="false" />
+    <Property Name="products_id" Type="int" Nullable="false" />
+    <Property Name="soluongsp" Type="int" />
+    <Property Name="tongtien" Type="float" />
   </EntityType>
   <EntityType Name="Products">
     <Key>
@@ -95,7 +92,31 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK_Orders_Details_Orders">
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Users_id" />
+    </Key>
+    <Property Name="Users_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="pwd" Type="nvarchar" MaxLength="50" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="255" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="phone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Order_user">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Users_id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="Users_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ordersD_orders">
     <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
     <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
     <ReferentialConstraint>
@@ -103,11 +124,11 @@
         <PropertyRef Name="Order_id" />
       </Principal>
       <Dependent Role="Orders_Details">
-        <PropertyRef Name="Orders_id" />
+        <PropertyRef Name="Order_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Details_Products">
+  <Association Name="FK_ordersD_pro">
     <End Role="Products" Type="Self.Products" Multiplicity="1" />
     <End Role="Orders_Details" Type="Self.Orders_Details" Multiplicity="*" />
     <ReferentialConstraint>
@@ -115,7 +136,7 @@
         <PropertyRef Name="Products_id" />
       </Principal>
       <Dependent Role="Orders_Details">
-        <PropertyRef Name="Products_id" />
+        <PropertyRef Name="products_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -152,11 +173,16 @@
     <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Orders_Details_Orders" Association="Self.FK_Orders_Details_Orders">
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Order_user" Association="Self.FK_Order_user">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ordersD_orders" Association="Self.FK_ordersD_orders">
       <End Role="Orders" EntitySet="Orders" />
       <End Role="Orders_Details" EntitySet="Orders_Details" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Details_Products" Association="Self.FK_Orders_Details_Products">
+    <AssociationSet Name="FK_ordersD_pro" Association="Self.FK_ordersD_pro">
       <End Role="Products" EntitySet="Products" />
       <End Role="Orders_Details" EntitySet="Orders_Details" />
     </AssociationSet>

@@ -4,7 +4,74 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 style="padding-left:20px"> <br /><br />Hiện tại cửa hàng không có chương trình khuyến mãi nào</h2>
+}
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<WebBanLaptop.Models.Product>
+
+
+
+
+
+<div class="container">
+    <div class="mainbanner">
+        <div id="main-banner" class="owl-carousel home-slider">
+            @* <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner1.jpg" alt="main-banner1" class="img-banner" /></a> </div>*@
+
+        </div>
+    </div>
+
+
+    <div class="row content">
+
+
+        @foreach (var item in Model)
+        {
+            <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="item">
+                    <div class="product-thumb">
+                        <div class="image product-imageblock">
+                            <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/trc.png" alt="iPod Classic" title="iPod Classic" class="img-responsive" /> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/cheo.jpg" alt="iPod Classic" title="@item.Name" class="img-responsive" /> </a>
+                            <ul class="button-group">
+                                <li>
+                                    <button type="button" class="addtocart-btn" title="Mua ngay"> <a href="@Url.Action("Index", "GioHang")">Mua ngay</a> </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><a href="@Url.Action("ThemGioHang", "GioHang", new {@iMaSP=item.Products_id,@strURl = Request.Url.ToString()})"><i class="fa fa-cart-plus"></i></a></button>
+                                    @*<div class="pull-right">
+                                            <a class="btn btn-primary" href="@Url.Action("Index","Home")" title="Tiếp tục mua sắm"><i class="fa fa-cart-plus"></i></a>
+                                        </div>*@
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="caption product-detail">
+
+                            <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">@item.Name</a></h4>
+                            <p class="price product-price">@string.Format("{0:0,0đ}", @item.Gia)<span class="price-tax">Ex Tax: $100.00</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        @*Tạo link liên kết các trang*@
+        @*<br />Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
+        <div style=" text-align:center">
+            <div class="Menutrang" style="margin-left:50px;">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { @page = page }))
+            </div>
+        </div>
+        @*<style>
+                .Menutrang li {
+                    padding-left: 8px;
+                    display: inline;
+                }
+            </style>*@
+    </div>
+</div>
+
 
 <script>
     const a = document.querySelector('#Khuyenmai-id');

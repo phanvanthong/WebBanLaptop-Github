@@ -194,6 +194,9 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -516,7 +519,7 @@
     <Content Include="Views\QuanLySanPham\ChinhSuaLaptop.cshtml" />
     <Content Include="Views\QuanLySanPham\XoaLaptop.cshtml" />
     <Content Include="Views\QuanLySanPham\HienThiLaptop.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\DangNhap.cshtml" />
     <Content Include="Views\Users\QuenMatKhau.cshtml" />
     <Content Include="Views\Users\DangKy.cshtml" />
     <Content Include="Views\QuanLySanPham\ListHangsx.cshtml" />
@@ -535,6 +538,8 @@
     <Content Include="Views\Diadiem\Index.cshtml" />
     <Content Include="Views\Giohang\ThongtinKH.cshtml" />
     <Content Include="Views\Giohang\DonDatHang.cshtml" />
+    <Content Include="Views\Home\PartialSanPham.cshtml" />
+    <Content Include="Views\Home\PartialKM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

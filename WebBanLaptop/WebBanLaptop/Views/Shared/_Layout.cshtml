@@ -30,9 +30,19 @@
                                 <input type="text" name="txtTimKiem" placeholder="  Nhập vào từ khóa cần tìm..." style="width:300px" />
                                 <a href="#"><i class="fa fa-search"></i></a>
                             </div>
-                            @*<div class="dkydnhap" style="float:left; padding-left:366px; padding-top:11px ">
-                                <a href="#" class="DKDN">Đăng Ký</a><a href="#">Đăng Nhập</a>
-                            </div>*@
+                            <div class="dkydnhap" style="float:left; padding-left:366px; padding-top:11px ">
+                                @{
+                                    if (Session["DangNhap"] == null)
+                                    {
+                                        <a href="@Url.Action("DangKy", "Users")" class="DKDN" title="Đăng ký">Đăng Ký</a><a href="@Url.Action("DangNhap", "Users")" title="Đăng nhập">Đăng Nhập</a>
+                                    }
+                                    else
+                                    {
+                                        
+                                        <a href="@Url.Action("DangNhap", "Users")" title="Đăng xuất">Đăng Xuất</a>
+                                    }
+                                }
+                            </div>
                         </div>
 
                     </div>
@@ -42,7 +52,7 @@
         <div class="container">
             <div class="header-inner">
                 <div class="col-sm-3 col-xs-3 header-left">
-                    <div id="logo"> <a href="@Url.Action("index","Home")"><img src="~/Content/Images/logo.png" title="E-Commerce" alt="E-Commerce" class="img-logo" /></a> </div>
+                    <div id="logo"> <a href="@Url.Action("index", "Home")"><img src="~/Content/Images/logo.png" title="E-Commerce" alt="E-Commerce" class="img-logo" /></a> </div>
                 </div>
                 <div class="col-sm-9 col-xs-9 header-right">
                     <nav id="menu" class="navbar">
@@ -56,35 +66,44 @@
                                     <li>
                                         <a  class="active parent" id="Laptop-id">Laptop</a>
                                         <ul>
-                                            <li><a href="@Url.Action("Index","Laptop",new { @id=1 })">Laptop Apple-Macbook</a></li>
+                                            @*<li><a href="@Url.Action("Index","Laptop",new { @id=1 })">Laptop Apple-Macbook</a></li>
                                             <li><a href="@Url.Action("Index","Laptop",new { @id=2 })">Laptop Dell</a></li>
                                             <li><a href="@Url.Action("Index","Laptop",new { @id=3 })">Laptop Asus</a></li>
                                             <li><a href="@Url.Action("Index","Laptop",new { @id=4 })">Laptop Hp</a></li>
                                             <li><a href="@Url.Action("Index","Laptop",new { @id=5 })">Laptop Lennovo</a></li>
                                             <li><a href="@Url.Action("Index","Laptop",new { @id=6 })">Laptop Acer</a></li>
                                             <li><a href="@Url.Action("Index","Laptop",new { @id=7 })">Laptop MSI</a></li>
-                                            <li><a href="@Url.Action("Index","Laptop",new { @id=8 })">Laptop Thinkpad</a></li>
+                                            <li><a href="@Url.Action("Index","Laptop",new { @id=8 })">Laptop Thinkpad</a></li>*@
+                                            @{Html.RenderAction("PartialSanPham", "Home");}
                                             
                                         </ul>
                                     </li>
-                                    <li>
+                                    @*<li>
                                         <a class="active parent" id="Phukien-id" >Phụ kiện laptop</a>
                                         <ul>
                                             <li><a href="@Url.Action("RAM","Phukien")">Ram máy tính</a></li>
                                             <li><a href="@Url.Action("HDD","Phukien")">Ổ HDD</a></li>
                                             <li><a href="@Url.Action("SSD","Phukien")">Ổ SDD</a></li>
                                         </ul>
+                                    </li>*@
+                                    <li>
+                                        <a href="@Url.Action("Index","Suachua")" class="parent" id="Suachua-id">Sửa chữa laptop</a>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("index","Suachua")" class="parent" id="Suachua-id">Sửa chữa laptop</a>
+                                        <a class="parent" id="Khuyenmai-id">Khuyến mại</a>
+                                        <ul>
+                                            @{Html.RenderAction("PartialKM", "Home");}
+                                        </ul>
                                     </li>
-                                    <li><a href="@Url.Action("index","Khuyenmai")" class="parent" id="Khuyenmai-id">Khuyến mại</a></li>
+                                    <li>
+                                        <a href="@Url.Action("Index","Suachua")" class="parent" id="Suachua-id">Blog</a>
+                                    </li>
                                     <li>
                                         <a  class="active parent" id="Diadiem-id">Địa điểm</a>
                                         <ul>
-                                            <li><a href="@Url.Action("index","Home")">Bắc Ninh</a></li>
-                                            <li><a href="@Url.Action("index","Home")">Hà Nội</a></li>
-                                            <li><a href="@Url.Action("index","Home")">Hồ Chí Minh</a></li>
+                                            <li><a href="@Url.Action("Index","Home")">Bắc Ninh</a></li>
+                                            <li><a href="@Url.Action("Index","Home")">Hà Nội</a></li>
+                                            <li><a href="@Url.Action("Index","Home")">Hồ Chí Minh</a></li>
                                         </ul>
                                     </li>
                                 </ul>

@@ -21,8 +21,24 @@ namespace WebBanLaptop.Controllers
             //ViewBag.Hangsx= db.Hangsxes.SingleOrDefault(n=>n.Hangsx_id)
             return View(db.Products.ToList().OrderBy(n => n.Products_id).ToPagedList(pageNumber, pageSize));
         }
+        [ChildActionOnly]
+        public PartialViewResult PartialSanPham()
+        {
+            List<Hangsx> lsthangsx = db.Hangsxes.OrderBy(n => n.Hangsx_id).ToList();
+            //var category = db.Hangsxes.ToList();
+            //ViewBag.View = category;
+            return PartialView(lsthangsx);
+        }
 
         
+        [ChildActionOnly]
+        public PartialViewResult PartialKM()
+        {
+            List<Discount> lstdiscount = db.Discounts.OrderBy(n => n.Discount_id).ToList();
+            return PartialView(lstdiscount);
+        }
+
+
 
     }
 
