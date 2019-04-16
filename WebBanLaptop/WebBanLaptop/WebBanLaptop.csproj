@@ -140,6 +140,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Controllers\DiadiemController.cs" />
     <Compile Include="Controllers\GiohangController.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Controllers\LaptopController.cs" />
     <Compile Include="Controllers\PhukienController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
+    <Compile Include="Controllers\QuanLyTaiKhoanController.cs" />
     <Compile Include="Controllers\SuachuaController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -533,13 +535,27 @@
     <Content Include="Views\QuanLySanPham\XoaKM.cshtml" />
     <Content Include="Views\QuanLySanPham\HienThiKM.cshtml" />
     <Content Include="Views\QuanLySanPham\ListLaptop.cshtml" />
-    <Content Include="Views\QuanLySanPham\Index.cshtml" />
     <Content Include="Views\ChiTietSanPham\Index.cshtml" />
     <Content Include="Views\Diadiem\Index.cshtml" />
     <Content Include="Views\Giohang\ThongtinKH.cshtml" />
     <Content Include="Views\Giohang\DonDatHang.cshtml" />
     <Content Include="Views\Home\PartialSanPham.cshtml" />
     <Content Include="Views\Home\PartialKM.cshtml" />
+    <Content Include="Views\Admin\DangNhap.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Admin\QuenMatKhau.cshtml" />
+    <Content Include="Views\Admin\DangKy.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\LstAdmin.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\ThemMoiAdmin.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\ChinhSuaAdmin.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\XoaAdmin.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\HienThiAdmin.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\LstUser.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\ThemMoiUser.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\ChinhSuaUser.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\XoaUser.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\HienThiUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

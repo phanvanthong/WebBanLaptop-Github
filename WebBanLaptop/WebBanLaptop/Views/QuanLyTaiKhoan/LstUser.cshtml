@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebBanLaptop.Models.User>
+
+@{
+    ViewBag.Title = "LstUser";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>LstUser</h2>
+
+<p>
+    @Html.ActionLink("Thêm tài khoản người dùng", "ThemMoiUser")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Users_id)*@
+            ID
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.username)*@
+            Tên đăng nhập
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.pwd)*@
+            Mật khẩu
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.fullname)*@
+            Tên đăng nhập
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.email)*@
+            Email
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.address)*@
+            Địa chỉ
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.phone)*@
+            Số điện thoại
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pwd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "ChinhSuaUser", new { @id=item.Users_id }) |
+            @Html.ActionLink("Hiển thị", "HienThiUser", new { @id = item.Users_id }) |
+            @Html.ActionLink("Xóa", "XoaUser", new { @id = item.Users_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -457,7 +457,7 @@ a.brand span {
 
 .nav-tabs.nav-stacked > li > a:hover,
 .nav-tabs.nav-stacked > li > ul > li > a:hover {
-  	color: #666;
+  	color: #000;
 }
 
 .nav-tabs.nav-stacked  > li.active > a,

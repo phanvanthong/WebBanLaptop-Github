@@ -133,6 +133,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult DatHang(Order order)
         {
+            //List<Giohang> lstgiohangnew = Session["GioHang"] as List<Giohang>;
             List<Giohang> lstGioHang1 = Session["GioHang" + Session["DangNhap"]] as List<Giohang>;
             List<Giohang> lstGioHang = Session["DonHangDaDat" + Session["DangNhap"]] as List<Giohang>;
             foreach(var item in lstGioHang1)

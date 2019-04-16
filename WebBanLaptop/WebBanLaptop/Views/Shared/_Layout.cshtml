@@ -38,8 +38,7 @@
                                     }
                                     else
                                     {
-                                        
-                                        <a href="@Url.Action("DangNhap", "Users")" title="Đăng xuất">Đăng Xuất</a>
+                                        <a href="@Url.Action("DangNhap", "Users")" title="Đăng xuất">Đăng Xuất (@Session["DangNhap"]) </a>
                                     }
                                 }
                             </div>
@@ -64,6 +63,9 @@
                             <div class="navbar-collapse pull-left">
                                 <ul class="main-navigation">
                                     <li>
+                                        <a href="@Url.Action("Index","Home")" class="parent" id="Suachua-id">Trang chủ</a>
+                                    </li>
+                                    <li>
                                         <a  class="active parent" id="Laptop-id">Laptop</a>
                                         <ul>
                                             @*<li><a href="@Url.Action("Index","Laptop",new { @id=1 })">Laptop Apple-Macbook</a></li>
@@ -86,9 +88,7 @@
                                             <li><a href="@Url.Action("SSD","Phukien")">Ổ SDD</a></li>
                                         </ul>
                                     </li>*@
-                                    <li>
-                                        <a href="@Url.Action("Index","Suachua")" class="parent" id="Suachua-id">Sửa chữa laptop</a>
-                                    </li>
+                                    
                                     <li>
                                         <a class="parent" id="Khuyenmai-id">Khuyến mại</a>
                                         <ul>

@@ -6,7 +6,7 @@
 
 @foreach (var item in Model)
 {
-    <li><a href="@Url.Action("Index","KhuyeMai",new { @id=item.Discount_id , @page=1 })"> @item.value</a></li>
+    <li><a href="@Url.Action("Index","KhuyeMai",new { @id=item.Discount_id , @page=1 })"> @item.value%</a></li>
 }
 
 

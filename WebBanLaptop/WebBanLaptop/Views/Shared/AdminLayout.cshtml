@@ -284,7 +284,7 @@
                                     <span>Account Settings</span>
                                 </li>
                                 <li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-                                <li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
+                                <li><a href="@Url.Action("DangNhap","Admin")"><i class="halflings-icon off"></i> Logout</a></li>
                             </ul>
                         </li>
                         <!-- end: User Dropdown -->
@@ -305,10 +305,10 @@
                 <div class="nav-collapse sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked main-menu">
                         <li>
-                            <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Quản lý tài khoản </span></a>
+                            <a class="dropmenu" ><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Quản lý tài khoản </span></a>
                             <ul>
-                                <li><a class="submenu" href="#"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý tài khoản Admin</span></a></li>
-                                <li><a class="submenu" href="#"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý tài khoản người dùng</span></a></li>
+                                <li><a class="submenu" href="@Url.Action("LstAdmin","QuanLyTaiKhoan")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý tài khoản Admin</span></a></li>
+                                <li><a class="submenu" href="@Url.Action("LstUser","QuanLyTaiKhoan")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý tài khoản người dùng</span></a></li>
                             </ul>
                         </li>
                         <li>
@@ -317,8 +317,6 @@
                                 <li><a class="submenu" href="@Url.Action("ListLaptop","QuanLySanPham")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý Laptop</span></a></li>
                                 <li><a class="submenu" href="@Url.Action("ListHangsx","QuanLySanPham")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý hãng sản xuất</span></a></li>
                                 <li><a class="submenu" href="@Url.Action("ListKM","QuanLySanPham")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý khuyến mại</span></a></li>
-                                <li><a class="submenu" href="#"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý Ram</span></a></li>
-                                <li><a class="submenu" href="#"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý Ổ đĩa</span></a></li>
                             </ul>
                         </li>
                         <li>

@@ -14,13 +14,21 @@ namespace WebBanLaptop.Controllers
         // GET: QuanLySanPham
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
 
-        public ActionResult Index()
-        {     
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    if (Session["DangNhapAdmin"] == null)
+        //    {
+        //        return RedirectToAction("DangNhap", "Admin");
+        //    }
+        //    return View();
+        //}
         //Quản lý Laptop
         public ActionResult ListLaptop(int? page) //List laptop
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             int pageNumber = (page ?? 1);
             int pageSize = 12;
             return View(db.Products.ToList().OrderBy(n=>n.Products_id).ToPagedList(pageNumber,pageSize));
@@ -31,6 +39,10 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiLaptop()
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             return View();
         }
         [HttpPost]
@@ -45,6 +57,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ChinhSuaLaptop(int id=0)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
             if (product == null)
             {
@@ -68,6 +84,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult XoaLaptop(int id)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
             if (product == null)
             {
@@ -95,6 +115,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult HienThiLaptop(int id)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
             if (product == null)
             {
@@ -109,6 +133,10 @@ namespace WebBanLaptop.Controllers
         //Quản Lý hãng sản xuất
         public ActionResult ListHangsx(int? page) //List Hangsx
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             int pageNumber = (page ?? 1);
             int pageSize = 12;
             return View(db.Hangsxes.ToList().OrderBy(n => n.Hangsx_id).ToPagedList(pageNumber, pageSize));
@@ -117,6 +145,10 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiHangsx()
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             return View();
         }
         [HttpPost]
@@ -131,6 +163,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ChinhSuaHangsx(int id = 0)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Hangsx hangsx = db.Hangsxes.SingleOrDefault(n => n.Hangsx_id == id);
             if (hangsx == null)
             {
@@ -154,6 +190,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult XoaHangsx(int id)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Hangsx hangsx = db.Hangsxes.SingleOrDefault(n => n.Hangsx_id == id);
             if (hangsx == null)
             {
@@ -181,6 +221,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult HienThiHangsx(int id)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Hangsx hangsx = db.Hangsxes.SingleOrDefault(n => n.Hangsx_id == id);
             if (hangsx == null)
             {
@@ -194,6 +238,10 @@ namespace WebBanLaptop.Controllers
         //Quản Lý Khuyến mãi
         public ActionResult ListKM(int? page) //List Khuyến mại
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             int pageNumber = (page ?? 1);
             int pageSize = 12;
             return View(db.Discounts.ToList().OrderBy(n => n.Discount_id).ToPagedList(pageNumber, pageSize));
@@ -204,6 +252,10 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiKM()
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             return View();
         }
         [HttpPost]
@@ -218,6 +270,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ChinhSuaKM(int id = 0)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == id);
             if (discount == null)
             {
@@ -241,6 +297,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult XoaKM(int id)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == id);
             if (discount == null)
             {
@@ -268,6 +328,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult HienThiKM(int id)
         {
+            if (Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
             Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == id);
             if (discount == null)
             {

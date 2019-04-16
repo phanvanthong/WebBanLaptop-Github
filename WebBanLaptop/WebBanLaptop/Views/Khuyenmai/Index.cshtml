@@ -34,13 +34,14 @@
                             <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/trc.png" alt="iPod Classic" title="iPod Classic" class="img-responsive" /> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/cheo.jpg" alt="iPod Classic" title="@item.Name" class="img-responsive" /> </a>
                             <ul class="button-group">
                                 <li>
-                                    <button type="button" class="addtocart-btn" title="Mua ngay"> <a href="@Url.Action("Index", "GioHang")">Mua ngay</a> </button>
+                                    <div class="pull-left">
+                                        <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" title="Tiếp tục mua sắm">Mua ngay</a>
+                                    </div>
                                 </li>
                                 <li>
-                                    <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><a href="@Url.Action("ThemGioHang", "GioHang", new {@iMaSP=item.Products_id,@strURl = Request.Url.ToString()})"><i class="fa fa-cart-plus"></i></a></button>
-                                    @*<div class="pull-right">
-                                            <a class="btn btn-primary" href="@Url.Action("Index","Home")" title="Tiếp tục mua sắm"><i class="fa fa-cart-plus"></i></a>
-                                        </div>*@
+                                    <div class="pull-right">
+                                        <a class="btn btn-primary" href="@Url.Action("ThemGioHang","GioHang", new { @iMaSP = item.Products_id, @strURl = Request.Url.ToString() })" title="Tiếp tục mua sắm"><i class="fa fa-cart-plus"></i></a>
+                                    </div>
                                 </li>
 
                             </ul>

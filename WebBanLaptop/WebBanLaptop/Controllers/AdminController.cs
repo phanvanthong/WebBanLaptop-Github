@@ -7,26 +7,35 @@ using WebBanLaptop.Models;
 
 namespace WebBanLaptop.Controllers
 {
-    public class UsersController : Controller
+    public class AdminController : Controller
     {
-        // GET: Users
+        // GET: Admin
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
+        public ActionResult Index()
+        {
+            if(Session["DangNhapAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "Admin");
+            }
+            return View();
+        }
+
         public ActionResult DangNhap()
         {
-            Session["DangNhap"] = null;
+            Session["DangNhapAdmin"] = null;
             return View();
         }
 
         [HttpPost]
 
-        public ActionResult DangNhap(User user)
+        public ActionResult DangNhap(Admin admin)
         {
-            User us1 = db.Users.SingleOrDefault(n => n.username == user.username && n.pwd == user.pwd);
-            if(us1!=null)
+            Admin admin1 = db.Admins.SingleOrDefault(n => n.username == admin.username && n.pwd == admin.pwd);
+            if (admin1 != null)
             {
-                Session["DangNhap"] = user.username;
-                Session["User_id"] = user.Users_id;
-                return RedirectToAction("Index", "Home");
+                Session["DangNhapAdmin"] = admin.username;
+                Session["Admin_id"] = admin.admin_id;
+                return RedirectToAction("Index", "Admin");
             }
             else
             {
@@ -46,12 +55,11 @@ namespace WebBanLaptop.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangKy(User user)
+        public ActionResult DangKy(Admin admin)
         {
-            db.Users.Add(user);
+            db.Admins.Add(admin);
             db.SaveChanges();
             return Redirect("DangNhap");
         }
-
     }
 }

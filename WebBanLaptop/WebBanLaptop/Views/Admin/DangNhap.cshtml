@@ -1,19 +1,19 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
-
-<div class="container">
+<p style="font-size:50px;text-align:center">Đăng nhập admin</p>
+<div class="container" style="margin-left:350px; margin-top:100px">
     <div class="row">
         <div class="col-sm-3 hidden-xs column-left" id="column-left">
             <div class="Categories left-sidebar-widget">
                 <div class="columnblock-title">Tài khoản</div>
                 <div class="category_block">
                     <ul class="box-category">
-                        <li><a href="@Url.Action("DangNhap","Users")">Đăng nhập</a></li>
-                        <li><a href="@Url.Action("DangKy","Users")">Đăng ký</a></li>
-                        <li><a href="@Url.Action("QuenMatKhau","Users")">Quên mật khẩu</a></li>
+                        <li><a href="@Url.Action("DangNhap","Admin")">Đăng nhập</a></li>
+                        <li><a href="@Url.Action("DangKy","Admin")">Đăng ký</a></li>
+                        <li><a href="@Url.Action("QuenMatKhau","Admin")">Quên mật khẩu</a></li>
                     </ul>
                 </div>
             </div>
@@ -21,23 +21,23 @@
         <div class="col-sm-9" id="content">
             <div class="row">
                 @*<div class="col-sm-6">
-                    <h2>New Customer</h2>
-                    <p>Checkout Options:</p>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="account" value="register" checked="checked">
-                            Register Account
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="account" value="guest">
-                            Guest Checkout
-                        </label>
-                    </div>
-                    <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-                    <input type="button" value="Continue" id="button-account" data-loading-text="Loading..." class="btn btn-primary">
-                </div>*@
+                        <h2>New Customer</h2>
+                        <p>Checkout Options:</p>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="account" value="register" checked="checked">
+                                Register Account
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="account" value="guest">
+                                Guest Checkout
+                            </label>
+                        </div>
+                        <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+                        <input type="button" value="Continue" id="button-account" data-loading-text="Loading..." class="btn btn-primary">
+                    </div>*@
                 <form action="DangNhap" method="post">
                     <div class="col-sm-6" style="margin-left:50px">
                         <h2>Đăng nhập</h2>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebBanLaptop.Models.Admin>
+
+@{
+    ViewBag.Title = "LstAdmin";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>LstAdmin</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới Admin", "ThemMoiAdmin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.username)*@
+            Tên đăng nhập
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.pwd)*@
+            Mật khẩu
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.email)*@
+            Email
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.address)*@
+            Địa chỉ
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.phone)*@
+            Số điện thoại
+        </th>
+        <th>
+            Cấp bậc
+        </th>
+        <th>
+            Họ và tên
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pwd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.level_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fullname)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "ChinhSuaAdmin", new { @id=item.admin_id }) |
+            @Html.ActionLink("Chi tiết", "ChiTietAdmin", new { @id = item.admin_id }) |
+            @Html.ActionLink("Xóa", "XoaAdmin", new { @id = item.admin_id })
+        </td>
+    </tr>
+}
+
+</table>

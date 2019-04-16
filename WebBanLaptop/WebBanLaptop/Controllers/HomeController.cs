@@ -19,9 +19,9 @@ namespace WebBanLaptop.Controllers
             int pageNumber = (page ?? 1);
             int pageSize = 12;
             //ViewBag.Hangsx= db.Hangsxes.SingleOrDefault(n=>n.Hangsx_id)
-            return View(db.Products.ToList().OrderBy(n => n.Products_id).ToPagedList(pageNumber, pageSize));
+            return View(db.Products.ToList().OrderByDescending(n => n.Products_id).ToPagedList(pageNumber, pageSize));
         }
-        [ChildActionOnly]
+        //[ChildActionOnly]
         public PartialViewResult PartialSanPham()
         {
             List<Hangsx> lsthangsx = db.Hangsxes.OrderBy(n => n.Hangsx_id).ToList();
@@ -31,7 +31,7 @@ namespace WebBanLaptop.Controllers
         }
 
         
-        [ChildActionOnly]
+        //[ChildActionOnly]
         public PartialViewResult PartialKM()
         {
             List<Discount> lstdiscount = db.Discounts.OrderBy(n => n.Discount_id).ToList();
