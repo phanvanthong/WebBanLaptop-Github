@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebBanLaptop.Models;
 using PagedList;
 using PagedList.Mvc;
+using System.IO;
 
 namespace WebBanLaptop.Controllers
 {
@@ -43,14 +44,36 @@ namespace WebBanLaptop.Controllers
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
+            ViewBag.MaKM = new SelectList(db.Discounts.ToList().OrderBy(n => n.Discount_id), "Discount_id", "Value");
+            ViewBag.Hangsx = new SelectList(db.Hangsxes.ToList().OrderBy(n => n.Hangsx_id), "Hangsx_id", "tenhang");
             return View();
         }
         [HttpPost]
-        public ActionResult ThemMoiLaptop(Product product)
+        public ActionResult ThemMoiLaptop(Product product, HttpPostedFileBase fileupload)
         {
+            //string directoryPath = "~/Content/Images/i3/" + product.Products_id;
+            //if (!System.IO.Directory.Exists(directoryPath))
+            //{
+            //    System.IO.Directory.CreateDirectory(directoryPath);
+            //}
+            ////lưu tên file
+            //var fileName = Path.GetFileName(fileupload.FileName);
+            ////lưi đường dẫn của file 
+            //var path = Path.Combine(Server.MapPath("~/Content/Images/i3/"+product.Products_id), fileName);
+            ////Kiểm tra ảnh đã tồn tại chưa
+            //if (System.IO.File.Exists(path))
+            //{
+            //    ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+            //}
+            //else
+            //{
+            //    fileupload.SaveAs(path);
+            //}
+            ViewBag.MaKM = new SelectList(db.Discounts.ToList().OrderBy(n => n.Discount_id), "Discount_id", "Value");
+            ViewBag.Hangsx = new SelectList(db.Hangsxes.ToList().OrderBy(n => n.Hangsx_id), "Hangsx_id", "tenhang");
             db.Products.Add(product);
             db.SaveChanges();
-            return Redirect("ListLaptop");
+            return Redirect("ListLaptop"); 
         }
 
         //----------

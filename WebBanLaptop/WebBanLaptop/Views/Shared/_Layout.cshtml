@@ -30,15 +30,15 @@
                                 <input type="text" name="txtTimKiem" placeholder="  Nhập vào từ khóa cần tìm..." style="width:300px" />
                                 <a href="#"><i class="fa fa-search"></i></a>
                             </div>
-                            <div class="dkydnhap" style="float:left; padding-left:366px; padding-top:11px ">
+                            <div class="dkydnhap" style="float:left; padding-left:216px; padding-top:11px ">
                                 @{
                                     if (Session["DangNhap"] == null)
                                     {
-                                        <a href="@Url.Action("DangKy", "Users")" class="DKDN" title="Đăng ký">Đăng Ký</a><a href="@Url.Action("DangNhap", "Users")" title="Đăng nhập">Đăng Nhập</a>
+                                        <a style="padding-left:170px" href="@Url.Action("DangKy", "Users")" class="DKDN" title="Đăng ký">Đăng Ký</a><a href="@Url.Action("DangXuat", "Users")" title="Đăng nhập">Đăng Nhập</a>
                                     }
                                     else
                                     {
-                                        <a href="@Url.Action("DangNhap", "Users")" title="Đăng xuất">Đăng Xuất (@Session["DangNhap"]) </a>
+                                        <a href="@Url.Action("Thongtincanhan", "Users")" title="Đăng nhập">Thông tin cá nhân</a><a href="@Url.Action("DangNhap", "Users")" title="Đăng xuất">Đăng Xuất (@Session["DangNhap"]) </a>
                                     }
                                 }
                             </div>

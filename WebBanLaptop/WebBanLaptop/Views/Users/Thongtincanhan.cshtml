@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Thongtincanhan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row" style="margin-left:200px">
+        
+
+        <div class="col-sm-9" id="content">
+            @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
+            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="Thongtincanhan" name="FormDky" onsubmit="return pwdconfirm()">
+                <fieldset id="account">
+                    <legend>Thông tin cá nhân của bạn</legend>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Họ và tên</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-firstname" placeholder="Họ tên" value="@Session["fullname"]" name="fullname" required>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Tên đăng nhập</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-firstname" placeholder="Tên đăng nhập" value="@Session["DangNhap"]" name="username" required>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-password" class="col-sm-2 control-label">Mật khẩu</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="input-password" placeholder="Mật khẩu" value="@Session["pwd"]" name="pwd" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group required">
+                        <label for="input-email" class="col-sm-2 control-label">E-Mail</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="@Session["email"]" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-telephone" class="col-sm-2 control-label">Số điện thoại</label>
+                        <div class="col-sm-10">
+                            <input type="tel" class="form-control" id="input-telephone" placeholder="Số điện thoại" value="@Session["phone"]" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-address-1" class="col-sm-2 control-label">Địa chỉ</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-address-1" placeholder="Nhập địa chỉ" value="@Session["address"]" name="address" required>
+                        </div>
+                    </div>
+                    
+
+                </fieldset>
+
+                <div class="buttons">
+                    <div class="pull-right">
+                        <input type="submit" class="btn btn-primary" value="Thay đổi">
+
+
+
+                    </div>
+                </div>
+            </form>
+            @*<input type="submit" class="btn btn-primary" value="Tạo" disabled>*@
+            <script>
+                    function KtraAgree() {
+                        var Agree = document.getElementById('agree');
+                        if (Agree.checked == true) return true;
+
+                        else return false;
+                    }
+                    function pwdconfirm() {
+                        var pwd = document.forms["FormDky", "pwd"].value;
+                        var pwdconfirm = document.forms["FormDky", "pwdconfirm"].value;
+
+                        if (pwd != pwdconfirm) {
+                            document.getElementById('pwdconfirm1').innerHTML = "Xác nhận lại mật khẩu!";
+                            return false
+                        }
+                        return true;
+                    }
+            </script>
+        </div>
+
+    </div>
+
+</div>
+
