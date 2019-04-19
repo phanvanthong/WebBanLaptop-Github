@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
 }
 
 <div class="container">
@@ -41,11 +43,11 @@
                                     <td style="text-align:center" class="text-left">@item.dKhuyenMai</td>
                                     <td style="text-align:center" class="text-left">
                                         <div style="max-width: 200px;" class="input-group btn-block">
-                                            <input type="number" class="form-control quantity" id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px">
+                                            <input type="number" class="form-control quantity_@item.iMaSP" min="1" max="100" id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px" onchange="TD(@item.dDonGia,@item.iMaSP,@item.dKhuyenMai)">
                                         </div>
                                     </td>
                                     <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dDonGia)</td>
-                                    <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dThanhTien)</td>
+                                    <td style="text-align:center" class="text-right" id="thanhtien_@item.iMaSP">@string.Format("{0:0,0đ}", @item.dThanhTien)</td>
                                     <td  class="text-right" style="margin-right:-3px;text-align:center">
                                         <div class="pull-right">
                                             <a class="btn btn-primary" href="@Url.Action("XoaGioHang","GioHang",new {@iMaSP=item.iMaSP })" >Xóa</a>
@@ -94,3 +96,33 @@
         </div>
     </div>
 </div>
+<script>
+    function commaSeparateNumber(val) {
+        while (/(\d+)(\d{3})/.test(val.toString())) {
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+        }
+        return val;
+    }
+</script>
+<script type="text/javascript">
+    function TD(dDonGia, id,km) {
+        var str2 = ".quantity_" + id;
+        var soluong=$(str2).val();
+        var thanhtien = soluong * dDonGia*(1-km/100);
+        var strID = "#thanhtien_"+id;
+        $(strID).text(commaSeparateNumber(thanhtien));
+        //ok giờ để t tét lại nãy đã ô vừa sưa gì sửa lại như nãy đoi
+        //oke r đấy
+        //oke r đó,còn chọn mà nó ko tính tiếp là lỗi của ô nhé :V chọn mà no k tính là sao :)) đây nhé
+        //dm mạng lag kphai t để onchange nó thay đổi xong ms tính thế oke r đấy nhỉ oke r tks pro nhá :v bây giờ ô nên vứt cái hàm kia sang 1 chỗ khác dùng chung
+        //hàm ô cop đáy á uk cái hàm com kia kìa t cop sang layout luôn đc nhỉ nte chắc cũng dk ko thì t bảo
+        // ddeer trong layout ddi oke mà ô định thêm proj lzi thế
+        //Chứa những hàm chung như kiểu định dạng ngày.kiểm tra rỗng,vs định dạng số,sau này có cả ms hàm dùng để xuất excel,...
+        //để vào js k đc à ô
+        //nếu để ra thì tường minh hơn,sau này ô gọi hàm đó sẽ là như này
+        // Untils.Compase()
+        //đó nó sẽ giống như ô gọi hàm
+        // à r hay vãi giờ ms biết hihi gọi thế tiện vs dễ kiểm soát vãi :D oke thế làm đi oke tks nhasaaaaaaaaaaaaaaaaaaaaaaaaaa <# haha 
+        
+    }
+</script>

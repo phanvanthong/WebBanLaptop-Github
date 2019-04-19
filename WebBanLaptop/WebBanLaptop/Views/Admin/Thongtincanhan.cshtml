@@ -1,9 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "Thongtincanhan";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 @using WebBanLaptop.Models;
+
+<p style="font-size:50px;text-align:center; margin-bottom:40px;">Thông tin cá nhân Admin</p>
 <div class="container">
     <div class="row" style="margin-left:200px">
         
@@ -11,7 +13,7 @@
         <div class="col-sm-9" id="content">
             @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
             @{ 
-                User us = Session["User"] as User;
+                Admin ad = Session["Admin"] as Admin;
             }
             <form class="form-horizontal" enctype="multipart/form-data" method="post" action="Thongtincanhan" name="FormDky" onsubmit="return pwdconfirm()">
                 <fieldset id="account">
@@ -19,13 +21,13 @@
                     <div class="form-group required">
                         <label for="input-firstname" class="col-sm-2 control-label">Họ và tên</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-firstname" placeholder="Họ tên" value="@us.fullname" name="fullname" required>
+                            <input type="text" class="form-control" id="input-firstname" placeholder="Họ tên" value="@ad.fullname" name="fullname" required>
                         </div>
                     </div>
                     <div class="form-group required">
                         <label for="input-firstname" class="col-sm-2 control-label">Tên đăng nhập</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-firstname" placeholder="Tên đăng nhập" value="@us.username" name="username" readonly required>
+                            <input type="text" class="form-control" id="input-firstname" placeholder="Tên đăng nhập" value="@ad.username" name="username" readonly required>
                         </div>
                     </div>
 
@@ -33,19 +35,19 @@
                     <div class="form-group required">
                         <label for="input-email" class="col-sm-2 control-label">E-Mail</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="@us.email" name="email" required>
+                            <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="@ad.email" name="email" required>
                         </div>
                     </div>
                     <div class="form-group required">
                         <label for="input-telephone" class="col-sm-2 control-label">Số điện thoại</label>
                         <div class="col-sm-10">
-                            <input type="tel" class="form-control" id="input-telephone" placeholder="Số điện thoại" value="@us.phone" name="phone" required>
+                            <input type="tel" class="form-control" id="input-telephone" placeholder="Số điện thoại" value="@ad.phone" name="phone" required>
                         </div>
                     </div>
                     <div class="form-group required">
                         <label for="input-address-1" class="col-sm-2 control-label">Địa chỉ</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-address-1" placeholder="Nhập địa chỉ" value="@us.address" name="address" required>
+                            <input type="text" class="form-control" id="input-address-1" placeholder="Nhập địa chỉ" value="@ad.address" name="address" required>
                         </div>
                     </div>
 
@@ -54,8 +56,8 @@
                 <p style="color:red">@ViewBag.Thongtincanhan</p>
                 <div class="buttons">
                     <div class="pull-right">
-                        <a href="@Url.Action("Index","Home")" style="margin-right:150px;"><input type="button" class="btn btn-primary" value="Quay Lại"></a>
-                        <a href="@Url.Action("ThayDoiMK","Users")"><input type="button" class="btn btn-primary" value="Thay đổi mật khẩu"></a>
+                        <a href="@Url.Action("Index","Admin")" style="margin-right:150px;"><input type="button" class="btn btn-primary" value="Trang chủ"></a>
+                        <a href="@Url.Action("ThayDoiMK","Admin")"><input type="button" class="btn btn-primary" value="Thay đổi mật khẩu"></a>
                         <input type="submit" class="btn btn-primary" value="Cập nhật">
                     </div>
                 </div>

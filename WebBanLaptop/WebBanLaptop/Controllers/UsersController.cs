@@ -13,7 +13,7 @@ namespace WebBanLaptop.Controllers
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
         public ActionResult DangNhap()
         {
-            if (Session["DangNhap"]!=null)
+            if (Session["User"] !=null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -28,12 +28,8 @@ namespace WebBanLaptop.Controllers
             User us1 = db.Users.SingleOrDefault(n => n.username == user.username && n.pwd == user.pwd);
             if(us1!=null)
             {
+                Session["User"] = us1 as User;
                 Session["DangNhap"] = us1.username;
-                Session["pwd"] = us1.pwd;
-                Session["email"] = us1.email;
-                Session["phone"] = us1.phone;
-                Session["address"] = us1.address;
-                Session["fullname"] = us1.fullname;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -45,20 +41,14 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult DangXuat()
         {
+            Session["User"] = null;
             Session["DangNhap"] = null;
-            Session["DangNhap"] = null;
-            Session["User_id"] = null;
-            Session["pwd"] = null;
-            Session["email"] = null;
-            Session["phone"] = null;
-            Session["address"] = null;
-            Session["fullname"] = null;
             return Redirect("DangNhap");
         }
 
         public ActionResult QuenMatKhau()
         {
-            if (Session["DangNhap"] != null)
+            if (Session["User"] != null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -71,9 +61,7 @@ namespace WebBanLaptop.Controllers
             User us = db.Users.SingleOrDefault(n => n.username == user.username && n.email == user.email);
             if (us != null)
             {
-                ViewBag.Resetpwd = "Mật khẩu mới của bạn là:'0'";
-                us.pwd = "0";
-                db.SaveChanges();
+                return RedirectToAction("ResetPwd","Users",us);
             }
             else
             {
@@ -83,9 +71,62 @@ namespace WebBanLaptop.Controllers
             return View();
         }
 
+        public ActionResult ResetPwd(User user)
+        {
+            if(user.username==null)
+            {
+                return Redirect("DangNhap");
+            }
+            return View(user);
+        }
+        [HttpPost, ActionName("ResetPwd")]
+        public ActionResult ResetPwdPost(User user,string pwdnew,string pwdconfirm)
+        {
+            User us1 = db.Users.SingleOrDefault(n => n.username == user.username);
+            if (pwdnew != pwdconfirm)
+            {
+                ViewBag.Resetpwd = "Mật khẩu không trùng khớp!";
+            }
+            else
+            {
+                ViewBag.Resetpwd = "Đổi mật khẩu thành công";
+                us1.pwd = pwdnew;
+                db.SaveChanges();
+            }          
+            return View(us1);
+        }
+
+        public ActionResult ThayDoiMK()
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("DangNhap", "Users");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ThayDoiMK(User user,string pwdnew, string pwdconfirm)
+        {
+            User us = db.Users.SingleOrDefault(n => n.username == user.username);
+            if (pwdnew !=pwdconfirm)
+            {
+                @ViewBag.thaydoimk = "Mật khẩu không trung khớp!";
+            }
+            else 
+            {
+                us.pwd = pwdnew;
+                @ViewBag.thaydoimk = "Thay đổi mật khẩu thành công!";
+                db.SaveChanges();
+            }
+
+            return View(user);
+        }
+
+        
+
         public ActionResult DangKy()
         {
-            if (Session["DangNhap"] != null)
+            if (Session["User"] != null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -93,16 +134,28 @@ namespace WebBanLaptop.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangKy(User user)
+        public ActionResult DangKy(User user,string pwdconfirm)
         {
+            User us = db.Users.SingleOrDefault(n => n.username == user.username);
+            if(us!=null)
+            {
+                ViewBag.DangKy = "Tên đăng nhập đã tồn tại!";
+                return View();
+            }
+            else if(user.pwd != pwdconfirm)
+            {
+                ViewBag.DangKy = "Đăng ký không thành công. Mật khẩu không trùng khớp!";
+                return View();
+            }
             db.Users.Add(user);
             db.SaveChanges();
-            return Redirect("DangNhap");
+            ViewBag.DangKy = "Đăng ký thành công!";
+            return View();
         }
 
         public ActionResult Thongtincanhan()
         {
-            if (Session["DangNhap"] == null)
+            if (Session["User"] == null)
             {
                 return Redirect("DangNhap");
             }
@@ -114,18 +167,14 @@ namespace WebBanLaptop.Controllers
         public ActionResult Thongtincanhan(User user)
         {
             User us1 = db.Users.SingleOrDefault(n=>n.username==user.username);
-            us1.pwd = user.pwd;
             us1.fullname = user.fullname;
             us1.email = user.email;
             us1.address = user.address;
             us1.phone = user.phone;
-            Session["pwd"] = us1.pwd;
-            Session["email"] = us1.email;
-            Session["phone"] = us1.phone;
-            Session["address"] = us1.address;
-            Session["fullname"] = us1.fullname;
             db.SaveChanges();
-            return RedirectToAction("Index","Home");
+            Session["User"] = us1;
+            ViewBag.Thongtincanhan = "Thay đổi thành công!";
+            return View();
         }
 
 

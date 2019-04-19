@@ -3,21 +3,10 @@
     ViewBag.Title = "DangKy";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
-<p style="font-size:50px;text-align:center; margin-top:10px">Đăng ký admin</p>
-<div class="container" style="margin-top:50px">
+<p style="font-size:50px;text-align:center; margin-top:10px;margin-bottom:40px;">Đăng ký admin</p>
+<div class="container" style="margin-left:350px;">
     <div class="row">
-        <div class="col-sm-3 hidden-xs column-left" id="column-left">
-            <div class="Categories left-sidebar-widget">
-                <div class="columnblock-title">Tài khoản</div>
-                <div class="category_block">
-                    <ul class="box-category">
-                        <li><a href="@Url.Action("DangNhap","Admin")">Đăng nhập</a></li>
-                        <li><a href="@Url.Action("DangKy","Admin")">Đăng ký</a></li>
-                        <li><a href="@Url.Action("QuenMatKhau","Admin")">Quên mật khẩu</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="col-sm-9" id="content">
             @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
@@ -33,7 +22,7 @@
                     <div class="form-group required">
                         <label for="input-firstname" class="col-sm-2 control-label">Tên đăng nhập</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-firstname" placeholder="Họ tên" value="" name="username" required>
+                            <input type="text" class="form-control" id="input-firstname" placeholder="Tên đăng nhập" value="" name="username" required>
                         </div>
                     </div>
                     <div class="form-group required">
@@ -49,6 +38,17 @@
                             <p name="pwdconfirm1"></p>
                         </div>
                     </div>
+
+                    <div class="form-group required">
+                        <label for="input-email" class="col-sm-2 control-label">Level</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="input-country" name="country_id">
+                                <option value="">1</option>
+                                <option value="">0</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group required">
                         <label for="input-email" class="col-sm-2 control-label">E-Mail</label>
                         <div class="col-sm-10">
@@ -59,12 +59,6 @@
                         <label for="input-telephone" class="col-sm-2 control-label">Số điện thoại</label>
                         <div class="col-sm-10">
                             <input type="tel" class="form-control" id="input-telephone" placeholder="Số điện thoại" value="" name="phone" required>
-                        </div>
-                    </div>
-                    <div class="form-group required">
-                        <label for="input-address-1" class="col-sm-2 control-label">Level</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-address-1" placeholder="Nhập level" value="" name="level_" required>
                         </div>
                     </div>
                     <div class="form-group required">
@@ -451,7 +445,7 @@
                     </div>
 
                 </fieldset>
-
+                <p style="color:red">@ViewBag.DangKy</p>
                 <div class="buttons">
                     <div class="pull-right">
                         Bạn có đồng ý  <a class="agree" href="#"><b>Điều Khoản</b></a> của trang web
@@ -466,22 +460,22 @@
             </form>
             @*<input type="submit" class="btn btn-primary" value="Tạo" disabled>*@
             <script>
-                    function KtraAgree() {
-                        var Agree = document.getElementById('agree');
-                        if (Agree.checked == true) return true;
+                function KtraAgree() {
+                    var Agree = document.getElementById('agree');
+                    if (Agree.checked == true) return true;
 
-                        else return false;
-                    }
-                    function pwdconfirm() {
-                        var pwd = document.forms["FormDky", "pwd"].value;
-                        var pwdconfirm = document.forms["FormDky", "pwdconfirm"].value;
+                    else return false;
+                }
+                function pwdconfirm() {
+                    var pwd = document.forms["FormDky", "pwd"].value;
+                    var pwdconfirm = document.forms["FormDky", "pwdconfirm"].value;
 
-                        if (pwd != pwdconfirm) {
-                            document.getElementById('pwdconfirm1').innerHTML = "Xác nhận lại mật khẩu!";
-                            return false
-                        }
-                        return true;
+                    if (pwd != pwdconfirm) {
+                        document.getElementById('pwdconfirm1').innerHTML = "Xác nhận lại mật khẩu!";
+                        return false
                     }
+                    return true;
+                }
             </script>
         </div>
 

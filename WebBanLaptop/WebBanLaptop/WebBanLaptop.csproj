@@ -265,6 +265,7 @@
     <Content Include="Content\NguoiDungCssLayout\bootstrap.min.css" />
     <Content Include="Content\NguoiDungCssLayout\javascript\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\NguoiDungCssLayout\javascript\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\NguoiDungCssLayout\javascript\Cart.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\common.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\DioProgress.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\font-awesome\css\font-awesome.css" />
@@ -629,6 +630,11 @@
     <Content Include="tinymce\js\tinymce\langs\readme.md" />
     <Content Include="tinymce\js\tinymce\skins\ui\oxide\fonts\tinymce-mobile.woff" />
     <Content Include="Views\Users\Thongtincanhan.cshtml" />
+    <Content Include="Views\Users\ResetPwd.cshtml" />
+    <Content Include="Views\Users\ThayDoiMK.cshtml" />
+    <Content Include="Views\Admin\ResetPwd.cshtml" />
+    <Content Include="Views\Admin\ThayDoiMK.cshtml" />
+    <Content Include="Views\Admin\Thongtincanhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

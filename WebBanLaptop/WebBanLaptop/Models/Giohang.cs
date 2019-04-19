@@ -18,17 +18,21 @@ namespace WebBanLaptop.Models
             get { return iSoLuong * (dDonGia -dDonGia* dKhuyenMai/100); }
         }
         //Hàm tạo cho giỏ hàng
+        //public Giohang(int MaSP)
+        //{
+        //    iMaSP = MaSP;
+        //    Product product = db.Products.SingleOrDefault(n => n.Products_id == iMaSP);
+        //    sTenSP = product.Name;
+        //    Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == product.Discount_id);
+        //    dKhuyenMai = (Double)discount.value;
+        //    sHinhAnh = "img";
+        //    dDonGia = (Double)product.Gia; /*Double.Parse(product.Gia.ToString())*/
+        //    iSoLuong = 1;
+        //}
 
-        public Giohang(int MaSP)
+        public static explicit operator List<object>(Giohang v)
         {
-            iMaSP = MaSP;
-            Product product = db.Products.SingleOrDefault(n => n.Products_id == iMaSP);
-            sTenSP = product.Name;
-            Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == product.Discount_id);
-            dKhuyenMai = (Double)discount.value;
-            sHinhAnh = "img";
-            dDonGia = (Double)product.Gia; /*Double.Parse(product.Gia.ToString())*/
-            iSoLuong = 1;
+            throw new NotImplementedException();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace WebBanLaptop.Controllers
         //Quản lý Laptop
         public ActionResult ListLaptop(int? page) //List laptop
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -40,12 +40,12 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiLaptop()
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
-            ViewBag.MaKM = new SelectList(db.Discounts.ToList().OrderBy(n => n.Discount_id), "Discount_id", "Value");
-            ViewBag.Hangsx = new SelectList(db.Hangsxes.ToList().OrderBy(n => n.Hangsx_id), "Hangsx_id", "tenhang");
+            ViewBag.Discount_id = new SelectList(db.Discounts.ToList().OrderBy(n => n.Discount_id), "Discount_id", "Value");
+            ViewBag.Hangsx_id = new SelectList(db.Hangsxes.ToList().OrderBy(n => n.Hangsx_id), "Hangsx_id", "tenhang");
             return View();
         }
         [HttpPost]
@@ -69,8 +69,7 @@ namespace WebBanLaptop.Controllers
             //{
             //    fileupload.SaveAs(path);
             //}
-            ViewBag.MaKM = new SelectList(db.Discounts.ToList().OrderBy(n => n.Discount_id), "Discount_id", "Value");
-            ViewBag.Hangsx = new SelectList(db.Hangsxes.ToList().OrderBy(n => n.Hangsx_id), "Hangsx_id", "tenhang");
+            
             db.Products.Add(product);
             db.SaveChanges();
             return Redirect("ListLaptop"); 
@@ -80,7 +79,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ChinhSuaLaptop(int id=0)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -107,7 +106,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult XoaLaptop(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -138,7 +137,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult HienThiLaptop(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -156,7 +155,7 @@ namespace WebBanLaptop.Controllers
         //Quản Lý hãng sản xuất
         public ActionResult ListHangsx(int? page) //List Hangsx
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -168,7 +167,7 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiHangsx()
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -186,7 +185,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ChinhSuaHangsx(int id = 0)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -213,7 +212,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult XoaHangsx(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -244,7 +243,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult HienThiHangsx(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -261,7 +260,7 @@ namespace WebBanLaptop.Controllers
         //Quản Lý Khuyến mãi
         public ActionResult ListKM(int? page) //List Khuyến mại
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -275,7 +274,7 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiKM()
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -293,7 +292,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ChinhSuaKM(int id = 0)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -320,7 +319,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult XoaKM(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -351,7 +350,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult HienThiKM(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
