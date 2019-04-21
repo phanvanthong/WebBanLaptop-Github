@@ -89,7 +89,7 @@
                                         }
                                         else
                                         {
-                                            <a class="btn btn-primary" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP = Model.Products_id, @strURl = Request.Url.ToString() })" >Thêm vào giỏ hàng</a>
+                                            <a class="btn btn-primary Add-Cart" data-laptopid="@Model.Products_id" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP = Model.Products_id, @strURl = Request.Url.ToString() })" >Thêm vào giỏ hàng</a>
                                         }
 
                                     }

@@ -99,7 +99,7 @@
 <script>
     function commaSeparateNumber(val) {
         while (/(\d+)(\d{3})/.test(val.toString())) {
-            val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1' + '.' + '$2');
         }
         return val;
     }
@@ -110,7 +110,7 @@
         var soluong=$(str2).val();
         var thanhtien = soluong * dDonGia*(1-km/100);
         var strID = "#thanhtien_"+id;
-        $(strID).text(commaSeparateNumber(thanhtien));
+        $(strID).text(commaSeparateNumber(thanhtien)+"đ");
         //ok giờ để t tét lại nãy đã ô vừa sưa gì sửa lại như nãy đoi
         //oke r đấy
         //oke r đó,còn chọn mà nó ko tính tiếp là lỗi của ô nhé :V chọn mà no k tính là sao :)) đây nhé

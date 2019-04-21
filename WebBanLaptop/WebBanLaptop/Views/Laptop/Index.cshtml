@@ -30,12 +30,12 @@
                                 <ul class="button-group">
                                     <li>
                                         <div class="pull-left">
-                                            <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" title="Tiếp tục mua sắm">Mua ngay</a>
+                                            <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" title="Mua ngay">Mua ngay</a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="@Url.Action("ThemGioHang","GioHang", new { @iMaSP = item.Products_id, @strURl = Request.Url.ToString() })" title="Tiếp tục mua sắm"><i class="fa fa-cart-plus"></i></a>
+                                            <a class="btn btn-primaryAdd-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id"  title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>
                                         </div>
                                     </li>
                                 </ul>

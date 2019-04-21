@@ -34,13 +34,13 @@
                                 <li>
                                     @*<button  type="button" class="addtocart-btn" title="Mua ngay"> <a href="@Url.Action("Index", "GioHang")">Mua ngay</a> </button>*@
                                     <div class="pull-left">
-                                        <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" title="Tiếp tục mua sắm">Mua ngay</a>
+                                        <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" title="Mua ngay">Mua ngay</a>
                                     </div>
                                 </li>
                                 <li>
                                     @*<button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><a href="@Url.Action("ThemGioHang", "GioHang", new {@iMaSP=item.Products_id,@strURl = Request.Url.ToString()})"><i class="fa fa-cart-plus"></i></a></button>*@
                                     <div class="pull-right">
-                                        <a class="btn btn-primary Add-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id" href="@Url.Action("ThemGioHang","GioHang", new { @iMaSP = item.Products_id, @strURl = Request.Url.ToString() })" title="Tiếp tục mua sắm" ><i class="fa fa-cart-plus"></i></a>
+                                        <a class="btn btn-primary Add-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id"  title="Thêm vào giỏ hàng" ><i class="fa fa-cart-plus"></i></a>
                                     </div>
                                 </li>
                                 @*fiel javascrip để đâu*@

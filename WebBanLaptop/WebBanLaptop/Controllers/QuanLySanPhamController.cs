@@ -23,6 +23,8 @@ namespace WebBanLaptop.Controllers
         //    }
         //    return View();
         //}
+
+
         //Quản lý Laptop
         public ActionResult ListLaptop(int? page) //List laptop
         {
@@ -59,7 +61,7 @@ namespace WebBanLaptop.Controllers
             ////lưu tên file
             //var fileName = Path.GetFileName(fileupload.FileName);
             ////lưi đường dẫn của file 
-            //var path = Path.Combine(Server.MapPath("~/Content/Images/i3/"+product.Products_id), fileName);
+            //var path = Path.Combine(Server.MapPath("~/Content/Images/i3/" + product.Products_id), fileName);
             ////Kiểm tra ảnh đã tồn tại chưa
             //if (System.IO.File.Exists(path))
             //{
@@ -69,7 +71,7 @@ namespace WebBanLaptop.Controllers
             //{
             //    fileupload.SaveAs(path);
             //}
-            
+
             db.Products.Add(product);
             db.SaveChanges();
             return Redirect("ListLaptop"); 
@@ -99,6 +101,7 @@ namespace WebBanLaptop.Controllers
                 db.Entry(product).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
+
             return RedirectToAction("ListLaptop");
         }
 
