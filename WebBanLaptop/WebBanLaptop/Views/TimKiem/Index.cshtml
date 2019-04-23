@@ -1,4 +1,4 @@
-﻿    
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,10 +7,7 @@
 @using PagedList;
 @model PagedList.PagedList<WebBanLaptop.Models.Product>
 
-
-
-
-
+<p style="margin-left:170px">@ViewBag.TimKiem</p>
 <div class="container">
     <div class="mainbanner">
         <div id="main-banner" class="owl-carousel home-slider">
@@ -40,7 +37,7 @@
                                 <li>
                                     @*<button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><a href="@Url.Action("ThemGioHang", "GioHang", new {@iMaSP=item.Products_id,@strURl = Request.Url.ToString()})"><i class="fa fa-cart-plus"></i></a></button>*@
                                     <div class="pull-right">
-                                        <a class="btn btn-primary Add-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id"  title="Thêm vào giỏ hàng" ><i class="fa fa-cart-plus"></i></a>
+                                        <a class="btn btn-primary Add-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id" title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>
                                     </div>
                                 </li>
                             </ul>
@@ -57,21 +54,18 @@
 
 
         @*Tạo link liên kết các trang*@
-            @*<br />Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
-            <div style=" text-align:center">
-                <div class="Menutrang" style="margin-left:50px;">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { @page = page }))
-                </div>
+        @*<br />Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
+        <div style=" text-align:center">
+            <div class="Menutrang" style="margin-left:50px;">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { @page = page }))
             </div>
+        </div>
         @*<style>
-            .Menutrang li {
-                padding-left: 8px;
-                display: inline;
-            }
-        </style>*@
+                .Menutrang li {
+                    padding-left: 8px;
+                    display: inline;
+                }
+            </style>*@
     </div>
 </div>
-<script>
-    const a = document.querySelector('#TrangChu-id');
-    a.style.color = '#ffc527';
-</script>
+

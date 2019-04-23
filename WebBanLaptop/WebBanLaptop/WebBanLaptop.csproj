@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ChiTietSanPhamController.cs" />
     <Compile Include="Controllers\DiadiemController.cs" />
     <Compile Include="Controllers\GiohangController.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Controllers\LaptopController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Controllers\QuanLyTaiKhoanController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -264,6 +266,7 @@
     <Content Include="Content\NguoiDungCssLayout\javascript\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\NguoiDungCssLayout\javascript\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\Cart.js" />
+    <Content Include="Content\NguoiDungCssLayout\javascript\CartChiTiet.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\common.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\DioProgress.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\font-awesome\css\font-awesome.css" />
@@ -628,6 +631,9 @@
     <Content Include="Views\Admin\ResetPwd.cshtml" />
     <Content Include="Views\Admin\ThayDoiMK.cshtml" />
     <Content Include="Views\Admin\Thongtincanhan.cshtml" />
+    <Content Include="Views\Home\PartialGioHang.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\TimKiem\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

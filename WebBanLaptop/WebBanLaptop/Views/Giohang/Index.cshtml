@@ -10,13 +10,13 @@
 <div class="container">
     <div class="row">
         <div id="column-left" class="col-sm-3 hidden-xs column-left">
-            
+
         </div>
         <div class="col-sm-9" id="content">
             <form enctype="multipart/form-data" method="post" action="#">
                 <div class="table-responsive">
                     <table class="table table-bordered">
-                        <thead >
+                        <thead>
                             <tr>
                                 <td style="text-align:center"><input type="checkbox" name="chontatcasp" value="" /></td>
                                 <td style="text-align:center" class="text-center">Ảnh</td>
@@ -29,14 +29,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @{ 
+                            @{
                                 double tongtien = 0;
                                 double VAT = 0;
                                 double Thanhtoan = 0;
                             }
                             @foreach (var item in Model)
                             {
-                                <tr >
+                                <tr>
                                     <td style="text-align:center"><input type="checkbox" name="chonsp" value="" /></td>
                                     <td style="text-align:center" class="text-center"><a href="#"><img class="img-thumbnail" title="@item.sTenSP" alt="@item.sTenSP" src="image/product/2product56x72.jpg"></a></td>
                                     <td style="text-align:center" class="text-left"><a href="@Url.Action("Index","ChiTietSanPham",new { @id=item.iMaSP })">@item.sTenSP</a></td>
@@ -48,9 +48,9 @@
                                     </td>
                                     <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dDonGia)</td>
                                     <td style="text-align:center" class="text-right" id="thanhtien_@item.iMaSP">@string.Format("{0:0,0đ}", @item.dThanhTien)</td>
-                                    <td  class="text-right" style="margin-right:-3px;text-align:center">
+                                    <td class="text-right" style="margin-right:-3px;text-align:center">
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="@Url.Action("XoaGioHang","GioHang",new {@iMaSP=item.iMaSP })" >Xóa</a>
+                                            <a class="btn btn-primary" href="@Url.Action("XoaGioHang","GioHang",new {@iMaSP=item.iMaSP })">Xóa</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -60,7 +60,7 @@
                     </table>
                 </div>
             </form>
-            
+
             <br>
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-8">
@@ -68,21 +68,21 @@
                         <tbody>
                             <tr>
                                 <td class="text-right"><strong>Tiền sản phẩm:</strong></td>
-                                <td class="text-right">@string.Format("{0:0,0 }", @tongtien)</td>
+                                <td class="text-right TienSP">@string.Format("{0:0,0 }", @tongtien)đ</td>
                             </tr>
                             <tr>
-                                @{ 
+                                @{
                                     VAT = tongtien * 0.1;
                                 }
                                 <td class="text-right"><strong>VAT (10%):</strong></td>
-                                <td class="text-right">@string.Format("{0:0,0 }", @VAT)</td>
+                                <td class="text-right" id="VATID">@string.Format("{0:0,0 }", @VAT)đ</td>
                             </tr>
                             <tr>
-                                @{ 
+                                @{
                                     Thanhtoan = tongtien + VAT;
                                 }
                                 <td class="text-right"><strong>Tổng tiền thanh toán:</strong></td>
-                                <td class="text-right">@string.Format("{0:0,0 }", @Thanhtoan)</td>
+                                <td class="text-right" id="ThanhtoanID">@string.Format("{0:0,0 }", @Thanhtoan)đ</td>
                             </tr>
                         </tbody>
                     </table>
@@ -96,21 +96,90 @@
         </div>
     </div>
 </div>
+
 <script>
     function commaSeparateNumber(val) {
         while (/(\d+)(\d{3})/.test(val.toString())) {
-            val = val.toString().replace(/(\d+)(\d{3})/, '$1' + '.' + '$2');
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
         }
         return val;
     }
+    function ChuoiSangSo(val, length) {
+        var tien = val.toString();
+        var dem = 0;
+        var tongtien = "".toString();
+        for (var i = length-2; i >= 0; i--) {
+            if (dem == 4) {
+                dem = 1;
+                continue;
+            }
+            tongtien += tien[i];
+            dem++;
+        }
+        var tongtienINT = "".toString();
+        for (var i = tongtien.length - 1; i >= 0; i--) {
+            tongtienINT += tongtien[i];
+        }
+        return tongtienINT;
+    }
 </script>
+<script src="~/Content/NguoiDungCssLayout/javascript/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
-    function TD(dDonGia, id,km) {
+    //$(function () {
+    //    $('.quantity').click(function () {
+    //        var soluong = $(this).val();
+    //        //var tongtien = $("#TongtienID").val();
+    //        //console.log("hello");
+    //        debugger
+    //    })
+    //});
+    function TD(dDonGia, id, km) {
+        //e.preventDefault();
+        //var product = $(this).data('laptopid'));
+        
+        var str1 = "#thanhtien_" + id;
+        var tien = $(str1).text().toString();
+        tien = ChuoiSangSo(tien, tien.length);
+
         var str2 = ".quantity_" + id;
-        var soluong=$(str2).val();
-        var thanhtien = soluong * dDonGia*(1-km/100);
-        var strID = "#thanhtien_"+id;
-        $(strID).text(commaSeparateNumber(thanhtien)+"đ");
+        var soluong = $(str2).val();
+
+        var tiensp = $(".TienSP").text().toString();
+        tiensp = ChuoiSangSo(tiensp, tiensp.length);
+        tiensp = tiensp - tien + soluong * (dDonGia * (1 - km / 100));
+
+        var VAT = tiensp * 0.1;
+        var tongtienINT = tiensp + VAT;
+
+        var CartProduct = ({
+            iMaSP: id,//Lấy dữ liệu từ thẻ
+            iSoLuong: soluong
+        });
+        $.ajax({ //gửi dữ liệu đi
+            url: '/Giohang/AddItemGioHang', //đường dẫn tới file xử lý
+            data: { cartModel: JSON.stringify(CartProduct) }, //các dữ liệu gửi đi
+            dataType: 'json', //xác định dữ liệu trả về thuộc dạng nào
+            type: 'POST', //phương thức
+            //thực thi success khi dữ liệu gửi đi thành công
+            success: function (res) {
+                if (res.status == true) {
+                    var strID = "#thanhtien_" + id;
+                    var thanhtien = soluong * dDonGia * (1 - km / 100);
+                    $(strID).text(commaSeparateNumber(thanhtien) + "đ");
+                    var tongtien = $("#TongtienID").val();
+                    $('#TongtienID').text(commaSeparateNumber(tiensp) + "đ");
+                    $('#VATID').text(commaSeparateNumber(VAT) + "đ");
+                    $('#ThanhtoanID').text(commaSeparateNumber(tongtienINT) + "đ");
+                }
+            }
+        });
+        debugger
+        //var str2 = ".quantity_" + id;
+        //var soluong = $(str2).val();
+        //var thanhtien = soluong * dDonGia*(1-km/100);
+        //var strID = "#thanhtien_"+id;
+        //$(strID).text(commaSeparateNumber(thanhtien)+"đ");
+
         //ok giờ để t tét lại nãy đã ô vừa sưa gì sửa lại như nãy đoi
         //oke r đấy
         //oke r đó,còn chọn mà nó ko tính tiếp là lỗi của ô nhé :V chọn mà no k tính là sao :)) đây nhé
@@ -122,7 +191,7 @@
         //nếu để ra thì tường minh hơn,sau này ô gọi hàm đó sẽ là như này
         // Untils.Compase()
         //đó nó sẽ giống như ô gọi hàm
-        // à r hay vãi giờ ms biết hihi gọi thế tiện vs dễ kiểm soát vãi :D oke thế làm đi oke tks nhasaaaaaaaaaaaaaaaaaaaaaaaaaa <# haha 
-        
+        //Untils.commaSeparateNumber()
     }
 </script>
+

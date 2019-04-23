@@ -3018,3 +3018,18 @@ div.account > ul.dropdown-menu dropdown-menu-right:hover{
     color:#000;
 }*/
 /*about page end*/
+.cart-num {
+    position: absolute;
+    background: #f36e36;
+    color: #fff;
+    top: -12px;
+    font-weight: 400;
+    right: -13px;
+    text-align: center;
+    border: 11px solid #f36e36;
+    font-size: 13px;
+    min-width: 14px;
+    line-height: 14px;
+    border-radius: 50%;
+    display: none;
+}

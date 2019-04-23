@@ -1,0 +1,9 @@
+﻿
+@model List<WebBanLaptop.Models.Giohang>
+    <div id="giohang">
+        <a href="@Url.Action("index","Giohang")">
+            <img src="~/Content/Images/icon-thiet-ke-website-ban-do-noi-that.png" style="width:50px; height:auto" />
+        </a>
+        <span class="cart-num" id="topActionCartNumber" style="display: block;">@Model.Count</span>
+    </div>
+

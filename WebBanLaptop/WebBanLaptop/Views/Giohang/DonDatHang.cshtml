@@ -41,14 +41,14 @@
                                     <td style="text-align:center" class="text-left">@item.dKhuyenMai</td>
                                     <td style="text-align:center" class="text-left">
                                         <div style="max-width: 200px;" class="input-group btn-block">
-                                            <input type="number" class="form-control quantity" id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px">
+                                            <input type="text" class="form-control quantity" id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px;text-align:center" readonly>
                                         </div>
                                     </td>
                                     <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dDonGia)</td>
                                     <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dThanhTien)</td>
                                     <td class="text-right" style="margin-right:-3px;text-align:center">
                                         <div class="pull-right">
-                                            <a class="btn btn-primary" href="@Url.Action("XoaGioHang","GioHang",new {@iMaSP=item.iMaSP })">Xóa</a>
+                                            <a class="btn btn-primary" href="@Url.Action("XoaGioHang","GioHang",new {@iMaSP=item.iMaSP })">Hủy</a>
                                         </div>
                                     </td>
                                 </tr>

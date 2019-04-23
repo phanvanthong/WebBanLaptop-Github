@@ -276,5 +276,66 @@ namespace WebBanLaptop.Controllers
                 status = true 
             });
         }
+        public JsonResult AddItemChiTiet(string cartModel)
+        {
+            
+            var jsonCart = new JavaScriptSerializer().Deserialize<Giohang>(cartModel);
+            Product product = db.Products.SingleOrDefault(n => n.Products_id == jsonCart.iMaSP);
+            List<Giohang> Cart = LayGioHang();
+            if (Cart != null)
+            {
+
+                if (Cart.Exists(n => n.iMaSP == product.Products_id))
+                {
+                    foreach (var item in Cart)
+                    {
+                        if (item.iMaSP == product.Products_id)
+                            item.iSoLuong+=jsonCart.iSoLuong;
+                    }
+                }
+                else
+                {
+                    Giohang gh = new Giohang();
+                    //gh.iMaSP = product.Products_id;
+                    Product prod = db.Products.SingleOrDefault(n => n.Products_id == product.Products_id);
+                    gh.iMaSP = prod.Products_id;
+                    gh.sHinhAnh = "img";
+                    gh.sTenSP = prod.Name;
+                    Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == product.Discount_id);
+                    gh.dKhuyenMai = (Double)discount.value;
+                    gh.dDonGia = Convert.ToDouble(prod.Gia);
+                    gh.iSoLuong = jsonCart.iSoLuong;
+                    Cart.Add(gh);
+                }
+
+            }
+            return Json(new
+            {
+                status = true
+            });
+        }
+
+        public JsonResult AddItemGioHang(string cartModel)
+        {
+            var jsonCart = new JavaScriptSerializer().Deserialize<Giohang>(cartModel);
+            //Product product = db.Products.SingleOrDefault(n => n.Products_id == jsonCart.iMaSP);
+            List <Giohang> Cart = LayGioHang();
+            if (Session["DangNhap"] != null)
+            {
+                List<Giohang> lstGioHang = Session["GioHang" + Session["DangNhap"]] as List<Giohang>; //ép kiểu session kiểu giỏ hàng
+                Giohang gh = lstGioHang.Find(n => n.iMaSP == jsonCart.iMaSP);
+                gh.iSoLuong = jsonCart.iSoLuong;
+            }
+            else
+            {
+                List<Giohang> lstGioHang = Session["GioHang"] as List<Giohang>; //ép kiểu session kiểu giỏ hàng
+                Giohang gh = lstGioHang.Find(n => n.iMaSP == jsonCart.iMaSP);
+                gh.iSoLuong = jsonCart.iSoLuong;
+            }
+            return Json(new
+            {
+                status = true
+            });
+        }
     }
 }

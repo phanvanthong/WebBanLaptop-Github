@@ -22,27 +22,31 @@
                     <div class="col-sm-12">
                         <div class="top-left pull-left">
                             <div class="wel-come-msg"> Chào mừng bạn đã đến với MoonStore! </div>
-                            <div id="txtTimkiem">
-                                @*@using (Html.BeginForm())
-                                    {
-                                       @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "  Nhập vào từ khóa cần tìm...    " })
-                                    }*@
-                                <input type="text" name="txtTimKiem" placeholder="  Nhập vào từ khóa cần tìm..." style="width:300px" />
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
-                            <div class="dkydnhap" style="float:left; padding-left:216px; padding-top:11px ">
-                                @{
-                                    User user = Session["User"] as User;
-                                    if (Session["User"] == null)
-                                    {
-                                        <a style="padding-left:170px" href="@Url.Action("DangKy", "Users")" class="DKDN" title="Đăng ký">Đăng Ký</a><a href="@Url.Action("DangXuat", "Users")" title="Đăng nhập">Đăng Nhập</a>
-                                    }
-                                    else
-                                    {
-                                        <a href="@Url.Action("Thongtincanhan", "Users")" title="Đăng nhập">Thông tin cá nhân</a><a href="@Url.Action("DangXuat", "Users")" title="Đăng xuất">Đăng Xuất (@user.username) </a>
-                                    }
-                                }
-                            </div>
+                            @*<form action="TimKiem" method="post" style="width:1210px">*@
+                            @using (Html.BeginForm("Index","TimKiem"))
+                            {
+                                <div style="width:1210px">
+                                    <div id="txtTimkiem">
+                                        <input type="text" name="txtTimKiem" placeholder="  Nhập vào từ khóa cần tìm..." style="width:300px" required />
+                                        @*<a href="@Url.Action("Index", "TimKiem")"><i class="fa fa-search"></i></a>*@
+                                        <button type="submit" style="background-color:#ffc527"><i class="fa fa-search"></i></button>
+                                    </div>
+                                    <div class="dkydnhap" style="float:left; padding-left:216px; padding-top:11px ">
+                                        @{
+                                            User user = Session["User"] as User;
+                                            if (Session["User"] == null)
+                                            {
+                                                <a style="padding-left:170px" href="@Url.Action("DangKy", "Users")" class="DKDN" title="Đăng ký">Đăng Ký</a><a href="@Url.Action("DangXuat", "Users")" title="Đăng nhập">Đăng Nhập</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Thongtincanhan", "Users")" title="Đăng nhập">Thông tin cá nhân</a><a href="@Url.Action("DangXuat", "Users")" title="Đăng xuất">Đăng Xuất (@user.username) </a>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            @*</form>*@
                         </div>
 
                     </div>
@@ -64,7 +68,7 @@
                             <div class="navbar-collapse pull-left">
                                 <ul class="main-navigation">
                                     <li>
-                                        <a href="@Url.Action("Index","Home")" class="parent" id="Suachua-id">Trang chủ</a>
+                                        <a href="@Url.Action("Index","Home")" class="parent" id="TrangChu-id">Trang chủ</a>
                                     </li>
                                     <li>
                                         <a class="active parent" id="Laptop-id">Laptop</a>
@@ -97,7 +101,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("Index","Suachua")" class="parent" id="Suachua-id">Blog</a>
+                                        <a href="@Url.Action("Index","Blog")" class="parent" id="Blog-id">Blog</a>
                                     </li>
                                     <li>
                                         <a class="active parent" id="Diadiem-id">Địa điểm</a>
@@ -118,73 +122,8 @@
                                     <span>Giỏ hàng</span><br>
                                 </div>
                             </button>*@
-                        <div id="giohang"><a href="@Url.Action("index","Giohang")"><img src="~/Content/Images/icon-thiet-ke-website-ban-do-noi-that.png" style="width:50px; height:auto" /></a></div>
-                        <ul class="dropdown-menu pull-right cart-dropdown-menu">
-                            <li>
-                                <table class="table table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center"><a href="#"><img class="img-thumbnail" title="lorem ippsum dolor dummy" alt="lorem ippsum dolor dummy" src="image/product/7product56x72.jpg"></a></td>
-                                            <td class="text-left"><a href="#">lorem ippsum dolor dummy</a></td>
-                                            <td class="text-right">x 1</td>
-                                            <td class="text-right">$254.00</td>
-                                            <td class="text-center"><button class="btn btn-danger btn-xs" title="Remove" type="button"><i class="fa fa-times"></i></button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table class="table table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center"><a href="#"><img class="img-thumbnail" title="lorem ippsum dolor dummy" alt="lorem ippsum dolor dummy" src="image/product/7product56x72.jpg"></a></td>
-                                            <td class="text-left"><a href="#">lorem ippsum dolor dummy</a></td>
-                                            <td class="text-right">x 1</td>
-                                            <td class="text-right">$254.00</td>
-                                            <td class="text-center"><button class="btn btn-danger btn-xs" title="Remove" type="button"><i class="fa fa-times"></i></button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <table class="table table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center"><a href="#"><img class="img-thumbnail" title="lorem ippsum dolor dummy" alt="lorem ippsum dolor dummy" src="image/product/7product56x72.jpg"></a></td>
-                                            <td class="text-left"><a href="#">lorem ippsum dolor dummy</a></td>
-                                            <td class="text-right">x 1</td>
-                                            <td class="text-right">$254.00</td>
-                                            <td class="text-center"><button class="btn btn-danger btn-xs" title="Remove" type="button"><i class="fa fa-times"></i></button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li>
-                                <div>
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-right"><strong>Sub-Total</strong></td>
-                                                <td class="text-right">$210.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
-                                                <td class="text-right">$2.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-right"><strong>VAT (20%)</strong></td>
-                                                <td class="text-right">$42.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-right"><strong>Total</strong></td>
-                                                <td class="text-right">$254.00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <p class="text-right"> <span class="btn-viewcart"><a href="cart.html"><strong><i class="fa fa-shopping-cart"></i> View Cart</strong></a></span> <span class="btn-checkout"><a href="checkout.html"><strong><i class="fa fa-share"></i> Checkout</strong></a></span> </p>
-                                </div>
-                            </li>
-                        </ul>
+                       @{ Html.RenderAction("PartialGioHang", "Home");}
+                        
                     </div>
                 </div>
             </div>

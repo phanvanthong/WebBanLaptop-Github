@@ -6,7 +6,10 @@
 
 @foreach (var item in Model)
 {
-    <li><a href="@Url.Action("Index","KhuyeMai",new { @id=item.Discount_id , @page=1 })"> @item.value%</a></li>
+    if (item.value!=0)
+    {
+        <li><a href="@Url.Action("Index","KhuyenMai",new { id=item.Discount_id , page=1 })"> @item.value%</a></li>
+    }
 }
 
 

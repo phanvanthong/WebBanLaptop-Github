@@ -36,8 +36,28 @@ namespace WebBanLaptop.Controllers
             return PartialView(lstdiscount);
         }
 
+        public PartialViewResult PartialGioHang()
+        {
+            //List<Discount> lstdiscount = db.Discounts.OrderBy(n => n.Discount_id).ToList();
+            List<Giohang> lstgiohang = new List<Giohang>();
+            lstgiohang = Session["GioHang" + Session["DangNhap"]] as List<Giohang>;
+            if (lstgiohang == null)
+            {
+                lstgiohang = Session["GioHang"] as List<Giohang>;
+            }
+            if (lstgiohang == null)
+            {
+                     lstgiohang = new List<Giohang>();
+            }
+            
+            return PartialView(lstgiohang);
+        }
 
-
+        //public PartialViewResult PartialDiaDiem()
+        //{
+        //    List<Discount> lstdiscount = db.Discounts.OrderBy(n => n.Discount_id).ToList();
+        //    return PartialView(lstdiscount);
+        //}
     }
 
   
