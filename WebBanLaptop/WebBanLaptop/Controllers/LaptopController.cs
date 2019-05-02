@@ -20,7 +20,7 @@ namespace WebBanLaptop.Controllers
             int hangsx = id;
             int pageNumber = page;
             int pageSize = 12;
-            return View(db.Products.Where(n => n.Hangsx_id == hangsx).ToList().OrderByDescending(n => n.Products_id).ToPagedList(pageNumber, pageSize));
+            return View(db.Products.Where(n => n.Hangsx_id == hangsx).ToList().OrderByDescending(n => n.Ngaytao).ToPagedList(pageNumber, pageSize));
             //if (hangsx>0 && hangsx<9)
             //{
             //    return View(db.Products.Where(n => n.Hangsx_id == hangsx).ToList().OrderByDescending(n => n.Products_id).ToPagedList(pageNumber, pageSize));

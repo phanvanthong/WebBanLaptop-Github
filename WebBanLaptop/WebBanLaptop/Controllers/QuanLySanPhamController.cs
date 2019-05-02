@@ -53,24 +53,28 @@ namespace WebBanLaptop.Controllers
         [HttpPost]
         public ActionResult ThemMoiLaptop(Product product, HttpPostedFileBase fileupload)
         {
-            //string directoryPath = "~/Content/Images/i3/" + product.Products_id;
-            //if (!System.IO.Directory.Exists(directoryPath))
-            //{
-            //    System.IO.Directory.CreateDirectory(directoryPath);
-            //}
-            ////lưu tên file
-            //var fileName = Path.GetFileName(fileupload.FileName);
-            ////lưi đường dẫn của file 
-            //var path = Path.Combine(Server.MapPath("~/Content/Images/i3/" + product.Products_id), fileName);
-            ////Kiểm tra ảnh đã tồn tại chưa
-            //if (System.IO.File.Exists(path))
-            //{
-            //    ViewBag.ThongBao = "Hình ảnh đã tồn tại";
-            //}
-            //else
-            //{
-            //    fileupload.SaveAs(path);
-            //}
+            string directoryPath = "E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/" + product.Products_id;
+            if (!System.IO.Directory.Exists(directoryPath))
+            {
+                //System.IO.Directory.CreateDirectory(directoryPath);
+                for(int i=0;i<128;i++)
+                {
+                    System.IO.Directory.CreateDirectory("E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/"+i);
+                }
+            }
+            //lưu tên file
+            var fileName = Path.GetFileName(fileupload.FileName);
+            //lưi đường dẫn của file 
+            var path = Path.Combine(Server.MapPath("~/Content/Images/i3/" + product.Products_id), fileName);
+            //Kiểm tra ảnh đã tồn tại chưa
+            if (System.IO.File.Exists(path))
+            {
+                ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+            }
+            else
+            {
+                fileupload.SaveAs(path);
+            }
 
             db.Products.Add(product);
             db.SaveChanges();

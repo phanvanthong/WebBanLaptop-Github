@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label class="control-label" for="input-password">Mật khẩu</label>
                             <input type="password" name="pwd" value="" placeholder="Password" id="input-password" class="form-control" required>
-                            <a href="forgetpassword.html" class="forgot">Quên mật khẩu</a>
+                            <a href="@Url.Action("QuenMatKhau","Users")" class="forgot">Quên mật khẩu</a>
                             <p style="color:red">@ViewBag.ErrorMessage</p>
                         </div>
                         <input type="submit" value="Đăng nhập" id="button-login" data-loading-text="Loading..." class="btn btn-primary">

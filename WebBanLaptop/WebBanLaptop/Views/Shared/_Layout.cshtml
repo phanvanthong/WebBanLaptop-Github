@@ -23,11 +23,11 @@
                         <div class="top-left pull-left">
                             <div class="wel-come-msg"> Chào mừng bạn đã đến với MoonStore! </div>
                             @*<form action="TimKiem" method="post" style="width:1210px">*@
-                            @using (Html.BeginForm("Index","TimKiem"))
+                            @using (Html.BeginForm("Index", "TimKiem"))
                             {
                                 <div style="width:1210px">
                                     <div id="txtTimkiem">
-                                        <input type="text" name="txtTimKiem" placeholder="  Nhập vào từ khóa cần tìm..." style="width:300px" required />
+                                        <input type="text" name="txtTimKiem" placeholder="  Nhập vào từ khóa cần tìm..." value="@ViewBag.TuKhoa" style="width:300px" required />
                                         @*<a href="@Url.Action("Index", "TimKiem")"><i class="fa fa-search"></i></a>*@
                                         <button type="submit" style="background-color:#ffc527"><i class="fa fa-search"></i></button>
                                     </div>
@@ -122,13 +122,20 @@
                                     <span>Giỏ hàng</span><br>
                                 </div>
                             </button>*@
-                       @{ Html.RenderAction("PartialGioHang", "Home");}
-                        
+                        @{ Html.RenderAction("PartialGioHang", "Home");}
+
                     </div>
                 </div>
             </div>
         </div>
     </header>
+    @*<div class="mainbanner">
+        <div id="main-banner" class="owl-carousel home-slider">
+            <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner1.jpg" alt="main-banner1" class="img-responsive" /></a> </div>
+            <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner2.jpg" alt="main-banner2" class="img-responsive" /></a> </div>
+            <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner3.jpg" alt="main-banner3" class="img-responsive" /></a> </div>
+        </div>
+    </div>*@
     @RenderBody()
     <footer style="margin-top:100px">
         <div class="container">

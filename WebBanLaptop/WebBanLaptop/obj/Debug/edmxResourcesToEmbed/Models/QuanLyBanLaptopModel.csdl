@@ -68,7 +68,7 @@
     <Key>
       <PropertyRef Name="Products_id" />
     </Key>
-    <Property Name="Products_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Products_id" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="HangCPU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CNCPU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -85,6 +85,7 @@
     <Property Name="Motasp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Gia" Type="Double" />
     <Property Name="Soluong" Type="Int32" />
+    <Property Name="Ngaytao" Type="DateTime" Precision="3" />
     <Property Name="Discount_id" Type="Int32" />
     <Property Name="Hangsx_id" Type="Int32" />
     <NavigationProperty Name="Discount" Relationship="Self.FK_Pro_dis" FromRole="Products" ToRole="Discount" />

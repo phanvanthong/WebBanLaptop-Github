@@ -26,7 +26,7 @@
                 <div class="item">
                     <div class="product-thumb">
                         <div class="image product-imageblock">
-                            <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/trc.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/cheo.jpg" alt="@item.Name" title="@item.Name" class="img-responsive" /> </a>
+                            <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/@item.Products_id/trc.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> <img src="~/Content/Images/i3/@item.Products_id/cheo.jpg" alt="@item.Name" title="@item.Name" class="img-responsive" /> </a>
                             <ul class="button-group">
                                 <li>
                                     @*<button  type="button" class="addtocart-btn" title="Mua ngay"> <a href="@Url.Action("Index", "GioHang")">Mua ngay</a> </button>*@
@@ -45,7 +45,16 @@
                         <div class="caption product-detail">
 
                             <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">@item.Name</a></h4>
-                            <p class="price product-price">@string.Format("{0:0,0đ}", @item.Gia)@*<span class="price-tax">Ex Tax: $100.00</span>*@</p>
+                            @{
+                                if (item.Discount.value == 0)
+                                {
+                                    <p class="price product-price" style="font-size:18px;color:red">@string.Format("{0:0,0}", item.Gia)đ </p>
+                                }
+                                else
+                                {
+                                    <p class="price product-price" style="font-size:18px;color:red"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
+                                }
+                            }
                         </div>
                     </div>
                 </div>
@@ -57,7 +66,7 @@
         @*<br />Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
         <div style=" text-align:center">
             <div class="Menutrang" style="margin-left:50px;">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { @page = page }))
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { @tukhoa = ViewBag.TuKhoa, @page = page}))
             </div>
         </div>
         @*<style>

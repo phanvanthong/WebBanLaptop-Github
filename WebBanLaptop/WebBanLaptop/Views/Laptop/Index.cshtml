@@ -26,7 +26,7 @@
                     <div class="item">
                         <div class="product-thumb">
                             <div class="image product-imageblock">
-                                <a href="@Url.Action("index","ChiTietSanpham",new { @id=item.Products_id })"> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/trc.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/cheo.jpg" alt="@item.Name" title="@item.Name" class="img-responsive" /> </a>
+                                <a href="@Url.Action("index","ChiTietSanpham",new { @id=item.Products_id })"> <img src="~/Content/Images/i3/@item.Products_id/trc.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> <img src="~/Content/Images/i3/@item.Products_id/cheo.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> </a>
                                 <ul class="button-group">
                                     <li>
                                         <div class="pull-left">
@@ -35,24 +35,24 @@
                                     </li>
                                     <li>
                                         <div class="pull-right">
-                                            <a class="btn btn-primaryAdd-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id"  title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>
+                                            <a class="btn btn-primary Add-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id"  title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                             <div class="caption product-detail">
 
-                                <h4 class="product-name"><a href="#" title="@item.Name">@item.Name</a></h4>
+                                <h4 class="product-name"><a href="#" title="@item.Name"><span style="color:#000;font-size:15px">@item.Name</span></a></h4>
                                 @*<p class="price product-price">*@
                                 @*<span class="price-tax">Ex Tax: $100.00</span>*@
                                 @{
-                                    if (item.Discount_id == 1)
+                                    if (item.Discount.value == 0)
                                     {
-                                <p class="price product-price"><span style="font-size:10px;"><u>@string.Format("{0:0,0}", item.Gia)đ</u></span>   @string.Format("{0:0,0}", item.Gia*item.Discount.value)đ</p>
+                                        <p class="price product-price" style="font-size:18px;color:red">@string.Format("{0:0,0}", item.Gia)đ </p>
                                     }
                                     else
                                     {
-                                        <p class="price product-price">string.Format("{0:0,0}",item.Gia)</p>
+                                        <p class="price product-price" style="color:red;font-size:18px"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
                                     }
                                 }
                                 @*</p>*@

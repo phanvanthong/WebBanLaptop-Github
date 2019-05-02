@@ -14,13 +14,27 @@ namespace WebBanLaptop.Controllers
         // GET: Home
         //QuanLyBanLaptopModel db = new QuanLyBanLaptopModel();
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
-        public ActionResult Index(int ? page)
+        //public ActionResult Index(int ? page)
+        //{
+        //    int pageNumber = (page ?? 1);
+        //    int pageSize = 12;
+        //    //ViewBag.Hangsx= db.Hangsxes.SingleOrDefault(n=>n.Hangsx_id)
+        //    return View(db.Products.ToList().OrderByDescending(n => n.Products_id).ToPagedList(pageNumber, pageSize));
+        //}
+
+        public ActionResult Index()
         {
-            int pageNumber = (page ?? 1);
-            int pageSize = 12;
-            //ViewBag.Hangsx= db.Hangsxes.SingleOrDefault(n=>n.Hangsx_id)
-            return View(db.Products.ToList().OrderByDescending(n => n.Products_id).ToPagedList(pageNumber, pageSize));
+            //(int? page)
+            //int pageNumber = (page ?? 1);
+            //int pageSize = 12;
+            //db.Products.OrderByDescending(n => n.Products_id).ToList().ToPagedList(pageNumber, pageSize)
+            List<Product> lstproduct = db.Products.OrderByDescending(n => n.Ngaytao).Take(8).ToList();
+            var discountMAX = db.Discounts.OrderBy(n=>n.value).FirstOrDefault();
+            var productKM = db.Products.Where(n => n.Discount_id == discountMAX.Discount_id).Take(8).ToList();
+            ViewBag.KM = productKM;
+            return View(lstproduct);
         }
+
         public PartialViewResult PartialSanPham()
         {
             List<Hangsx> lsthangsx = db.Hangsxes.OrderBy(n => n.Hangsx_id).ToList();

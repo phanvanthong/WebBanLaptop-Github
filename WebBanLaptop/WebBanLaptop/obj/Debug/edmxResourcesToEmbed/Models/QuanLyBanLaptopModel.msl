@@ -84,6 +84,7 @@
           <ScalarProperty Name="Motasp" ColumnName="Motasp" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+          <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
           <ScalarProperty Name="Discount_id" ColumnName="Discount_id" />
           <ScalarProperty Name="Hangsx_id" ColumnName="Hangsx_id" />
         </MappingFragment>

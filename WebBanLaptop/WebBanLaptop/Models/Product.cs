@@ -37,6 +37,7 @@ namespace WebBanLaptop.Models
         public string Motasp { get; set; }
         public Nullable<double> Gia { get; set; }
         public Nullable<int> Soluong { get; set; }
+        public Nullable<System.DateTime> Ngaytao { get; set; }
         public Nullable<int> Discount_id { get; set; }
         public Nullable<int> Hangsx_id { get; set; }
     

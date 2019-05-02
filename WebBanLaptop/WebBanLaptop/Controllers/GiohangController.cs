@@ -11,8 +11,8 @@ namespace WebBanLaptop.Controllers
     public class GiohangController : Controller
     {
         // GET: Giohang
-        //lấy giò hàng
-        Web_ban_laptopEntities db = new Web_ban_laptopEntities(); // cứ 03n y3n 0i @@
+        //lấy giỏ hàng
+        Web_ban_laptopEntities db = new Web_ban_laptopEntities(); 
         public List<Giohang> LayGioHang()
         {
             if(Session["DangNhap"]!=null)
@@ -134,6 +134,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ThongtinKH()
         {
+            if (Session["DangNhap"] == null)
+            {
+                return RedirectToAction("DangNhap", "Users");
+            }
             return View();
         }
 
@@ -185,9 +189,10 @@ namespace WebBanLaptop.Controllers
             //Thêm đơn hàng
             //Order order = new Order();
             User us = Session["User"] as User;
+
             order.Users_id = us.Users_id;
             order.ngaytao = DateTime.Now;
-            order.tongtien = 100000;
+            order.tongtien = (double)Session["TienThanhToan"];
             order.giaohang = "COD";
             db.Orders.Add(order);
             db.SaveChanges();
@@ -226,6 +231,7 @@ namespace WebBanLaptop.Controllers
         }
 
         //Thêm sản phẩm vào giỏ hàng
+        #region Thêm vào giỏ hàng
         public JsonResult AddItem(string cartModel)
         {
             //
@@ -276,6 +282,45 @@ namespace WebBanLaptop.Controllers
                 status = true 
             });
         }
+        #endregion
+        
+        #region MuaNgay
+        public ActionResult MuaNgay( int id)
+        {
+            //Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
+            //if (product == null)
+            //{
+            //    Response.StatusCode = 404;
+            //    return null;
+            //}
+            //Lấy ra session giỏ hàng
+            List<Giohang> lstGioHang = LayGioHang();
+            Giohang gh = lstGioHang.Find(n => n.iMaSP == id);
+            if (gh == null)
+            {
+                gh = new Giohang();
+                //gh.iMaSP = product.Products_id;
+                Product prod = db.Products.SingleOrDefault(n => n.Products_id == id);
+                gh.iMaSP = prod.Products_id;
+                gh.sHinhAnh = "img";
+                gh.sTenSP = prod.Name;
+                Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == prod.Discount_id);
+                gh.dKhuyenMai = (Double)discount.value;
+                gh.dDonGia = Convert.ToDouble(prod.Gia);
+                gh.iSoLuong++;
+                lstGioHang.Add(gh);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                gh.iSoLuong++;
+                return RedirectToAction("Index");
+            }
+
+        }
+        #endregion
+        
+        #region Thêm vào giỏ hàng trng chi tiết
         public JsonResult AddItemChiTiet(string cartModel)
         {
             
@@ -314,7 +359,9 @@ namespace WebBanLaptop.Controllers
                 status = true
             });
         }
+        #endregion
 
+        #region Chỉnh sửa số lượng trong giỏ hàng
         public JsonResult AddItemGioHang(string cartModel)
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<Giohang>(cartModel);
@@ -337,5 +384,7 @@ namespace WebBanLaptop.Controllers
                 status = true
             });
         }
+        #endregion
+
     }
 }

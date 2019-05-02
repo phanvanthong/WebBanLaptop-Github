@@ -31,7 +31,7 @@
                 <div class="item">
                     <div class="product-thumb">
                         <div class="image product-imageblock">
-                            <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/trc.png" alt="iPod Classic" title="iPod Classic" class="img-responsive" /> <img src="~/Content/Images/i3/Dell Inspiron 3467_8990k/cheo.jpg" alt="iPod Classic" title="@item.Name" class="img-responsive" /> </a>
+                            <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/@item.Products_id/trc.png" alt="iPod Classic" title="iPod Classic" class="img-responsive" /> <img src="~/Content/Images/i3/@item.Products_id/cheo.jpg" alt="iPod Classic" title="@item.Name" class="img-responsive" /> </a>
                             <ul class="button-group">
                                 <li>
                                     <div class="pull-left">
@@ -48,8 +48,17 @@
                         </div>
                         <div class="caption product-detail">
 
-                            <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">@item.Name</a></h4>
-                            <p class="price product-price">@string.Format("{0:0,0đ}", @item.Gia)<span class="price-tax">Ex Tax: $100.00</span></p>
+                            <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem"><span style="color:#000;font-size:15px">@item.Name</span></a></h4>
+                            @{
+                                if (item.Discount.value == 0)
+                                {
+                                    <p class="price product-price" style="font-size:18px;color:red">@string.Format("{0:0,0}", item.Gia)đ </p>
+                                }
+                                else
+                                {
+                                    <p class="price product-price" style="color:red;font-size:18px"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
+                                }
+                            }
                         </div>
                     </div>
                 </div>
