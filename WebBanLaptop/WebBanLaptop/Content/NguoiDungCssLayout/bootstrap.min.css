@@ -1265,7 +1265,7 @@ th {
 	margin-bottom: 20px;
 }
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
-	border: 1px solid #e5e5e5;
+	border: 1px solid #3927277d;
 	line-height: 1.42857;
 	padding: 8px;
 	vertical-align: middle;
@@ -4282,7 +4282,7 @@ button.close {
 	filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-	opacity: .5;
+	opacity: 0;
 	filter: alpha(opacity=50);
 }
 .modal-header {

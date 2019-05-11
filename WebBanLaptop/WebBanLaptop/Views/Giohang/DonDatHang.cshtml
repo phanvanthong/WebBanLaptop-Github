@@ -1,11 +1,13 @@
 ﻿
-
-@using WebBanLaptop.Models
-@model  List<Giohang>
 @{
     ViewBag.Title = "DonDatHang";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+@using WebBanLaptop.Models
+@model  List<Order>
+@{ var orderDetail = (List<Orders_Details>)ViewBag.Detail; }
 
 @if (Model.Count() != 0)
 {
@@ -21,46 +23,90 @@
                             <thead>
                                 <tr>
                                     @*<td style="text-align:center"></td>*@
+                                    <td style="text-align:center" class="text-center">STT</td>
                                     <td style="text-align:center" class="text-center">Ảnh</td>
                                     <td style="text-align:center" class="text-left">Tên sản phẩm</td>
-                                    <td style="text-align:center" class="text-left">Khuyến mại(%)</td>
                                     <td style="text-align:center" class="text-left">Số lượng</td>
-                                    <td style="text-align:center" class="text-right">Đơn giá</td>
-                                    <td style="text-align:center" class="text-right">Tổng tiền</td>
+                                    <td style="text-align:center" class="text-left">Giá</td>
+                                    <td style="text-align:center" class="text-left">Ngày tạo</td>
+                                    <td style="text-align:center" class="text-left">Giao hàng</td>
+                                    <td style="text-align:center" class="text-left">Tổng tiền</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 @{
-                                    double tongtien = 0;
-                                    double VAT = 0;
-                                    double Thanhtoan = 0;
+                                    //double tongtien = 0;
+                                    //double VAT = 0;
+                                    //double Thanhtoan = 0;
                                 }
                                 @*<tr>
-                                    @{ 
-                                        var dem = Model.Count() + 1;
-                                    }
-                                    <td rowspan="@dem">1</td>
-                                </tr>*@
+                                        @{
+                                            var dem = Model.Count() + 1;
+                                        }
+                                        <td rowspan="@dem">1</td>
+                                    </tr>*@
+                                @{var STT= 1;} 
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td style="text-align:center" class="text-center"><a href="#"><img class="img-thumbnail" title="@item.sTenSP" alt="@item.sTenSP" src="image/product/2product56x72.jpg"></a></td>
-                                        <td style="text-align:center" class="text-left"><a href="@Url.Action("Index","ChiTietSanPham",new { @id=item.iMaSP })">@item.sTenSP</a></td>
-                                        <td style="text-align:center" class="text-left">@item.dKhuyenMai</td>
-                                        <td style="text-align:center" class="text-left">
-                                            <div style="max-width: 200px;" class="input-group btn-block">
-                                                <input type="text" class="form-control quantity" id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px;text-align:center" readonly>
-                                            </div>
-                                        </td>
-                                        <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dDonGia)</td>
-                                        <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dThanhTien)</td>
-                                        @*<td class="text-right" style="margin-right:-3px;text-align:center">
-                                            <div class="pull-right">
-                                                <a class="btn btn-primary" href="@Url.Action("XoaGioHang","GioHang",new {@iMaSP=item.iMaSP })">Hủy</a>
-                                            </div>
-                                        </td>*@
+                                        @*<td style="text-align:center" class="text-center"><a href="#"><img class="img-thumbnail" title="@item.sTenSP" alt="@item.sTenSP" src="image/product/2product56x72.jpg"></a></td>
+                                            <td style="text-align:center" class="text-left"><a href="@Url.Action("Index","ChiTietSanPham",new { @id=item.iMaSP })">@item.sTenSP</a></td>
+                                            <td style="text-align:center" class="text-left">@item.dKhuyenMai</td>
+                                            <td style="text-align:center" class="text-left">
+                                                <div style="max-width: 200px;" class="input-group btn-block">
+                                                    <input type="text" class="form-control quantity" id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px;text-align:center" readonly>
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dDonGia)</td>
+                                            <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dThanhTien)</td>
+                                            <td class="text-right" style="margin-right:-3px;text-align:center">
+                                                <div class="pull-right">
+                                                    <a class="btn btn-primary" href="@Url.Action("XoaGioHang","GioHang",new {@iMaSP=item.iMaSP })">Hủy</a>
+                                                </div>
+                                            </td>*@
+                                        @{ 
+
+                                            var ktra = 0;
+                                            foreach (var item1 in orderDetail)
+                                            {
+                                                var count = orderDetail.Count(n=>n.Order_id==item1.Order_id)+1;
+                                                if (item.Order_id==item1.Order_id)
+                                                {
+                                                    <td rowspan= @count>@STT</td>
+                                                    break;
+                                                }
+                                            }
+                                         }
+                                        
+                                        @foreach(var item1 in orderDetail)
+                                        {
+                                            if (item.Order_id == item1.Order_id)
+                                            {
+                                                <tr>
+                                                    @{
+                                                        Web_ban_laptopEntities db = new Web_ban_laptopEntities();
+                                                        Product product = db.Products.SingleOrDefault(n => n.Products_id == item1.products_id);
+                                                    }
+                                                    <td style="text-align:center" class="text-center"><a href="#"><img style="max-width:130px" class="img-thumbnail" title="@product.Name" alt="@product.Name" src="~/Content/Images/i3/@item1.products_id/trc.png"></a></td>
+                                                    <td style="text-align:center" class="text-left">  @product.Name</td>
+                                                    <td style="text-align:center" class="text-left">  @item1.soluongsp</td>
+                                                    <td style="text-align:center" class="text-left">  @item1.tongtien</td>
+                                                    <td style="text-align:center" class="text-left">  @item.ngaytao</td>
+                                                    <td style="text-align:center" class="text-left">  @item.giaohang</td>
+                                                    @if (ktra == 0)
+                                                    {
+                                                        var count1 = orderDetail.Count(n => n.Order_id == item1.Order_id);
+                                                        <td rowspan=@count1 style="text-align:center" class="text-right"> @string.Format("{0:0,0đ}", @item.tongtien)</td>
+                                                        ktra = 1;
+                                                    }
+                                                </tr>
+                                            }
+                                            
+                                        }
+                                        @*<td style="text-align:center" class="text-center">@STT</td>*@
                                     </tr>
-                                    tongtien += @item.dThanhTien;
+                                                            
+                                    STT += 1;
                                 }
                             </tbody>
                         </table>
@@ -68,7 +114,7 @@
                 </form>
 
                 <br>
-                <div class="row">
+                @*<div class="row">
                     <div class="col-sm-4 col-sm-offset-8">
                         <table class="table table-bordered">
                             <tbody>
@@ -93,7 +139,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div>*@
                 <div class="buttons">
                     <div class="pull-left"><a class="btn btn-primary" href="@Url.Action("Index","Home")" title="Tiếp tục mua sắm">Tiếp tục mua sắm</a></div>
                 </div>

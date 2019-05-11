@@ -71,25 +71,15 @@
                             <div class="qty">
                                 <label>Số lượng</label>
                                 <input id="qty" placeholder="1" type="number" name="iSoLuong" value="1" data-iSoLuong="iSoLuong">
-                                @*<ul class="button-group list-btn">
-                        <li>
-                            <button title="" data-placement="top" data-toggle="tooltip" class="muangay" type="button">Mua ngay</button>
-                        </li>
-                        <li>
-                            <button title="" data-placement="top" data-toggle="tooltip" class="themgio" type="button">Thêm vào giỏ hàng</button>
-                        </li>
-
-                    </ul>*@
-                                @*<a href="@Url.Action("Index","GioHang")"><button class="muangay" title="Mua ngay">Mua ngay</button></a>*@
                                 <div class="pull-right">
                                     @{
                                         if (a == 1)
                                         {
-                                            <a class="btn btn-primary Add-CartChiTiet" data-laptopid="@Model.Products_id"  disabled="disabled" style="background-color:#ffc527;color:wheat">Thêm vào giỏ hàng</a>
+                                            <a class="btn btn-primary Add-CartChiTiet" id="Add-Cart_@Model.Products_id" data-laptopid="@Model.Products_id"  disabled style="background-color:#ffc527;color:wheat" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a>
                                         }
                                         else
                                         {
-                                            <a class="btn btn-primary Add-CartChiTiet" data-laptopid="@Model.Products_id"  >Thêm vào giỏ hàng</a>
+                                            <a class="btn btn-primary Add-CartChiTiet" id="Add-Cart_@Model.Products_id" data-laptopid="@Model.Products_id" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a>
                                         }
 
                                     }
@@ -98,12 +88,12 @@
                                     @{
                                         if (a == 1)
                                         {
-                                            <a class="btn btn-primary" href="@Url.Action("Index","GioHang")" disabled="disabled" style="background-color:#ffc527;color:wheat">Mua ngay</a>
+                                            <a class="btn btn-primary MuaNgayChiTiet" href="@Url.Action("MuaNgay", "GioHang", new { @id=Model.Products_id })" disabled style="background-color:#ffc527;color:wheat" title="Mua ngay">Mua ngay</a>
                                         }
                                         else
                                         {
-                                            <a class="btn btn-primary" href="@Url.Action("Index","GioHang")">Mua ngay</a>
-                                        }
+                                            <a class="btn btn-primary MuaNgayChiTiet" id="MuaNgay_@Model.Products_id" data-laptopid="@Model.Products_id" title="Mua ngay">Mua ngay</a>
+                                        }   
 
                                     }
 
@@ -147,3 +137,19 @@
     </div>
 </div>
 
+<div class="modal fade success-popup" id="SuccessMD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title text-center" id="myModalLabel">Thank You !</h4>
+            </div>
+            <div class="modal-body text-center">
+                <i class="fa fa-check-square-o" style="font-size: 50px;color: green;"></i>
+                <p class="lead">Sản phẩm đã được đưa vào giỏ hàng</p>
+                <a href="@Url.Action("Index","GioHang")" class="btn btn-success">Đến giỏ hàng</a>
+            </div>
+
+        </div>
+    </div>
+</div>

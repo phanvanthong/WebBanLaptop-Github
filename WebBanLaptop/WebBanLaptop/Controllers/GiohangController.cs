@@ -12,7 +12,13 @@ namespace WebBanLaptop.Controllers
     {
         // GET: Giohang
         //lấy giỏ hàng
-        Web_ban_laptopEntities db = new Web_ban_laptopEntities(); 
+        Web_ban_laptopEntities db = new Web_ban_laptopEntities();
+        public ActionResult Index()
+        {
+
+            List<Giohang> lstGioHang = LayGioHang();
+            return View(lstGioHang);
+        }
         public List<Giohang> LayGioHang()
         {
             if(Session["DangNhap"]!=null)
@@ -49,12 +55,7 @@ namespace WebBanLaptop.Controllers
 
         }
 
-        public ActionResult Index()
-        {
-
-            List<Giohang> lstGioHang = LayGioHang();
-            return View(lstGioHang);
-        }
+        
 
         //Thêm giỏ hang
         //public ActionResult ThemGioHang(int iMaSP,string strURL )
@@ -166,26 +167,26 @@ namespace WebBanLaptop.Controllers
         {
             //List<Giohang> lstgiohangnew = Session["GioHang"] as List<Giohang>;
             List<Giohang> lstGioHang1 = Session["GioHang" + Session["DangNhap"]] as List<Giohang>;
-            List<Giohang> lstGioHang = Session["DonHangDaDat" + Session["DangNhap"]] as List<Giohang>; 
-            if (lstGioHang == null)
-            {
-                //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
-                lstGioHang = new List<Giohang>();
-                Session["DonHangDaDat" + Session["DangNhap"]] = lstGioHang;
-                foreach (var item in lstGioHang1)
-                {
-                    lstGioHang.Add(item);
-                }
-            }
-            else
-            {
-                foreach (var item in lstGioHang1)
-                {
-                    lstGioHang.Add(item);
-                }
-            }
+            //List<Giohang> lstGioHang = Session["DonHangDaDat" + Session["DangNhap"]] as List<Giohang>; 
+            //if (lstGioHang == null)
+            //{
+            //    //Nếu giỏ hang chưa tồn tại thì ta khởi tạo mới list giỏ hàng
+            //    lstGioHang = new List<Giohang>();
+            //    Session["DonHangDaDat" + Session["DangNhap"]] = lstGioHang;
+            //    foreach (var item in lstGioHang1)
+            //    {
+            //        lstGioHang.Add(item);
+            //    }
+            //}
+            //else
+            //{
+            //    foreach (var item in lstGioHang1)
+            //    {
+            //        lstGioHang.Add(item);
+            //    }
+            //}
             
-            Session["GioHang" + Session["DangNhap"]] = null;
+            //Session["GioHang" + Session["DangNhap"]] = null;
             //Thêm đơn hàng
             //Order order = new Order();
             User us = Session["User"] as User;
@@ -209,6 +210,7 @@ namespace WebBanLaptop.Controllers
                 //XoaGioHang(item.iMaSP);
             }
             db.SaveChanges();
+            Session["GioHang" + Session["DangNhap"]] = null;
             return Redirect("Index");
         }
 
@@ -226,8 +228,21 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult DonDatHang()
         {
-            List<Giohang> lstGioHang = LayDonHangDaDat();
-            return View(lstGioHang);
+            if(Session["DangNhap"]==null)
+            {
+                return RedirectToAction("DangNhap", "Users");
+            }
+            else
+            {
+                string name = (string)Session["DangNhap"];
+                User user = db.Users.Where(n => n.username == name).FirstOrDefault();
+                Order order = db.Orders.Where(n => n.Users_id == user.Users_id).FirstOrDefault();
+                List<Order> lstOrder = db.Orders.Where(n => n.Users_id == user.Users_id).ToList();
+                var orderDetail = db.Orders_Details.OrderBy(n=>n.Order_id).ToList();
+                ViewBag.Detail = orderDetail;
+                return View(lstOrder);
+            }
+            
         }
 
         //Thêm sản phẩm vào giỏ hàng
@@ -319,8 +334,52 @@ namespace WebBanLaptop.Controllers
 
         }
         #endregion
-        
-        #region Thêm vào giỏ hàng trng chi tiết
+
+        #region MuaNgayTrongChiTiet
+
+        public JsonResult MuaNgayChiTiet(string cartModel)
+        {
+
+            var jsonCart = new JavaScriptSerializer().Deserialize<Giohang>(cartModel);
+            Product product = db.Products.SingleOrDefault(n => n.Products_id == jsonCart.iMaSP);
+            List<Giohang> Cart = LayGioHang();
+            if (Cart != null)
+            {
+
+                if (Cart.Exists(n => n.iMaSP == product.Products_id))
+                {
+                    foreach (var item in Cart)
+                    {
+                        if (item.iMaSP == product.Products_id)
+                            item.iSoLuong += jsonCart.iSoLuong;
+                    }
+                }
+                else
+                {
+                    Giohang gh = new Giohang();
+                    //gh.iMaSP = product.Products_id;
+                    Product prod = db.Products.SingleOrDefault(n => n.Products_id == product.Products_id);
+                    gh.iMaSP = prod.Products_id;
+                    gh.sHinhAnh = "img";
+                    gh.sTenSP = prod.Name;
+                    Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == product.Discount_id);
+                    gh.dKhuyenMai = (Double)discount.value;
+                    gh.dDonGia = Convert.ToDouble(prod.Gia);
+                    gh.iSoLuong = jsonCart.iSoLuong;
+                    Cart.Add(gh);
+                }
+
+            }
+
+            return Json(new
+            {
+                status = true
+                
+            });
+        }
+        #endregion
+
+        #region Thêm vào giỏ hàng trong chi tiết
         public JsonResult AddItemChiTiet(string cartModel)
         {
             

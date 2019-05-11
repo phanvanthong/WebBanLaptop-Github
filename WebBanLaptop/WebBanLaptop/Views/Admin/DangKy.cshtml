@@ -3,7 +3,7 @@
     ViewBag.Title = "DangKy";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
-<p style="font-size:50px;text-align:center; margin-top:10px;margin-bottom:40px;">Đăng ký admin</p>
+<p style="font-size:50px;text-align:center; margin-top:10px;margin-bottom:40px;">Thêm mới admin</p>
 <div class="container" style="margin-left:350px;">
     <div class="row">
         
@@ -12,7 +12,7 @@
             @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
             <form class="form-horizontal" enctype="multipart/form-data" method="post" action="DangKy" name="FormDky" onsubmit="return pwdconfirm()">
                 <fieldset id="account">
-                    <legend>Nhập thông tin cá nhân của bạn</legend>
+                    <legend>Nhập thông tin cá nhân</legend>
                     <div class="form-group required">
                         <label for="input-firstname" class="col-sm-2 control-label">Họ và tên</label>
                         <div class="col-sm-10">
@@ -447,12 +447,15 @@
                 </fieldset>
                 <p style="color:red">@ViewBag.DangKy</p>
                 <div class="buttons">
+                    <div class="pull-left" style="margin-left: 150px">
+                        <a href="@Url.Action("Index","Admin")"><input type="button" class="btn btn-primary" value="Trang chủ"></a>
+                    </div>
                     <div class="pull-right">
                         Bạn có đồng ý  <a class="agree" href="#"><b>Điều Khoản</b></a> của trang web
-                        <input type="checkbox" value="" name="agree" onclick="KtraAgree()" checked>
+                        <input type="checkbox" id="agree" value="" name="agree" checked>
                         &nbsp;
-                        <input type="submit" class="btn btn-primary" value="Tạo">
-
+                        <input type="submit" class="btn btn-primary" value="Tạo" onclick="KtraAgree()">
+                        <p id="KtraAgree"></p>
 
 
                     </div>
@@ -463,8 +466,12 @@
                 function KtraAgree() {
                     var Agree = document.getElementById('agree');
                     if (Agree.checked == true) return true;
-
-                    else return false;
+                    else {
+                        @{ 
+                            ViewBag.DangKy = "Bạn chưa đồng ý điều khoản!";
+                        }
+                        return false
+                    }
                 }
                 function pwdconfirm() {
                     var pwd = document.forms["FormDky", "pwd"].value;

@@ -4,6 +4,13 @@
         <a href="@Url.Action("index","Giohang")">
             <img src="~/Content/Images/icon-thiet-ke-website-ban-do-noi-that.png" style="width:50px; height:auto" />
         </a>
-        <span class="cart-num" id="topActionCartNumber" style="display: block;">@Model.Count</span>
+        @{ 
+            var x = 0;
+            foreach (var item in Model)
+            {
+                x += item.iSoLuong;
+            }
+        }
+        <span class="cart-num" id="soluonggiohang" style="display: block;">@x</span>
     </div>
 

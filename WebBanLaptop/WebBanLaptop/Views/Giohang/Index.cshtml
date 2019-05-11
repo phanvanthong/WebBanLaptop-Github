@@ -40,12 +40,12 @@
                                 {
                                     <tr>
                                         <td style="text-align:center"><input type="checkbox" name="chonsp" value="" /></td>
-                                        <td style="text-align:center" class="text-center"><a href="#"><img class="img-thumbnail" title="@item.sTenSP" alt="@item.sTenSP" src="image/product/2product56x72.jpg"></a></td>
+                                        <td style="text-align:center" class="text-center"><a href="#"><img style="max-width:130px" class="img-thumbnail" title="@item.sTenSP" alt="@item.sTenSP" src="~/Content/Images/i3/@item.iMaSP/trc.png"></a></td>
                                         <td style="text-align:center" class="text-left"><a href="@Url.Action("Index","ChiTietSanPham",new { @id=item.iMaSP })">@item.sTenSP</a></td>
                                         <td style="text-align:center" class="text-left">@item.dKhuyenMai</td>
                                         <td style="text-align:center" class="text-left">
                                             <div style="max-width: 200px;" class="input-group btn-block">
-                                                <input type="number" class="form-control quantity_@item.iMaSP" min="1" max="100"  id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px" onchange="TD(@item.dDonGia,@item.iMaSP,@item.dKhuyenMai)">
+                                                <input type="number" class="form-control quantity_@item.iMaSP" min="1" max="100" maxlength="3"  id="qty" size="1" value="@item.iSoLuong" name="quantity" style="width:80px" onchange="TD(@item.dDonGia,@item.iMaSP,@item.dKhuyenMai)">
                                             </div>
                                         </td>
                                         <td style="text-align:center" class="text-right">@string.Format("{0:0,0đ}", @item.dDonGia)</td>
@@ -66,7 +66,7 @@
                 <br>
                 <div class="row">
                     <div class="col-sm-4 col-sm-offset-8" style="width: 360px;margin-left: 533px;">
-                        <table class="table table-bordered" style="width:800px">
+                        <table class="table table-bordered" style="width:340px">
                             <tbody>
                                 <tr>
                                     <td class="text-right"><strong>Tiền sản phẩm:</strong></td>
@@ -156,7 +156,7 @@
         var str1 = "#thanhtien_" + id;
         var tien = $(str1).text();
         tien = ChuoiSangSo(tien, tien.length);
-
+        var soluongcu = (tien / (1 - km / 100)) / dDonGia;
         var str2 = ".quantity_" + id;
         var soluong = $(str2).val();
         if (soluong > 100) {
@@ -169,9 +169,7 @@
         }
         var tiensp = $(".TienSP").text();
         tiensp = ChuoiSangSo(tiensp, tiensp.length);
-        debugger
         tiensp = tiensp - tien + soluong * (dDonGia * (1 - km / 100));
-        debugger
         var VAT = tiensp * 0.1;
         var tongtienINT = tiensp + VAT;
         var CartProduct = ({
@@ -186,6 +184,9 @@
             //thực thi success khi dữ liệu gửi đi thành công
             success: function (res) {
                 if (res.status == true) {
+                    var soluonggiohang = parseInt($('#soluonggiohang').text()) - parseInt(soluongcu) + parseInt(soluong);
+                    $('#soluonggiohang').text(soluonggiohang);
+                    debugger
                     var strID = "#thanhtien_" + id;
                     var thanhtien = soluong * dDonGia * (1 - km / 100);
                     $(strID).text(commaSeparateNumber(thanhtien) + "đ");

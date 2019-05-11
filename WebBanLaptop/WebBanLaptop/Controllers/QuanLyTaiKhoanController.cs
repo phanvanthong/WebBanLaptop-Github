@@ -16,7 +16,7 @@ namespace WebBanLaptop.Controllers
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
         public ActionResult LstAdmin(int page=1)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -28,7 +28,7 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiAdmin()
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -46,7 +46,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ChinhSuaAdmin(int id = 0)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -73,7 +73,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult XoaAdmin(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -104,7 +104,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult HienThiAdmin(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -120,7 +120,7 @@ namespace WebBanLaptop.Controllers
         //------
         public ActionResult LstUser(int page = 1)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -132,7 +132,7 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiUser()
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -150,7 +150,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult ChinhSuaUser(int id = 0)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -177,7 +177,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult XoaUser(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
@@ -208,7 +208,7 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult HienThiUser(int id)
         {
-            if (Session["DangNhapAdmin"] == null)
+            if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }

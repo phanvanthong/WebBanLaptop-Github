@@ -13,15 +13,15 @@
     @Html.ActionLink("Thêm mới laptop", "ThemMoiLaptop")
 </p>
 <table class="table">
-    <tr>
-        <th></th>
-        <th>
+    <tr style="background-color:#1f1c2030">
+        
+        <th style="text-align:center">
             @Html.DisplayNameFor(model => model.First().Products_id)
         </th>
-        <th>
+        <th style="text-align:center">
             @Html.DisplayNameFor(model => model.First().Name)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.First().HangCPU)
         </th>
         <th>
@@ -56,37 +56,40 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.First().Dophangiai)
-        </th>
-        <th>
+        </th>*@
+        <th style="text-align:center">
             @Html.DisplayNameFor(model => model.First().Gia)
         </th>
-        <th>
+        <th style="text-align:center">
             @Html.DisplayNameFor(model => model.First().Soluong)
         </th>
-        <th>
+        <th style="text-align:center">
             @Html.DisplayNameFor(model => model.First().Discount_id)
         </th>
-        <th>
+        <th style="text-align:center">
             @Html.DisplayNameFor(model => model.First().Hangsx_id)
         </th>
-        <th></th>
+        <th style="text-align:center"></th>
     </tr>
 
+    @{var x = 0; }
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.ActionLink("Chỉnh Sửa", "ChinhSuaLaptop", new { @id = item.Products_id }) |
-                @Html.ActionLink("Hiển Thị", "HienThiLaptop", new { @id = item.Products_id }) |
-                @Html.ActionLink("Xóa", "XoaLaptop", new { @id = item.Products_id })
-            </td>
-            <td>
+        string bg = "";
+        if (x % 2 == 0) { bg = "white"; }
+        else
+        {
+            bg = "#1f1c2030";
+        }
+        <tr style="background-color:@bg">
+            
+            <td style="text-align:center">
                 @Html.DisplayFor(modelItem => item.Products_id)
             </td>
-            <td>
+            <td style="text-align:center">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.HangCPU)
             </td>
             <td>
@@ -121,21 +124,26 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Dophangiai)
-            </td>
-            <td>
+            </td>*@
+            <td style="text-align:center">
                 @Html.DisplayFor(modelItem => item.Gia)
             </td>
-            <td>
+            <td style="text-align:center">
                 @Html.DisplayFor(modelItem => item.Soluong)
             </td>
-            <td>
+            <td style="text-align:center">
                 @Html.DisplayFor(modelItem => item.Discount_id)
             </td>
-            <td>
+            <td style="text-align:center">
                 @Html.DisplayFor(modelItem => item.Hangsx_id)
             </td>
-
+            <td style="text-align:center">
+                @Html.ActionLink("Chỉnh Sửa", "ChinhSuaLaptop", new { @id = item.Products_id }) |
+                @Html.ActionLink("Hiển Thị", "HienThiLaptop", new { @id = item.Products_id }) |
+                @Html.ActionLink("Xóa", "XoaLaptop", new { @id = item.Products_id })
+            </td>
         </tr>
+            x+=1;
     }
 
 </table>

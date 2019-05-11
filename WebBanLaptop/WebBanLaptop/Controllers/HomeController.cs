@@ -12,7 +12,6 @@ namespace WebBanLaptop.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        //QuanLyBanLaptopModel db = new QuanLyBanLaptopModel();
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
         //public ActionResult Index(int ? page)
         //{
@@ -24,13 +23,10 @@ namespace WebBanLaptop.Controllers
 
         public ActionResult Index()
         {
-            //(int? page)
-            //int pageNumber = (page ?? 1);
-            //int pageSize = 12;
-            //db.Products.OrderByDescending(n => n.Products_id).ToList().ToPagedList(pageNumber, pageSize)
+            //List<Product> lstproduct1 = db.Database.SqlQuery<Product>("Select *from product").ToList<Product>();
             List<Product> lstproduct = db.Products.OrderByDescending(n => n.Ngaytao).Take(8).ToList();
             var discountMAX = db.Discounts.OrderBy(n=>n.value).FirstOrDefault();
-            var productKM = db.Products.Where(n => n.Discount_id == discountMAX.Discount_id).Take(8).ToList();
+            var productKM = db.Products.Where(n => n.Discount_id == discountMAX.Discount_id).OrderByDescending(n=>n.Ngaytao).Take(8).ToList();
             ViewBag.KM = productKM;
             return View(lstproduct);
         }

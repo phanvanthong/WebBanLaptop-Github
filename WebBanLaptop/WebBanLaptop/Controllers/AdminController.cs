@@ -153,7 +153,7 @@ namespace WebBanLaptop.Controllers
                 ViewBag.DangKy = "Đăng ký không thành công. Mật khẩu không trùng khớp!";
                 return View();
             }
-            db.Admins.Add(ad);
+            db.Admins.Add(admin);
             db.SaveChanges();
             ViewBag.DangKy = "Đăng ký thành công!";
             return View();

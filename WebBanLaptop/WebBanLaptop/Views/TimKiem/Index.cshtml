@@ -26,12 +26,12 @@
                 <div class="item">
                     <div class="product-thumb">
                         <div class="image product-imageblock">
-                            <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/@item.Products_id/trc.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> <img src="~/Content/Images/i3/@item.Products_id/cheo.jpg" alt="@item.Name" title="@item.Name" class="img-responsive" /> </a>
+                            <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/@item.Products_id/trc.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> <img src="~/Content/Images/i3/@item.Products_id/cheo.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> </a>
                             <ul class="button-group">
                                 <li>
                                     @*<button  type="button" class="addtocart-btn" title="Mua ngay"> <a href="@Url.Action("Index", "GioHang")">Mua ngay</a> </button>*@
                                     <div class="pull-left">
-                                        <a class="btn btn-primary Add-Cart" data-laptopid="@item.Products_id" href="@Url.Action("Index","GioHang")" title="Mua ngay">Mua ngay</a>
+                                        <a class="btn btn-primary " href="@Url.Action("MuaNgay", "GioHang", new { @id=item.Products_id })" title="Mua ngay">Mua ngay</a>
                                     </div>
                                 </li>
                                 <li>
@@ -78,3 +78,19 @@
     </div>
 </div>
 
+<div class="modal fade success-popup" id="SuccessMD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title text-center" id="myModalLabel">Thank You !</h4>
+            </div>
+            <div class="modal-body text-center">
+                <i class="fa fa-check-square-o" style="font-size: 50px;color: green;"></i>
+                <p class="lead">Sản phẩm đã được đưa vào giỏ hàng</p>
+                <a href="@Url.Action("Index","GioHang")" class="btn btn-success">Đến giỏ hàng</a>
+            </div>
+
+        </div>
+    </div>
+</div>
