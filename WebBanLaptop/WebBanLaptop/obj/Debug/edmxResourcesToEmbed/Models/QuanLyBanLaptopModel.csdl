@@ -47,8 +47,9 @@
     <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Users_id" Type="Int32" />
     <Property Name="tongtien" Type="Double" />
-    <Property Name="ngaytao" Type="DateTime" Precision="0" />
+    <Property Name="ngaytao" Type="DateTime" Precision="3" />
     <Property Name="giaohang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="trangthai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="User" Relationship="Self.FK_Order_user" FromRole="Orders" ToRole="Users" />
     <NavigationProperty Name="Orders_Details" Relationship="Self.FK_ordersD_orders" FromRole="Orders" ToRole="Orders_Details" />
   </EntityType>
@@ -91,16 +92,6 @@
     <NavigationProperty Name="Discount" Relationship="Self.FK_Pro_dis" FromRole="Products" ToRole="Discount" />
     <NavigationProperty Name="Hangsx" Relationship="Self.FK_Pro_hangsx" FromRole="Products" ToRole="Hangsx" />
     <NavigationProperty Name="Orders_Details" Relationship="Self.FK_ordersD_pro" FromRole="Products" ToRole="Orders_Details" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -183,7 +174,6 @@
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" />
     <EntitySet Name="Products" EntityType="Self.Product" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <AssociationSet Name="FK_Pro_dis" Association="Self.FK_Pro_dis">
       <End Role="Discount" EntitySet="Discounts" />

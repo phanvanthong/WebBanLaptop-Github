@@ -29,18 +29,17 @@
                 <!-- start: Header Menu -->
                 <div class="nav-no-collapse header-nav">
                     <ul class="nav pull-right">
-                        
+
                         <!-- start: Notifications Dropdown -->
-                        
                         <!-- end: Notifications Dropdown -->
                         <!-- start: Message Dropdown -->
                         <li class="dropdown hidden-phone">
-                            
-                            
+
+
                         </li>
                         <!-- end: Message Dropdown -->
                         <li>
-                            
+
                         </li>
                         <!-- start: User Dropdown -->
                         <li class="dropdown">
@@ -75,7 +74,7 @@
                 <div class="nav-collapse sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked main-menu">
                         <li>
-                            <a class="dropmenu" ><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Quản lý tài khoản </span></a>
+                            <a class="dropmenu"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Quản lý tài khoản </span></a>
                             <ul>
                                 <li><a class="submenu" href="@Url.Action("LstAdmin","QuanLyTaiKhoan")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý tài khoản Admin</span></a></li>
                                 <li><a class="submenu" href="@Url.Action("LstUser","QuanLyTaiKhoan")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý tài khoản người dùng</span></a></li>
@@ -96,7 +95,15 @@
                                 <li><a class="submenu" href="#"><i class="icon-file-alt"></i><span class="hidden-tablet"> Quản lý nhân viên</span></a></li>
                             </ul>
                         </li>
-                        <li><a href="#"><i class="icon-tasks"></i><span class="hidden-tablet"> Quản lý đơn hàng</span></a></li>
+                        <li>
+                            <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Quản lý đơn hàng </span></a>
+                            <ul>
+                                <li><a class="submenu" href="@Url.Action("DonHangChuaXacNhan","QuanLyDonHang")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Đơn hàng chưa xác nhận</span></a></li>
+                                <li><a class="submenu" href="@Url.Action("DonHangDangXuLy","QuanLyDonHang")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Đơn hàng đag xử lý</span></a></li>
+                                <li><a class="submenu" href="@Url.Action("DonHangDaGiao","QuanLyDonHang")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Đơn hàng đã giao</span></a></li>
+                                <li><a class="submenu" href="@Url.Action("DonHangBiHuy","QuanLyDonHang")"><i class="icon-file-alt"></i><span class="hidden-tablet"> Đơn hàng bị hủy</span></a></li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </div>
@@ -201,6 +208,7 @@
     <script src="~/Content/TemplateAdmin/js/retina.js"></script>
 
     <script src="~/Content/TemplateAdmin/js/custom.js"></script>
+    <script src="~/Content/NguoiDungCssLayout/javascript/TrangThaiDH.js"></script>
     <!-- end: JavaScript-->
 
 </body>

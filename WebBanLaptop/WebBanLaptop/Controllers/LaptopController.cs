@@ -30,6 +30,8 @@ namespace WebBanLaptop.Controllers
             //    Response.StatusCode = 404;
             //    return null;
             //}
+            //hiện lên theo sản phẩm ý cái nào hang sx ấy này ấy hả
+            //ô sao nó hiểu nhỉ trong lớp san phảm
         }
 
         

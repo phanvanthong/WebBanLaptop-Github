@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebBanLaptop.Models.Order>
+
+@{
+    ViewBag.Title = "DonHangChuaXacNhan";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>DonHangChuaXacNhan</h2>
+<form action="DonHangChuaXacNhan" method="post" >
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tongtien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngaytao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.giaohang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.trangthai)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <p name="Order_id">@item.Order_id</p>
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.Users_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tongtien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ngaytao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.giaohang)
+                </td>
+                <td>
+                    @*<select class="trangthai_@item.Order_id" name="dropdown">
+                        <option value="1" selected>Chưa xác nhận</option>
+                        <option value="2">Đang xử lý</option>
+                        <option value="3">Đã giao hàng</option>
+                        <option value="4">Bị hủy</option>
+                    </select>*@
+                    @Html.DisplayFor(modelItem => item.trangthai)
+                </td>
+                <td>
+                    @*<button type="submit" onclick="TDtrangthai(@item.Order_id)">Cập nhật</button>*@
+                    <a href="@Url.Action("ChiTietDonHang","QuanLyDonHang",new { @id=item.Order_id })">Chi tiết đơn hàng</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</form>
+

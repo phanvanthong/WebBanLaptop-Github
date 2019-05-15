@@ -138,11 +138,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Discount_id)
+            @Html.DisplayNameFor(model => model.Discount_id) 
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Discount_id)
+            @Html.DisplayFor(model => model.Discount.value)%
         </dd>
 
         <dt>
@@ -150,9 +150,13 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Hangsx_id)
+            @Html.DisplayFor(model => model.Hangsx.tenhang)
         </dd>
-
+        <dd style="margin-top:7px">
+            <img src="~/Content/Images/i3/@Model.Products_id/trc.png" alt="Alternate Text"  style="width:180px; height:160px;padding-right:5px;"/>
+            <img src="~/Content/Images/i3/@Model.Products_id/cheo.png" alt="Alternate Text" style="width:180px; height:160px;padding-right:5px;"/>
+            <img src="~/Content/Images/i3/@Model.Products_id/ngang.png" alt="Alternate Text" style="width:180px; height:160px"/>
+        </dd>
     </dl>
 </div>
 <p>

@@ -42,6 +42,7 @@ namespace WebBanLaptop.Controllers
         [HttpGet]
         public ActionResult ThemMoiLaptop()
         {
+            // có rồi còn gì, có dropdown r cơ mà hiện ra cái phù hợp vs ý là lúc sửa muốn hiện ở dropdown là tên hãng của đúng sản phẩm dấy luôn ấy hả ừm
             if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
@@ -53,19 +54,16 @@ namespace WebBanLaptop.Controllers
         [HttpPost]
         public ActionResult ThemMoiLaptop(Product product, HttpPostedFileBase fileupload)
         {
+           //cái này là tạo đường dẫn để tạo folder
             string directoryPath = "E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/" + product.Products_id;
-            if (!System.IO.Directory.Exists(directoryPath))
+            if (!System.IO.Directory.Exists(directoryPath))//ktra đã tồn tại folder chưa để khởi tạo
             {
-                //System.IO.Directory.CreateDirectory(directoryPath);
-                for(int i=0;i<128;i++)
-                {
-                    System.IO.Directory.CreateDirectory("E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/"+i);
-                }
+                System.IO.Directory.CreateDirectory(directoryPath);
             }
-            //lưu tên file
-            var fileName = Path.GetFileName(fileupload.FileName);
-            //lưi đường dẫn của file 
-            var path = Path.Combine(Server.MapPath("~/Content/Images/i3/" + product.Products_id), fileName);
+            //lưu tên file file javascrip của ô để đâu
+            var fileName = Path.GetFileName(fileupload.FileName);//đây là lấy tên
+            //lưi đường dẫn của file // thấy chưa thực chất nó chỉ lấy tên file thôi
+            var path = Path.Combine(Server.MapPath("~/Content/Images/i3/" + product.Products_id), fileName);//đây là gán tên vào đường dẫn
             //Kiểm tra ảnh đã tồn tại chưa
             if (System.IO.File.Exists(path))
             {
@@ -73,39 +71,42 @@ namespace WebBanLaptop.Controllers
             }
             else
             {
-                fileupload.SaveAs(path);
+                fileupload.SaveAs(path);//cái chỗ nó lưu đây cơ mà @@ thì kothaays à thực chất nó chỉ luuw một dường dẫn ảnh chứ cỏ phải nó copy một cảnh sang đâu
+                // nó lấy tên ảnh, tạo một chuỗi đường dẫn ảnh vào server: Con
             }
-
             db.Products.Add(product);
             db.SaveChanges();
             return Redirect("ListLaptop"); 
         }
 
-        //----------
+        //---------- cứ để ko dùng dropdowwn lits
 
         public ActionResult ChinhSuaLaptop(int id=0)
         {
             if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
-            }
+            }             
             Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
             if (product == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
+            ViewBag.HangSX = db.Hangsxes.OrderBy(n => n.tenhang).ToList();
+            ViewBag.Discount = db.Discounts.OrderBy(n => n.value).ToList();
             return View(product);
         }
         [HttpPost, ActionName("ChinhSuaLaptop")]
         public ActionResult XacNhanChinhSuaLaptop(Product product)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(product).State = System.Data.Entity.EntityState.Modified;
+            //product.Hangsx_id = Hangsx_id;
+            //product.Discount_id = Discount_id; // để t debug lại tử từ cứ tranh @@// lỗi vì ko có ảnh//k cần ảnh trong product k có ảnh
+            //if (ModelState.IsValid)//false này đây nhé 2 cái kia null ko liên qua vì nó ko phải là thuộc tính cảu product để coi lại sao lỗi
+            //{
+                db.Entry(product).State = System.Data.Entity.EntityState.Modified; // này không phải kiểm tra, này là gán tất cả thay đổi trong csdl à quên :)))
                 db.SaveChanges();
-            }
-
+            //}
             return RedirectToAction("ListLaptop");
         }
 
@@ -370,97 +371,13 @@ namespace WebBanLaptop.Controllers
             return View(discount);
         }
 
+    
         //--------------------------------------------------------------
 
-        //Quản Lý Ram
-        //public ActionResult ListRam(int? page) //List Ram
+        //public JsonResult LoadIMG(string filePath)
         //{
-        //    int pageNumber = (page ?? 1);
-        //    int pageSize = 12;
-        //    return View(db.Products.ToList().OrderBy(n => n.Products_id).ToPagedList(pageNumber, pageSize));
+        //    string[] str = new string[10];
         //}
-
-        //[HttpGet]
-        //public ActionResult ThemMoiRam()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult ThemMoiRam(Product product)
-        //{
-        //    db.Products.Add(product);
-        //    db.SaveChanges();
-        //    RedirectToAction("Index");
-        //    return View();
-        //}
-
-        ////----------
-
-        //public ActionResult ChinhSuaRam(int id = 0)
-        //{
-        //    Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
-        //    if (product == null)
-        //    {
-        //        Response.StatusCode = 404;
-        //        return null;
-        //    }
-        //    return View(product);
-        //}
-        //[HttpPost, ActionName("ChinhSua")]
-        //public ActionResult XacNhanChinhSuaRam(Product product)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(product).State = System.Data.Entity.EntityState.Modified;
-        //        db.SaveChanges();
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-
-        ////----------
-
-        //public ActionResult XoaRam(int id)
-        //{
-        //    Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
-        //    if (product == null)
-        //    {
-        //        Response.StatusCode = 404;
-        //        return null;
-        //    }
-        //    return View(product);
-        //}
-
-        //[HttpPost, ActionName("Xoa")]
-        //public ActionResult XacNhanXoaRam(int id)
-        //{
-        //    Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
-        //    if (product == null)
-        //    {
-        //        Response.StatusCode = 404;
-        //        return null;
-        //    }
-        //    db.Products.Remove(product);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        ////----------
-
-        //public ActionResult HienThiRam(int id)
-        //{
-        //    Product product = db.Products.SingleOrDefault(n => n.Products_id == id);
-        //    if (product == null)
-        //    {
-        //        Response.StatusCode = 404;
-        //        return null;
-        //    }
-        //    return View(product);
-        //}
-
-        //--------------------------------------------------------------
-        //Quản Lý Ổ đĩa
-
-
 
 
     }

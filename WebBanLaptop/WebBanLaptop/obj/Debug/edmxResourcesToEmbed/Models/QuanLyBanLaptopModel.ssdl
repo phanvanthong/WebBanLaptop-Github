@@ -45,8 +45,9 @@
     <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Users_id" Type="int" />
     <Property Name="tongtien" Type="float" />
-    <Property Name="ngaytao" Type="date" />
+    <Property Name="ngaytao" Type="datetime" />
     <Property Name="giaohang" Type="nvarchar" MaxLength="50" />
+    <Property Name="trangthai" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Orders_Details">
     <Key>
@@ -82,16 +83,6 @@
     <Property Name="Ngaytao" Type="datetime" />
     <Property Name="Discount_id" Type="int" />
     <Property Name="Hangsx_id" Type="int" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -173,7 +164,6 @@
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Order_user" Association="Self.FK_Order_user">
       <End Role="Users" EntitySet="Users" />

@@ -196,9 +196,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
@@ -212,50 +209,6 @@
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3467_8990k\cheo.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3467_8990k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3467_8990k\trc.png" />
-    <Content Include="Content\Images\i3\DELL Inspiron 3476 8J61P11_11390k\cheo.jpg" />
-    <Content Include="Content\Images\i3\DELL Inspiron 3476 8J61P11_11390k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\DELL Inspiron 3476 8J61P11_11390k\ngang.jpg" />
-    <Content Include="Content\Images\i3\DELL Inspiron 3476 8J61P11_11390k\trc.jpg" />
-    <Content Include="Content\Images\i3\DELL Inspiron 3567 %28N3567S%29_10290k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\DELL Inspiron 3567 %28N3567S%29_10290k\ngang.png" />
-    <Content Include="Content\Images\i3\DELL Inspiron 3567 %28N3567S%29_10290k\trc.png" />
-    <Content Include="Content\Images\i3\DELL Inspiron 3567 %28N3567S%29_10290k\tren.png" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3567_9290k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3567_9290k\ngang.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3567_9290k\trc.png" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3567_9290k\tren.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3576 C5I31132F_10990k\cheo.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3576 C5I31132F_10990k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3576 C5I31132F_10990k\ngang.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3576 C5I31132F_10990k\trc.png" />
-    <Content Include="Content\Images\i3\Dell Inspiron 3576 C5I31132F_10990k\tren.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 5370 N3I3001W_15290k\cheo.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 5370 N3I3001W_15290k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Dell Inspiron 5370 N3I3001W_15290k\ngang.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 5370 N3I3001W_15290k\trc.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 5370 N3I3002W_14990k\cheo.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 5370 N3I3002W_14990k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Dell Inspiron 5370 N3I3002W_14990k\ngang.jpg" />
-    <Content Include="Content\Images\i3\Dell Inspiron 5370 N3I3002W_14990k\trc.jpg" />
-    <Content Include="Content\Images\i3\Dell Vostro 3468 70157553_9690k\cheo.png" />
-    <Content Include="Content\Images\i3\Dell Vostro 3468 70157553_9690k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Dell Vostro 3468 70157553_9690k\trc.jpg" />
-    <Content Include="Content\Images\i3\Dell Vostro 3568_9790k\cheo.jpg" />
-    <Content Include="Content\Images\i3\Dell Vostro 3568_9790k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Dell Vostro 3568_9790k\ngang.jpg" />
-    <Content Include="Content\Images\i3\Dell Vostro 3568_9790k\trc.png" />
-    <Content Include="Content\Images\i3\Dell Vostro 3568_9790k\tren.jpg" />
-    <Content Include="Content\Images\i3\Laptop Dell Vostro 3468 _9990k - Copy\cheo.png" />
-    <Content Include="Content\Images\i3\Laptop Dell Vostro 3468 _9990k - Copy\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Laptop Dell Vostro 3468 _9990k - Copy\ngang.png" />
-    <Content Include="Content\Images\i3\Laptop Dell Vostro 3468 _9990k - Copy\trc.png" />
-    <Content Include="Content\Images\i3\Laptop Dell Vostro 3468 _9990k\cheo.png" />
-    <Content Include="Content\Images\i3\Laptop Dell Vostro 3468 _9990k\New Text Document.txt" />
-    <Content Include="Content\Images\i3\Laptop Dell Vostro 3468 _9990k\ngang.png" />
-    <Content Include="Content\Images\i3\Laptop Dell Vostro 3468 _9990k\trc.png" />
     <Content Include="Content\Images\icon-thiet-ke-website-ban-do-noi-that.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\Main-Banner1.jpg" />
@@ -266,8 +219,8 @@
     <Content Include="Content\NguoiDungCssLayout\bootstrap.min.css" />
     <Content Include="Content\NguoiDungCssLayout\javascript\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\NguoiDungCssLayout\javascript\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\NguoiDungCssLayout\javascript\TrangThaiDH.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\Cart.js" />
-    <Content Include="Content\NguoiDungCssLayout\javascript\CartChiTiet.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\common.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\DioProgress.js" />
     <Content Include="Content\NguoiDungCssLayout\javascript\font-awesome\css\font-awesome.css" />
@@ -636,10 +589,15 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\TimKiem\Index.cshtml" />
     <Content Include="Views\Home\Index_old.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DonHangChuaXacNhan.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DonHangDangXuLy.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DonHangDaGiao.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DonHangBiHuy.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChiTietDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\QuanLyDonHang\" />
+    <Folder Include="Content\Images\i3\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

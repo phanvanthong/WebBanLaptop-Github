@@ -25,6 +25,7 @@ namespace WebBanLaptop.Models
         public Nullable<double> tongtien { get; set; }
         public Nullable<System.DateTime> ngaytao { get; set; }
         public string giaohang { get; set; }
+        public string trangthai { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

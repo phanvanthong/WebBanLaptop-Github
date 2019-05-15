@@ -1,0 +1,95 @@
+﻿@using WebBanLaptop.Models
+@model List<Orders_Details>
+
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    Order order = ViewBag.orderID as Order ;
+}
+
+<div class="container" style="margin-left:-80px">
+    <div class="row">
+        @*<div style="margin-left:200px;margin-top:50px">*@
+        <form action="@Url.Action("CapNhatTrangThai", "QuanLyDonHang",order)" method="post" style="margin-left:200px;margin-top:50px">
+            <p>Mã đơn hàng: @order.Order_id</p>
+            <p>Tên khách hàng: @ViewBag.user &nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <p>Ngày tạo: @order.ngaytao.</p>
+            <p>Giao hàng: @order.giaohang </p>
+            <p>Tổng hóa đơn (bao gồm VAT): @string.Format("{0:0,0đ}", order.tongtien) </p>
+            <p>
+                Trạng thái: @{<select name="trangthai" required>
+                        @{
+                            if (order.trangthai == "Chưa xác nhận")
+                            {
+                                <option value="1" selected>Chưa xác nhận</option>}
+                            else
+                            {
+                                <option value="1">Chưa xác nhận</option>}
+                            if (order.trangthai == "Đã xử lý")
+                            {
+                                <option value="2" selected>Đã xử lý</option>}
+                            else
+                            {
+                                <option value="2">Đã xử lý</option>}
+                            if (order.trangthai == "Đã giao hàng")
+                            {
+                                <option value="3" selected>Đã giao hàng</option>}
+                            else
+                            {
+                                <option value="3">Đã giao hàng</option>}
+                            if (order.trangthai == "Bị hủy")
+                            {
+                                <option value="4" selected>Bị hủy</option>}
+                            else
+                            {
+                                <option value="4">Bị hủy</option>}
+                        }
+                    </select> }
+            </p>
+            @*<div><a class="btn btn-primary" href="@Url.Action("CapNhatTrangThai","QuanLyDonHang")" title="Cập nhật trạng thái">Cập nhật trạng thái</a></div>*@
+            <button type="submit">Cập nhật trạng thái</button>
+            @*</div>*@
+        </form>
+
+        <div class="col-sm-9" id="content">
+            <form enctype="multipart/form-data" method="post" action="#">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td style="text-align:center" class="text-center">Ảnh</td>
+                                <td style="text-align:center" class="text-left">Tên sản phẩm</td>
+                                <td style="text-align:center" class="text-left">Số lượng</td>
+                                <td style="text-align:center" class="text-right">Tổng tiền</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="text-align:center" class="text-center"><a href="#"><img style="max-width:130px" class="img-thumbnail" title="@item.Product.Name" alt="@item.Product.Name" src="~/Content/Images/i3/@item.products_id/trc.png"></a></td>
+                                    <td style="text-align:center;padding-top:50px" class="text-left"><a href="@Url.Action("Index","ChiTietSanPham",new { @id=item.products_id })">@item.Product.Name</a></td>
+                                    <td style="text-align:center;padding-top:50px" class="text-left">
+                                        @item.soluongsp
+                                    </td>
+                                    <td style="text-align:center;padding-top:50px" class="text-right">@string.Format("{0:0,0đ}", @item.tongtien)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+
+            @*<br>
+            <div class="buttons">
+                <div class="pull-left"><a class="btn btn-primary" href="@Url.Action("Index","Home")" title="Tiếp tục mua sắm">Tiếp tục mua sắm</a></div>
+                <div class="pull-left"><a class="btn btn-primary" href="@Url.Action("DonDatHang","GioHang")" title="Đơn hàng đã đặt" style="float:left;margin-left:15px">Đơn hàng đã đặt</a></div>
+                <div class="pull-right"><a class="btn btn-primary" href="@Url.Action("ThongTinKH","GioHang")" title="Mua hàng">Mua hàng</a></div>
+            </div>*@
+        </div>
+
+
+    </div>
+</div>
+

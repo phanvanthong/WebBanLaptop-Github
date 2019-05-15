@@ -72,3 +72,15 @@ $('.MuaNgayChiTiet').off('click').on('click', function (e) {
         }
     });
 });
+//$(document).ready(function uploadTrc() {
+//        var filePath = $('#upTrc').val();
+//        $("#imgTrc").attr('src', filePath);
+//        debugger
+//        $.ajax({
+//            url: 'QuanLySanPham/',
+//            data: 'filePath+=' + JSON. filePath,
+//            dataType: 'json',
+//            type: 'POST',
+//            success:
+//    });
+//});

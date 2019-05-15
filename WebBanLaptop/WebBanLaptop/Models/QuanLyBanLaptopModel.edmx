@@ -50,8 +50,9 @@
           <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Users_id" Type="int" />
           <Property Name="tongtien" Type="float" />
-          <Property Name="ngaytao" Type="date" />
+          <Property Name="ngaytao" Type="datetime" />
           <Property Name="giaohang" Type="nvarchar" MaxLength="50" />
+          <Property Name="trangthai" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Orders_Details">
           <Key>
@@ -87,16 +88,6 @@
           <Property Name="Ngaytao" Type="datetime" />
           <Property Name="Discount_id" Type="int" />
           <Property Name="Hangsx_id" Type="int" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -178,7 +169,6 @@
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Order_user" Association="Self.FK_Order_user">
             <End Role="Users" EntitySet="Users" />
@@ -253,8 +243,9 @@
           <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Users_id" Type="Int32" />
           <Property Name="tongtien" Type="Double" />
-          <Property Name="ngaytao" Type="DateTime" Precision="0" />
+          <Property Name="ngaytao" Type="DateTime" Precision="3" />
           <Property Name="giaohang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="trangthai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="Self.FK_Order_user" FromRole="Orders" ToRole="Users" />
           <NavigationProperty Name="Orders_Details" Relationship="Self.FK_ordersD_orders" FromRole="Orders" ToRole="Orders_Details" />
         </EntityType>
@@ -297,16 +288,6 @@
           <NavigationProperty Name="Discount" Relationship="Self.FK_Pro_dis" FromRole="Products" ToRole="Discount" />
           <NavigationProperty Name="Hangsx" Relationship="Self.FK_Pro_hangsx" FromRole="Products" ToRole="Hangsx" />
           <NavigationProperty Name="Orders_Details" Relationship="Self.FK_ordersD_pro" FromRole="Products" ToRole="Orders_Details" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -389,7 +370,6 @@
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Pro_dis" Association="Self.FK_Pro_dis">
             <End Role="Discount" EntitySet="Discounts" />
@@ -468,6 +448,7 @@
                 <ScalarProperty Name="tongtien" ColumnName="tongtien" />
                 <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
                 <ScalarProperty Name="giaohang" ColumnName="giaohang" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -504,17 +485,6 @@
                 <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
                 <ScalarProperty Name="Discount_id" ColumnName="Discount_id" />
                 <ScalarProperty Name="Hangsx_id" ColumnName="Hangsx_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Web_ban_laptopModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
