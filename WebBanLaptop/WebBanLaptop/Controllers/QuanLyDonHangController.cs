@@ -48,23 +48,25 @@ namespace WebBanLaptop.Controllers
         }
 
         public ActionResult CapNhatTrangThai(Order order)
-        {            
+        {
+            Order order1 = db.Orders.SingleOrDefault(n => n.Order_id == order.Order_id);
             if (Convert.ToInt32(order.trangthai) == 1)
             {
-                order.trangthai = "Chưa xác nhận";
+                order1.trangthai = "Chưa xác nhận";
             }
             else if (Convert.ToInt32(order.trangthai) == 2)
             {
-                order.trangthai = "Đang xử lý";
+                order1.trangthai = "Đang xử lý";
             }
             else if (Convert.ToInt32(order.trangthai) == 3)
             {
-                order.trangthai = "Đã giao hàng";
+                order1.trangthai = "Đã giao hàng";
             }
             else if (Convert.ToInt32(order.trangthai) == 4)
             {
-                order.trangthai = "Bị hủy";
+                order1.trangthai = "Bị hủy";
             }
+            ViewBag.trangthai = "Cập nhật trạng thái thành công!";
             db.SaveChanges();
             return RedirectToAction("ChiTietDonHang", "QuanLyDonHang", new { @id = order.Order_id }); 
         }

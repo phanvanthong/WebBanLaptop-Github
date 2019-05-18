@@ -39,7 +39,8 @@
             @Html.DisplayFor(modelItem => item.Users_id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tongtien)
+            @*@Html.DisplayFor(modelItem => item.tongtien)*@
+            <p>@string.Format("{0:0,0đ}", @item.tongtien)</p>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ngaytao)

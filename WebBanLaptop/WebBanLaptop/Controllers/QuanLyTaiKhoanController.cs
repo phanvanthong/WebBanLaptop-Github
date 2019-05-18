@@ -59,11 +59,18 @@ namespace WebBanLaptop.Controllers
             return View(admin);
         }
         [HttpPost, ActionName("ChinhSuaAdmin")]
-        public ActionResult XacNhanChinhSuaAdmin(Admin Admin)
+        public ActionResult XacNhanChinhSuaAdmin(Admin admin)
         {
+            Admin admin1 = db.Admins.SingleOrDefault(n => n.admin_id == admin.admin_id);
+            
             if (ModelState.IsValid)
             {
-                db.Entry(Admin).State = System.Data.Entity.EntityState.Modified;
+                //db.Entry(admin).State = System.Data.Entity.EntityState.Modified;
+                admin1.fullname = admin.fullname;
+                admin1.email = admin.email;
+                admin1.level_ = admin.level_;
+                admin1.phone = admin.phone;
+                admin1.address = admin.address;
                 db.SaveChanges();
             }
             return RedirectToAction("LstAdmin");
@@ -165,9 +172,14 @@ namespace WebBanLaptop.Controllers
         [HttpPost, ActionName("ChinhSuaUser")]
         public ActionResult XacNhanChinhSuaUser(User user)
         {
+            User user1 = db.Users.SingleOrDefault(n => n.Users_id == user.Users_id);
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                //db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                user1.address = user.address;
+                user.email = user1.email;
+                user.fullname = user1.fullname;
+                user.phone = user1.phone;
                 db.SaveChanges();
             }
             return RedirectToAction("LstUser");

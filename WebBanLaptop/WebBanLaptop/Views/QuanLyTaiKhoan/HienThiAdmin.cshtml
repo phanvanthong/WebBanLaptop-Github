@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>HienThiAdmin</h2>
+<h2>Hiện Thị Admin</h2>
 
 <div>
-    <h4>Admin</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,14 +26,21 @@
             @Html.DisplayFor(model => model.username)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.pwd)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.pwd)
-        </dd>
+        </dd>*@
 
+        <dt>
+            @Html.DisplayNameFor(model => model.fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fullname)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.email)
         </dt>
@@ -67,13 +73,7 @@
             @Html.DisplayFor(model => model.level_)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fullname)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.fullname)
-        </dd>
 
     </dl>
 </div>

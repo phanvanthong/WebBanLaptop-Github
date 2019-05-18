@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>DonHangBiHuy</h2>
+<h2>Đơn hang bị hủy</h2>
 
 <table class="table">
     <tr>
@@ -39,7 +39,8 @@
             @Html.DisplayFor(modelItem => item.Users_id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tongtien)
+            @*@Html.DisplayFor(modelItem => item.tongtien)*@
+            <p>@string.Format("{0:0,0đ}", @item.tongtien)</p>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ngaytao)

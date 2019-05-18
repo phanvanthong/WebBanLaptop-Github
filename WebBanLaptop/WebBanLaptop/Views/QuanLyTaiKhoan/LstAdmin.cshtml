@@ -15,9 +15,12 @@
             @Html.DisplayNameFor(model => model.username)
             @*Tên đăng nhập*@
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.pwd)
-            @*Mật khẩu*@
+
+        </th>*@
+        <th>
+            Họ và tên
         </th>
         <th>
             @Html.DisplayNameFor(model => model.email)
@@ -34,9 +37,7 @@
         <th>
             Cấp bậc
         </th>
-        <th>
-            Họ và tên
-        </th>
+
         <th></th>
     </tr>
 
@@ -45,8 +46,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.username)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.pwd)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.fullname)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.email)
@@ -60,11 +64,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.level_)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.fullname)
-        </td>
-        <td>
-            @Html.ActionLink("Chỉnh sửa", "ChinhSuaAdmin", new { @id=item.admin_id }) |
+            @Html.ActionLink("Chỉnh sửa", "ChinhSuaAdmin", new { @id = item.admin_id }) |
             @Html.ActionLink("Hiển thị", "HienThiAdmin", new { @id = item.admin_id }) |
             @Html.ActionLink("Xóa", "XoaAdmin", new { @id = item.admin_id })
         </td>

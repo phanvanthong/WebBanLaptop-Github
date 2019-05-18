@@ -11,6 +11,7 @@
     <div class="row">
         @*<div style="margin-left:200px;margin-top:50px">*@
         <form action="@Url.Action("CapNhatTrangThai", "QuanLyDonHang",order)" method="post" style="margin-left:200px;margin-top:50px">
+            <h2>Đơn hàng @order.trangthai</h2>
             <p>Mã đơn hàng: @order.Order_id</p>
             <p>Tên khách hàng: @ViewBag.user &nbsp;&nbsp;&nbsp;&nbsp;</p>
             <p>Ngày tạo: @order.ngaytao.</p>
@@ -25,12 +26,12 @@
                             else
                             {
                                 <option value="1">Chưa xác nhận</option>}
-                            if (order.trangthai == "Đã xử lý")
+                            if (order.trangthai == "Đang xử lý")
                             {
-                                <option value="2" selected>Đã xử lý</option>}
+                                <option value="2" selected>Đang xử lý</option>}
                             else
                             {
-                                <option value="2">Đã xử lý</option>}
+                                <option value="2">Đang xử lý</option>}
                             if (order.trangthai == "Đã giao hàng")
                             {
                                 <option value="3" selected>Đã giao hàng</option>}
@@ -48,6 +49,7 @@
             </p>
             @*<div><a class="btn btn-primary" href="@Url.Action("CapNhatTrangThai","QuanLyDonHang")" title="Cập nhật trạng thái">Cập nhật trạng thái</a></div>*@
             <button type="submit">Cập nhật trạng thái</button>
+            <span style="margin-left:15px;color:red">@ViewBag.trangthai</span>
             @*</div>*@
         </form>
 
