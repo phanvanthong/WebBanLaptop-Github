@@ -67,10 +67,7 @@ namespace WebBanLaptop.Models
             [Required(ErrorMessage = "Vui lòng nhập lại dữ liệu cho bảng này.")]
             [Display(Name = "Độ phân giải")]
             public string Dophangiai { get; set; }
-
-            //[Required(ErrorMessage = "Vui lòng nhập lại dữ liệu cho bảng này.")]
-            //[Display(Name = "Mô tả laptop")]
-            public string Motasp { get; set; }
+            
 
             [Required(ErrorMessage = "Vui lòng nhập lại dữ liệu cho bảng này.")]
             [Display(Name = "Giá")]

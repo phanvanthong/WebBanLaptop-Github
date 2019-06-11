@@ -1,48 +1,39 @@
 ﻿
 @{
     ViewBag.Title = "QuenMatKhau";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/LoginAdmin.cshtml";
 }
 
-<p style="font-size:50px;text-align:center">Quên mật khẩu Admin?</p>
+@*<p style="font-size:50px;text-align:center">Quên mật khẩu Admin?</p>*@
 <div class="container" style=" margin-top:100px">
     <div class="row">
-        <div class="col-sm-3 hidden-xs column-left" id="column-right">
-            <div class="recentpost left-sidebar-widget">
-                <div class="columnblock-title">Tài khoản</div>
-                <div class="category_block">
-                    <ul class="box-category">
-                        <li><a href="@Url.Action("DangNhap","Admin")">Đăng nhập</a></li>
-                        <li><a href="@Url.Action("QuenMatKhau","Admin")">Quên mật khẩu</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        
         <div id="content" class="col-sm-9">
-            <h1>Bạn quên mật khẩu?</h1>
-            <p>Nhập địa chỉ email liên kết với tài khoản của bạn để lấy lại mật khẩu.</p>
+            <h1 style="margin-top:-300px;margin-left:250px;margin-bottom:50px">Bạn quên mật khẩu?</h1>
+            <p style="margin-left:50px">Nhập địa chỉ email liên kết với tài khoản của bạn để lấy lại mật khẩu.</p>
             <form action="QuenMatKhau" method="post" enctype="multipart/form-data" class="form-horizontal">
                 <fieldset>
-                    <legend>
+                    @*<legend>
                         Địa chỉ email của bạn
-                    </legend>
+                    </legend>*@
                     <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-email">Nhập tên đăng nhập</label>
+                        @*<label class="col-sm-2 control-label" for="input-email">Nhập tên đăng nhập</label>*@
                         <div class="col-sm-10">
-                            <input type="text" name="username" value="" placeholder="Tên đăng nhập" id="username" class="form-control" required />
+                            <input style="margin-left:180px" type="text" name="username" value="" placeholder="Tên đăng nhập" id="username" class="form-control" required />
                         </div>
                     </div>
                     <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-email">Nhập E-Mail</label>
+                        @*<label class="col-sm-2 control-label" for="input-email">Nhập E-Mail</label>*@
                         <div class="col-sm-10">
-                            <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required />
+                            <input style="margin-left:180px" type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control" required />
                         </div>
                     </div>
                 </fieldset>
-                <p style="color:red">@ViewBag.Resetpwd</p>
+                <p style="color:red;margin-left:-150px">@ViewBag.Resetpwd</p>
                 <div class="buttons clearfix">
                     <div class="pull-right">
                         <input type="submit" value="Tiếp tục" class="btn btn-primary" />
+                        <a href="/Admin/DangNhap"><input style="margin-right:150px;margin-left:50px" type="button" value="Đăng Nhập" class="btn btn-primary" /></a>
                     </div>
                 </div>
             </form>

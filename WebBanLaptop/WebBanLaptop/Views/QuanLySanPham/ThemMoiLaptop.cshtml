@@ -1,186 +1,158 @@
-﻿@model WebBanLaptop.Models.Product
-
+﻿
 @{
     ViewBag.Title = "ThemMoiLaptop";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
+@using WebBanLaptop.Models;
 
-@using (Html.BeginForm("ThemMoiLaptop", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Thêm mới Laptop</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Products_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Products_id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Products_id, "", new { @class = "text-danger" })
-            </div>
+<div class="container ">
+    <div class="row">
+        <div class="col-sm-9" id="content">
+            @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
+            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="ThemMoiLaptop" name="FormThemMoi">
+                <h2 style="font-size:50px; margin-bottom:40px;margin-left:150px;padding-top:20px;color:aqua">Thêm mới laptop</h2>
+                
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Tên laptop</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-Name" placeholder="Tên laptop" value="" name="Name" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-password" class="col-sm-2 control-label">Hãng CPU</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-HangCPU" placeholder="Hãng CPU" value="" name="HangCPU" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label style="white-space:nowrap" for="input-firstname" class="col-sm-2 control-label">Công nghệ CPU</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-CNCPU" placeholder="Công nghệ CPU" value="" name="CNCPU" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Tốc độ max</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-TocDoMax" placeholder="Tốc độ max" value="" name="TocDoMax" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Ram</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-MemoryRam" placeholder="Ram" value="" name="MemoryRam" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Loại ram</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-LoaiRam" placeholder="Loại ram" value="" name="LoaiRam" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Bus ram</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-BusRam" placeholder="Bus ram" value="" name="BusRam" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Số khe ram</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="input-KheRam" placeholder="Số khe ram" value="" name="KheRam" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Ổ đĩa</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-ODia" placeholder="Ổ đĩa" value="" name="ODia" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Dung lượng ổ đĩa</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-DungLuongODia" placeholder="Dung lượng ổ đĩa" value="" name="DungLuongODia" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Card đồ họa</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-CardDohoa" placeholder="Card đồ họa" value="" name="CardDohoa" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Màn hình</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-ManhHinh" placeholder="Màn hình" value="" name="ManhHinh" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Độ phân giải</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-Dophangiai" placeholder="Độ phân giải" value="" name="Dophangiai" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Giá</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="input-Gia" placeholder="Giá" value="" name="Gia" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Số lượng</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="input-Soluong" placeholder="Số lượng" value="" name="Soluong" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Khuyến mãi</label>
+                    <select style="padding-left:-25px;width:100px" name="Discount_id" required>
+                        @{
+                            var listdiscount = (List<Discount>)ViewBag.Discount;
+                            foreach (var item in listdiscount)
+                            {
+                                <option value="@item.Discount_id"> @item.value%</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Hãng sản xuất</label>
+                    <select style="padding-left:-25px;width:100px" name="Hangsx_id" required>
+                        @{
+                            var listhangsx = (List<Hangsx>)ViewBag.HangSX;
+                            foreach (var item in listhangsx)
+                            {
+                                <option value="@item.Hangsx_id"> @item.tenhang</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group" style="margin-top:20px;margin-bottom:20px;margin-left:-80px;width:1500px">
+                    <div class="col-md-10">
+                        
+                        <span class="uploadImg" style="margin-left:70px"></span><input id="upTrc" type="file" name="uploadChinh" onchange="uploadTrc()" />
+                        <span style="margin-left:80px"></span><input class="uploadImg" id="upCheo" type="file" name="uploadcheo" onchange="uploadCheo()" />
+                        <span style="margin-left:80px"></span><input class="uploadImg" id="upNgang" type="file" name="uploadngang" onchange="uploadNgang()" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Lưu" class="btn btn-default" />
+                        <a href="@Url.Action("ListLaptop", "QuanLySanPham")"><input type="button" name="trolai" value="Trở lại danh sách" class="btn btn-default" /></a>
+                    </div>
+                </div>
+
+
+            </form>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HangCPU, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HangCPU, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HangCPU, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CNCPU, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CNCPU, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CNCPU, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TocDoMax, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TocDoMax, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TocDoMax, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MemoryRam, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MemoryRam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MemoryRam, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LoaiRam, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LoaiRam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LoaiRam, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BusRam, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BusRam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BusRam, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.KheRam, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.KheRam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.KheRam, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ODia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ODia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ODia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DungLuongODia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DungLuongODia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DungLuongODia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CardDohoa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CardDohoa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CardDohoa, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ManhHinh, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ManhHinh, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ManhHinh, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Dophangiai, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Dophangiai, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Dophangiai, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Hangsx_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Hangsx_id") 
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Soluong, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Soluong, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Soluong, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Discount_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Discount_id")
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*@Html.DropDownList("MaKM")
-                @Html.ValidationMessageFor(model => model.Discount_id, "", new { @class = "text-danger" })*@
-                <span style="margin-left:130px">Ảnh</span><input type="file" name="fileupload" />
-            </div>
-        </div>
-        
-        @*<div class="form-group" >
-            @Html.LabelFor(model => model.Motasp, htmlAttributes: new { @class = "control-label col-md-2" })
-            <br /><div class="col-md-10" style="height:300px;margin-top:10px;padding-left:80px;" > 
-                <textarea style="height:250px;" ></textarea >
-            </div>
-        </div>*@
-    
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Lưu" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Trở về danh sách", "Listlaptop")
 </div>
+
+
+
+
+

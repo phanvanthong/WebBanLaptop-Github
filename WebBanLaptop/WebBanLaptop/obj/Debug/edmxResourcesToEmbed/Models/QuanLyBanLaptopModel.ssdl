@@ -27,26 +27,18 @@
     <Property Name="Hangsx_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tenhang" Type="nvarchar" MaxLength="255" />
   </EntityType>
-  <EntityType Name="NhanVien">
-    <Key>
-      <PropertyRef Name="nhanvien_id" />
-    </Key>
-    <Property Name="nhanvien_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ten" Type="nvarchar" MaxLength="50" />
-    <Property Name="tuoi" Type="int" />
-    <Property Name="chucvu" Type="nvarchar" MaxLength="50" />
-    <Property Name="ngayvaolam" Type="date" />
-    <Property Name="luong" Type="float" />
-  </EntityType>
   <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="Order_id" />
     </Key>
     <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Users_id" Type="int" />
+    <Property Name="fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
     <Property Name="tongtien" Type="float" />
     <Property Name="ngaytao" Type="datetime" />
-    <Property Name="giaohang" Type="nvarchar" MaxLength="50" />
     <Property Name="trangthai" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Orders_Details">
@@ -160,7 +152,6 @@
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Hangsx" EntityType="Self.Hangsx" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />

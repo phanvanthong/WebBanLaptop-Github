@@ -5,88 +5,79 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>Chỉnh sửa Admin</h2>
+@*<h2>Chỉnh sửa Admin</h2>*@
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.admin_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.admin_id, new { htmlAttributes = new { @class = "form-control" }} )
-                @Html.ValidationMessageFor(model => model.admin_id, "", new { @class = "text-danger" })
-            </div>
+<div class="container" style="margin-left:150px">
+    <div>
+        <h3 style="font-size:35px; margin-bottom:40px;margin-left:80px;color:aqua">Chỉnh sửa thông tin admin</h3>
+
+        <div class="col-sm-9" id="content">
+            @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
+            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="ChinhSuaAdmin" name="FormChinhSua" >
+                <fieldset id="account">
+
+                    <div class="form-group required">
+                        <label style="white-space:nowrap;text-align:left" for="input-firstname" class="col-sm-2 control-label pull-left">Admin_ID</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-admin_id" placeholder="Admin_ID" value="@Model.admin_id" name="admin_id" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label style="white-space:nowrap;text-align:left" for="input-firstname" class="col-sm-2 control-label pull-left">Tên đăng nhập</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-username" placeholder="Tên đăng nhập" value="@Model.username" name="username" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label style="white-space:nowrap;text-align:left" for="input-telephone" class="col-sm-2 control-label pull-left">Full name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-fullname" placeholder="Fullname" value="@Model.fullname" name="fullname" required>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label style="white-space:nowrap;text-align:left" for="input-password" class="col-sm-2 control-label pull-left">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-email" placeholder="Email" value="@Model.email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label style="white-space:nowrap;text-align:left" for="input-confirm" class="col-sm-2 control-label pull-left">Địa chỉ</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-address" placeholder="Địa chỉ" value="@Model.address" name="address">
+                        </div>
+                    </div>
+
+                    <div class="form-group required">
+                        <label style="white-space:nowrap;text-align:left" for="input-email" class="col-sm-2 control-label pull-left">Số điện thoại</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-phone" placeholder="Số điện thoại" value="@Model.phone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-group required">
+                        <label style="white-space:nowrap;text-align:left" for="input-email" class="col-sm-2 control-label pull-left">Level</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input-level_" placeholder="E-Mail" value="@Model.level_" name="level_" required>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+                <div class="buttons">
+
+                    <div class="pull-left" style="margin-left:10px">
+                        <input type="submit" class="btn btn-primary" value="Lưu">
+                    </div>
+                    <div class="pull-left" style="margin-left: 10px">
+                        <a href="@Url.Action("LstAdmin","QuanLyTaiKhoan")"><input type="button" class="btn btn-primary" value="Trở về danh sách"></a>
+                    </div>
+                </div>
+            </form>
+            @*<input type="submit" class="btn btn-primary" value="Tạo" disabled>*@
             
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.pwd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.pwd, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.pwd, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.level_, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.level_, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.level_, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fullname, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Lưu" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Trở về danh sách", "LstAdmin")
 </div>
+

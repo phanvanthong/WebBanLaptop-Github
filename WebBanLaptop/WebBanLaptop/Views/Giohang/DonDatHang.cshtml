@@ -29,7 +29,7 @@
                                     <td style="text-align:center" class="text-left">Số lượng</td>
                                     <td style="text-align:center" class="text-left">Giá</td>
                                     <td style="text-align:center" class="text-left">Ngày tạo</td>
-                                    <td style="text-align:center" class="text-left">Giao hàng</td>
+                                    @*<td style="text-align:center" class="text-left">Giao hàng</td>*@
                                     <td style="text-align:center" class="text-left">Tổng tiền</td>
                                 </tr>
                             </thead>
@@ -45,7 +45,7 @@
                                         }
                                         <td rowspan="@dem">1</td>
                                     </tr>*@
-                                @{var STT= 1;} 
+                                @{var thutu= 1;} 
                                 @foreach (var item in Model)
                                 {
                                     <tr>
@@ -72,7 +72,7 @@
                                                 var count = orderDetail.Count(n=>n.Order_id==item1.Order_id)+1;
                                                 if (item.Order_id==item1.Order_id)
                                                 {
-                                                    <td rowspan= @count>@STT</td>
+                                                    <td rowspan= @count>@thutu</td>
                                                     break;
                                                 }
                                             }
@@ -82,31 +82,32 @@
                                         {
                                             if (item.Order_id == item1.Order_id)
                                             {
-                                                <tr>
-                                                    @{
-                                                        Web_ban_laptopEntities db = new Web_ban_laptopEntities();
-                                                        Product product = db.Products.SingleOrDefault(n => n.Products_id == item1.products_id);
-                                                    }
-                                                    <td style="text-align:center" class="text-center"><a href="#"><img style="max-width:130px" class="img-thumbnail" title="@product.Name" alt="@product.Name" src="~/Content/Images/i3/@item1.products_id/trc.png"></a></td>
-                                                    <td style="text-align:center" class="text-left">  @product.Name</td>
-                                                    <td style="text-align:center" class="text-left">  @item1.soluongsp</td>
-                                                    <td style="text-align:center" class="text-left">  @item1.tongtien</td>
-                                                    <td style="text-align:center" class="text-left">  @item.ngaytao</td>
-                                                    <td style="text-align:center" class="text-left">  @item.giaohang</td>
-                                                    @if (ktra == 0)
-                                                    {
-                                                        var count1 = orderDetail.Count(n => n.Order_id == item1.Order_id);
-                                                        <td rowspan=@count1 style="text-align:center" class="text-right"> @string.Format("{0:0,0đ}", @item.tongtien)</td>
-                                                        ktra = 1;
-                                                    }
-                                                </tr>
+                                    <tr>
+                                        @{
+                                            Web_ban_laptopEntities db = new Web_ban_laptopEntities();
+                                            Product product = db.Products.SingleOrDefault(n => n.Products_id == item1.products_id);
+                                        }
+                                        <td style="text-align:center" class="text-center"><a href="#"><img style="max-width:130px" class="img-thumbnail" title="@product.Name" alt="@product.Name" src="~/Content/Images/i3/@item1.products_id/trc.png"></a></td>
+                                        <td style="text-align:center" class="text-left">  @product.Name</td>
+                                        <td style="text-align:center" class="text-left">  @item1.soluongsp</td>
+                                        <td style="text-align:center" class="text-left">  @item1.tongtien</td>
+
+                                        @*<td style="text-align:center" class="text-left">  @item.giaohang</td>*@
+                                        @if (ktra == 0)
+                                        {
+                                            var count1 = orderDetail.Count(n => n.Order_id == item1.Order_id);
+                                            <td rowspan=@count1 style="text-align:center" class="text-left">  @item.ngaytao</td>
+                                            <td rowspan=@count1 style="text-align:center" class="text-right"> @string.Format("{0:0,0đ}", @item.tongtien)</td>
+                                            ktra = 1;
+                                        }
+                                    </tr>
                                             }
                                             
                                         }
                                         @*<td style="text-align:center" class="text-center">@STT</td>*@
                                     </tr>
                                                             
-                                    STT += 1;
+                                    thutu += 1;
                                 }
                             </tbody>
                         </table>

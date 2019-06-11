@@ -14,18 +14,27 @@
             <div class="row">
                 <div class="col-sm-5">
                     <div class="thumbnails">
-                        <div><a class="thumbnail fancybox" href="#" title="Casual Shirt With Ruffle Hem"><img src="~/Content/Images/i3/@Model.Products_id/trc.png" title="@Model.Name" alt="iPod Classic" /></a></div>
+                        <div><a class="thumbnail fancybox"  title="Casual Shirt With Ruffle Hem"><img id="imgChinh" src="~/Content/Images/i3/@Model.Products_id/trc.png" title="@Model.Name" alt="iPod Classic" /></a></div>
                         <div class="anhsp" style="padding-left:80px;">
+                            <span class="anhspchon1" style="margin-right:5px;border: 1.5px solid red;" onclick="TD(@Model.Products_id,'trc'),Boder1()"><img src="~/Content/Images/i3/@Model.Products_id/trc.png" alt="iPod Classic"  /></span>
+                            <span class="anhspchon2" style="margin-right:5px;" onclick="TD(@Model.Products_id,'cheo'),Boder2()"><img src="~/Content/Images/i3/@Model.Products_id/cheo.png" alt="iPod Classic" /></span>
+                            <span class="anhspchon3" onclick="TD(@Model.Products_id,'ngang'),Boder3()"><img src="~/Content/Images/i3/@Model.Products_id/ngang.png" alt="iPod Classic"  /></span>
                             
-                            <span><img src="~/Content/Images/i3/@Model.Products_id/trc.png"  alt="iPod Classic" /></span>
-                            <span><img src="~/Content/Images/i3/@Model.Products_id/cheo.png"  alt="iPod Classic" /></span>
-                            <span><img src="~/Content/Images/i3/@Model.Products_id/ngang.png"  alt="iPod Classic" /></span>
+                            @*<span><img src="~/Content/Images/i3/@Model.Products_id/trc.png"  alt="iPod Classic" onclick="TD(@Model.Products_id,trc.png)" /></span>
+                            <span><img src="~/Content/Images/i3/@Model.Products_id/cheo.png"  alt="iPod Classic" onclick="TD(@Model.Products_id,cheo.png)" /></span>
+                            <span><img src="~/Content/Images/i3/@Model.Products_id/ngang.png"  alt="iPod Classic" onclick="TD(@Model.Products_id,ngang.png)" /></span>*@
                         </div>
-
+                        <style>
+                            /*.anhspchon:focus {
+                                border: 1px solid red;
+                                
+                            }*/
+                        </style>
+                        
                         
                     </div>
                 </div>
-                <div class="col-sm-7 prodetail">
+                <div class="col-sm-7 prodetail" style="margin-top:55px;">
                     <h1 class="productpage-title">@Model.Name</h1>
 
                     <ul class="list-unstyled productinfo-details-top">
@@ -62,12 +71,12 @@
 
                         </li>
                     </ul>
-                    <br /><br />
-                    <h2>Mô tả sản phẩm</h2>
+                    <br /><br /><br /><br />
+                    @*<h2>Mô tả sản phẩm</h2>
                     <hr>
                     <p class="product-desc">
                         @Model.Motasp
-                    </p>
+                    </p>*@
                     <div id="product">
                         <div class="form-group">
                             <div class="qty">
@@ -111,23 +120,50 @@
                     </div>
                 </div>
             </div>
-            <div class="productinfo-tab">
+            <div class="productinfo-tab" style="margin-left:500px;width">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab-description" data-toggle="tab">Thông số chi tiết</a></li>
+                    <li class="active"><a href="#tab-description" data-toggle="tab" onclick="ThongSo()">Thông số chi tiết</a></li>
                     @*<li><a href="#tab-review" data-toggle="tab">Reviews (1)</a></li>*@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab-description">
                         <div class="cpt_product_description ">
                             <div>
-                                <p> <strong>More room to move.</strong></p>
-                                <p> With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.</p>
-                                <p> <strong>Cover Flow.</strong></p>
-                                <p> Browse through your music collection by flipping through album art. Select an album to turn it over and see the track list.</p>
-                                <p> <strong>Enhanced interface.</strong></p>
-                                <p> Experience a whole new way to browse and view your music and video.</p>
-                                <p> <strong>Sleeker design.</strong></p>
-                                <p> Beautiful, durable, and sleeker than ever, iPod classic now features an anodized aluminum and polished stainless steel enclosure with rounded edges.</p>
+                                <table>
+                                    <tr>
+                                        <th style="width:150px">CPU :</th>
+                                        <td style="width:400px;margin-left:-20px;">@Model.HangCPU</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:150px">RAM :</th>
+                                        <td style="width:400px">@Model.MemoryRam</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:150px">Ổ cứng :</th>
+                                        <td style="width:400px">@Model.ODia</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:150px">Màn hình :</th>
+                                        <td style="width:400px">@Model.ManhHinh</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:150px">Card màn hình :</th>
+                                        <td style="width:400px">@Model.CardDohoa</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:150px">Cổng kết nối :</th>
+                                        <td style="width:400px">LAN : 10/100/1000 Mbps, WIFI : 802.11 ac</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:150px">Hệ điều hành :</th>
+                                        <td style="width:400px">Windows 10 Home Single Language 64 bit</td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:150px">Trong lượng :</th>
+                                        <td style="width:400px">2.27 kg</td>
+                                    </tr>
+                                </table>
+                                <input style="margin-top:20px;margin-left:30px;" class="btn btn-primary" type="button" name="XemChiTiet" value="Xem cấu hình chi tiết" onclick="ThongSo()"/>
                             </div>
                         </div>
                         <!-- cpt_container_end -->
@@ -138,20 +174,276 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade success-popup" id="SuccessMD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade success-popup" id="SuccessThongSo" tabindex="-1"  aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
+        <div class="modal-content" style="width:600px; margin-left:-100px">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title text-center" id="myModalLabel">Thank You !</h4>
+                <h4 class="modal-title text-center" id="myModalLabel">Thông số kỹ thuật chi tiết</h4>
             </div>
-            <div class="modal-body text-center">
-                <i class="fa fa-check-square-o" style="font-size: 50px;color: green;"></i>
-                <p class="lead">Sản phẩm đã được đưa vào giỏ hàng</p>
-                <a href="@Url.Action("Index","GioHang")" class="btn btn-success">Đến giỏ hàng</a>
+            <div class="modal-body text-center" style="line-height:30px;text-align:left">
+                <table>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Bộ xử lý:</td>
+                    </tr>                               
+                    <tr>
+                        <th>Hãng CPU: </th>
+                        <td>@Model.HangCPU</td>
+                    </tr>
+                    <tr>
+                        <th>Công nghệ CPU: </th>
+                        <td>@Model.CNCPU</td>
+                    </tr>
+                    <tr>
+                        <th>Tốc độ CPU: </th>
+                        <td>@Model.TocDoMax</td>
+                    </tr>
+                    <tr>
+                        <th>Bộ nhớ đệm: </th>
+                        <td>9 MB SmartCache</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Bo mạch:</td>
+                    </tr>
+                    <tr>
+                        <th>Chipset: </th>
+                        <td>@Model.HangCPU</td>
+                    </tr>
+                    <tr>
+                        <th>Tốc độ bus: </th>
+                        <td>@Model.BusRam</td>
+                    </tr>
+                    <tr>
+                        <th>Hỗ trợ RAM tối đa: </th>
+                        <td>32GB</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">RAM:</td>
+                    </tr>
+                    <tr>
+                        <th>Dung lượng RAM: </th>
+                        <td>@Model.MemoryRam</td>
+                    </tr>
+                    <tr>
+                        <th>Loại RAM: </th>
+                        <td>@Model.LoaiRam</td>
+                    </tr>
+                    <tr>
+                        <th>Tốc độ BUS RAM: </th>
+                        <td>@Model.MemoryRam</td>
+                    </tr>
+                    <tr>
+                        <th>Số lượng khe cắm: </th>
+                        <td>@Model.KheRam</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Đĩa cứng:</td>
+                    </tr>
+                    <tr>
+                        <th>Loại ổ đĩa: </th>
+                        <td>@Model.ODia</td>
+                    </tr>
+                    <tr>
+                        <th>Dung lượng ổ đĩa: </th>
+                        <td>@Model.DungLuongODia</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Đồ họa:</td>
+                    </tr>
+                    <tr>
+                        <th>Chipset đồ họa: </th>
+                        <td>@Model.CardDohoa</td>
+                    </tr>
+                    <tr>
+                        <th>Bộ nhớ đồ họa: </th>
+                        <td>4 GB DDR5</td>
+                    </tr>
+                    <tr>
+                        <th>Kiểu thiết kế đồ họa: </th>
+                        <td>Card rời</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Màn hình:</td>
+                    </tr>
+                    <tr>
+                        <th>Kíc thước màn hình: </th>
+                        <td>@Model.ManhHinh</td>
+                    </tr>
+                    <tr>
+                        <th>Độ phân giải: </th>
+                        <td>@Model.Dophangiai</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Âm thanh:</td>
+                    </tr>
+                    <tr>
+                        <th>Kênh âm thanh: </th>
+                        <td>2.0</td>
+                    </tr>
+                    <tr>
+                        <th>Thông tin thêm: </th>
+                        <td>Realtek High Definition Audio (DTS® Headphone: X®)</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Đĩa quang:</td>
+                    </tr>
+                    <tr>
+                        <th>Có sẵn đĩa quang: </th>
+                        <td>Không</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Tính năng mở rộng & cổng giao tiếp:</td>
+                    </tr>
+                    <tr>
+                        <th>Cổng giao tiếp: </th>
+                        <td>2 x USB 3.0 ; 1 x USB 2.0; 1 x HDMI ; 1 x RJ45 ; 1 x Microphone-in/Headphone-out Combo</td>
+                    </tr>
+                    <tr>
+                        <th>Tính năng mở rộng: </th>
+                        <td>1 x SSD SATA (M2 2280)</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Giao tiếp mạng:</td>
+                    </tr>
+                    <tr>
+                        <th>LAN: </th>
+                        <td>10/100/1000 Mbps</td>
+                    </tr>
+                    <tr>
+                        <th>Chuẩn Wi-Fi :</th>
+                        <td>802.11 ac</td>
+                    </tr>
+                    <tr>
+                        <th>Kết nối không dây khác :</th>
+                        <td>Bluetooth 5.0</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Card Reader:</td>
+                    </tr>
+                    <tr>
+                        <th>Đọc thẻ nhớ:</th>
+                        <td>Không</td>
+                    </tr>
+                    <tr>
+                        <th>Khe đọc thẻ nhớ:</th>
+                        <td>Không</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Webcam:</td>
+                    </tr>
+                    <tr>
+                        <th>Độ phân giải:</th>
+                        <td>1.0 MP</td>
+                    </tr>
+                    <tr>
+                        <th>Thông tin thêm:</th>
+                        <td>Built-in dual microphone</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Hệ điều hành, phầm mềm có sẵn:</td>
+                    </tr>
+                    <tr>
+                        <th>Hệ điều hành :</th>
+                        <td>Windows 10 Home Single Language 64 bit</td>
+                    </tr>
+                    <tr>
+                        <th>Phần mềm có sẵn :</th>
+                        <td>Không</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">PIN/Battery:</td>
+                    </tr>
+                    <tr>
+                        <th>Loại pin :</th>
+                        <td>3 Cell Int (11.4V-48Wh, 4240mAh)</td>
+                    </tr>
+                    <tr>
+                        <th>Kiểu pin :</th>
+                        <td>Liền</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Kích thước & trọng lượng</td>
+                    </tr>
+                    <tr>
+                        <th>Kích Thước :</th>
+                        <td>384 x 262 x 25 mm</td>
+                    </tr>
+                    <tr>
+                        <th>Trọng lượng :</th>
+                        <td>2.27 kg</td>
+                    </tr>
+                    <tr>
+                        <th>Chất liệu :</th>
+                        <td>Nhôm</td>
+                    </tr>
+                    <tr style="color:red;font-weight: bold;">
+                        <td colspan="2" style="font-weight: bold;">Bảo hành</td>
+                    </tr>
+                    <tr>
+                        <th>Bảo hành :</th>
+                        <td>Nhôm</td>
+                    </tr>
+
+                </table>
+                
             </div>
 
         </div>
     </div>
 </div>
+
+
+
+<script>
+    function TD(id,img) {
+        $("#imgChinh").attr('src', "/Content/Images/i3/" + id + "/" + img + ".png");
+    }
+
+    function ThongSo() {
+        $('#SuccessThongSo').modal('show');
+        $('.modal-backdrop').hide();
+
+        //$('#SuccessThongSo.model.fade.in').hide();
+    }
+</script>
+
+<script>
+    function Boder1() {
+        debugger
+        const a = document.querySelector('.anhspchon2');
+        a.style.border = '0px';
+        const b = document.querySelector('.anhspchon3');
+        b.style.border = '0px';
+        const c = document.querySelector('.anhspchon1');
+        c.style.border = '1.5px solid red';
+    }
+    function Boder2() {
+        debugger
+        const a = document.querySelector('.anhspchon1');
+        a.style.border = '0px';
+        const b = document.querySelector('.anhspchon3');
+        b.style.border = '0px';
+        const c = document.querySelector('.anhspchon2');
+        c.style.border = '1.5px solid red';
+    }
+    function Boder3() {
+        debugger
+        const a = document.querySelector('.anhspchon2');
+        a.style.border = '0px';
+        const b = document.querySelector('.anhspchon1');
+        b.style.border = '0px';
+        const c = document.querySelector('.anhspchon3');
+        c.style.border = '1.5px solid red';
+    }
+</script>
+
+<style>
+    td{
+       
+        padding-left:30px;
+    }
+    th {
+        padding-left: 30px;
+        width:200px;
+    }
+</style>

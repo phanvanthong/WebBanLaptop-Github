@@ -194,7 +194,7 @@ namespace WebBanLaptop.Controllers
             order.Users_id = us.Users_id;
             order.ngaytao = DateTime.Now;
             order.tongtien = (double)Session["TienThanhToan"];
-            order.giaohang = "COD";
+            //order.giaohang = "COD";
             db.Orders.Add(order);
             db.SaveChanges();
             List<Giohang> gh = LayGioHang();

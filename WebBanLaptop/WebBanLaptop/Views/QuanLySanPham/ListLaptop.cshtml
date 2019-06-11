@@ -10,7 +10,7 @@
 
 
 <p>
-    @Html.ActionLink("Thêm mới laptop", "ThemMoiLaptop")
+    <a href="@Url.Action("ThemMoiLaptop", "QuanLySanPham")"><input type="button" name="themmoi" value="Thêm mới laptop" class="btn btn-default" /></a>
 </p>
 <table class="table">
     <tr style="background-color:#1f1c2030">
@@ -41,7 +41,7 @@
     @foreach (var item in Model)
     {
         string bg = "";
-        if (x % 2 == 0) { bg = "white"; }
+        if (x % 2 == 0) { bg = "#363232"; }
         else
         {
             bg = "#1f1c2030";
@@ -62,7 +62,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td style="text-align:center;padding-top:35px;font-size:15px">
-                @Html.DisplayFor(modelItem => item.Gia)
+                
+                @string.Format("{0:0,0đ}",item.Gia)
             </td>
             <td style="text-align:center;padding-top:35px;font-size:15px">
                 @Html.DisplayFor(modelItem => item.Soluong)
@@ -85,9 +86,11 @@
 </table>
 
 @*Tạo link liên kết các trang*@
-Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
-<div class="Menutrang">
-    @Html.PagedListPager(Model, page => Url.Action("ListLaptop", new { @page = page }))
+<div style="text-align:center; margin-top:20px">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="Menutrang" style="margin-left:530px">
+        @Html.PagedListPager(Model, page => Url.Action("ListLaptop", new { @page = page }))
+    </div>
 </div>
 <style>
     .Menutrang li {

@@ -177,9 +177,9 @@ namespace WebBanLaptop.Controllers
             {
                 //db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 user1.address = user.address;
-                user.email = user1.email;
-                user.fullname = user1.fullname;
-                user.phone = user1.phone;
+                user1.email = user.email;
+                user1.fullname = user.fullname;
+                user1.phone = user.phone;
                 db.SaveChanges();
             }
             return RedirectToAction("LstUser");

@@ -29,26 +29,18 @@
     <Property Name="tenhang" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Pro_hangsx" FromRole="Hangsx" ToRole="Products" />
   </EntityType>
-  <EntityType Name="NhanVien">
-    <Key>
-      <PropertyRef Name="nhanvien_id" />
-    </Key>
-    <Property Name="nhanvien_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tuoi" Type="Int32" />
-    <Property Name="chucvu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ngayvaolam" Type="DateTime" Precision="0" />
-    <Property Name="luong" Type="Double" />
-  </EntityType>
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="Order_id" />
     </Key>
     <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Users_id" Type="Int32" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="tongtien" Type="Double" />
     <Property Name="ngaytao" Type="DateTime" Precision="3" />
-    <Property Name="giaohang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="trangthai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="User" Relationship="Self.FK_Order_user" FromRole="Orders" ToRole="Users" />
     <NavigationProperty Name="Orders_Details" Relationship="Self.FK_ordersD_orders" FromRole="Orders" ToRole="Orders_Details" />
@@ -170,7 +162,6 @@
     <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="Discounts" EntityType="Self.Discount" />
     <EntitySet Name="Hangsxes" EntityType="Self.Hangsx" />
-    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Orders_Details" EntityType="Self.Orders_Details" />
     <EntitySet Name="Products" EntityType="Self.Product" />

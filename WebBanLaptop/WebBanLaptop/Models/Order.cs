@@ -22,9 +22,12 @@ namespace WebBanLaptop.Models
     
         public int Order_id { get; set; }
         public Nullable<int> Users_id { get; set; }
+        public string fullname { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
+        public string address { get; set; }
         public Nullable<double> tongtien { get; set; }
         public Nullable<System.DateTime> ngaytao { get; set; }
-        public string giaohang { get; set; }
         public string trangthai { get; set; }
     
         public virtual User User { get; set; }

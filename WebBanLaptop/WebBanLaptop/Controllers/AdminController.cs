@@ -26,6 +26,7 @@ namespace WebBanLaptop.Controllers
             {
                 return Redirect("Index");
             }
+            
             return View();
         }
 
@@ -38,6 +39,16 @@ namespace WebBanLaptop.Controllers
             {
                 Session["Admin"] = ad as Admin;
                 Session["AdminName"] = ad.username;
+                if (Session["rmbAdmin"] == "true")
+                {
+                    Session["rmbAdminName"] = ad.username;
+                    Session["rmbAdminPwd"] = ad.pwd;
+                }
+                else
+                {
+                    Session["rmbAdminName"] = null;
+                    Session["rmbAdminPwd"] = null;
+                }
                 return RedirectToAction("Index", "Admin");
             }
             else
@@ -52,6 +63,35 @@ namespace WebBanLaptop.Controllers
             Session["Admin"] = null;
             Session["AdminName"] = null;
             return Redirect("DangNhap");
+        }
+
+        public ActionResult DangKy()
+        {
+            if (Session["Admin"] != null)
+            {
+                return Redirect("DangNhap");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DangKy(Admin admin, string pwdconfirm)
+        {
+            Admin ad = db.Admins.SingleOrDefault(n => n.username == admin.username);
+            if (ad != null)
+            {
+                ViewBag.DangKy = "Tên đăng nhập đã tồn tại!";
+                return View();
+            }
+            else if (admin.pwd != pwdconfirm)
+            {
+                ViewBag.DangKy = "Đăng ký không thành công. Mật khẩu không trùng khớp!";
+                return View();
+            }
+            db.Admins.Add(admin);
+            db.SaveChanges();
+            ViewBag.DangKy = "Đăng ký thành công!";
+            return View();
         }
 
         public ActionResult QuenMatKhau()
@@ -94,14 +134,16 @@ namespace WebBanLaptop.Controllers
             if (pwdnew != pwdconfirm)
             {
                 ViewBag.Resetpwd = "Mật khẩu không trùng khớp!";
+                return View(ad);
             }
             else
             {
                 ViewBag.Resetpwd = "Đổi mật khẩu thành công";
                 ad.pwd = pwdnew;
                 db.SaveChanges();
+                return RedirectToAction("PwdComplete", "Admin");
             }
-            return View(ad);
+            
         }
 
         public ActionResult ThayDoiMK()
@@ -130,34 +172,7 @@ namespace WebBanLaptop.Controllers
             return View(ad);
         }
 
-        public ActionResult DangKy()
-        {
-            if (Session["Admin"] == null)
-            {
-                return Redirect("DangNhap");
-            }
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult DangKy(Admin admin, string pwdconfirm)
-        {
-            Admin ad = db.Admins.SingleOrDefault(n => n.username == admin.username);
-            if (ad != null)
-            {
-                ViewBag.DangKy = "Tên đăng nhập đã tồn tại!";
-                return View();
-            }
-            else if (admin.pwd != pwdconfirm)
-            {
-                ViewBag.DangKy = "Đăng ký không thành công. Mật khẩu không trùng khớp!";
-                return View();
-            }
-            db.Admins.Add(admin);
-            db.SaveChanges();
-            ViewBag.DangKy = "Đăng ký thành công!";
-            return View();
-        }
+        
 
         public ActionResult Thongtincanhan()
         {
@@ -181,6 +196,27 @@ namespace WebBanLaptop.Controllers
             Session["Admin"] = ad;
             ViewBag.Thongtincanhan = "Thay đổi thành công!";
             return View();
+        }
+
+        public ActionResult PwdComplete()
+        {
+            return View();
+        }
+
+        public ActionResult rmbLogin(string cartModel)
+        {
+            if (cartModel == "0")
+            {
+                Session["rmbAdmin"] = "false";
+            }
+            else
+            {
+                Session["rmbAdmin"] = "true";
+            }
+            return Json(new
+            {
+                status = true
+            });
         }
     }
 }

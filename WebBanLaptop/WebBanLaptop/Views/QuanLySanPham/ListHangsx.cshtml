@@ -9,7 +9,7 @@
 
 
 <p>
-    @Html.ActionLink("Thêm mới hãng sản xuất", "ThemMoiHangsx")
+    <a href="@Url.Action("ThemMoiHangsx", "QuanLySanPham")"><input type="button" name="themmoi" value="Thêm mới hãng sản xuất" class="btn btn-default" /></a>
 </p>
 <table class="table">
     <tr>
@@ -33,7 +33,7 @@
             </td>
             <td>
                 @Html.ActionLink("Chỉnh sửa", "ChinhSuaHangsx", new { @id = item.Hangsx_id }) |
-                @Html.ActionLink("Hiển thị", "HienThiHangsx", new { @id = item.Hangsx_id }) |
+                @*@Html.ActionLink("Hiển thị", "HienThiHangsx", new { @id = item.Hangsx_id }) |*@
                 @Html.ActionLink("Xóa", "XoaHangsx", new { @id = item.Hangsx_id })
             </td>
         </tr>

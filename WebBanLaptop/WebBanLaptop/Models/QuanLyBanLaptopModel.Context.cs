@@ -28,7 +28,6 @@ namespace WebBanLaptop.Models
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
         public virtual DbSet<Hangsx> Hangsxes { get; set; }
-        public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Orders_Details> Orders_Details { get; set; }
         public virtual DbSet<Product> Products { get; set; }

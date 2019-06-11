@@ -31,26 +31,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NhanViens">
-      <EntityTypeMapping TypeName="Web_ban_laptopModel.NhanVien">
-        <MappingFragment StoreEntitySet="NhanVien">
-          <ScalarProperty Name="nhanvien_id" ColumnName="nhanvien_id" />
-          <ScalarProperty Name="ten" ColumnName="ten" />
-          <ScalarProperty Name="tuoi" ColumnName="tuoi" />
-          <ScalarProperty Name="chucvu" ColumnName="chucvu" />
-          <ScalarProperty Name="ngayvaolam" ColumnName="ngayvaolam" />
-          <ScalarProperty Name="luong" ColumnName="luong" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="Web_ban_laptopModel.Order">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="Order_id" ColumnName="Order_id" />
           <ScalarProperty Name="Users_id" ColumnName="Users_id" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="tongtien" ColumnName="tongtien" />
           <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
-          <ScalarProperty Name="giaohang" ColumnName="giaohang" />
           <ScalarProperty Name="trangthai" ColumnName="trangthai" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -1,60 +1,68 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/LoginAdmin.cshtml";
 }
-<p style="font-size:50px;text-align:center">Đăng nhập admin</p>
-<div class="container" style="margin-left:350px; margin-top:100px">
-    <div class="row">
-        <div class="col-sm-3 hidden-xs column-left" id="column-left">
-            <div class="Categories left-sidebar-widget">
-                <div class="columnblock-title">Tài khoản</div>
-                <div class="category_block">
-                    <ul class="box-category">
-                        <li><a href="@Url.Action("DangNhap","Admin")">Đăng nhập</a></li>
-                        <li><a href="@Url.Action("QuenMatKhau","Admin")">Quên mật khẩu</a></li>
-                    </ul>
+
+<div class="auth_div vivify popIn">
+    <div class="auth_brand">
+        @*<a class="navbar-brand" href="javascript:void(0);"><img src="~/Assets/Admin/assets/images/icon.svg" width="30" height="30" class="d-inline-block align-top mr-2" alt="">MoonStore</a>*@
+    </div>
+    <div class="card">
+        <div class="body">
+            <p class="lead">Đăng nhập</p>
+            <div class="alert " role="alert">@Html.Raw(ViewBag.Status)</div>
+            <form class="form-auth-small m-t-20" action="@Url.Action("DangNhap","Admin")" method="post">
+                <div class="form-group">
+                    <label for="signin-email" class="control-label sr-only">Username</label>
+                    <input type="text" class="form-control round" id="login-username" value="@Session["rmbAdminName"]" name="username" placeholder="Username">
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-9" id="content">
-            <div class="row">
-                @*<div class="col-sm-6">
-                        <h2>New Customer</h2>
-                        <p>Checkout Options:</p>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="account" value="register" checked="checked">
-                                Register Account
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="account" value="guest">
-                                Guest Checkout
-                            </label>
-                        </div>
-                        <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-                        <input type="button" value="Continue" id="button-account" data-loading-text="Loading..." class="btn btn-primary">
-                    </div>*@
-                <form action="DangNhap" method="post">
-                    <div class="col-sm-6" style="margin-left:50px">
-                        <h2>Đăng nhập</h2>
-                        <div class="form-group">
-                            <label class="control-label" for="input-email">Tên đăng nhập</label>
-                            <input type="text" name="username" value="" placeholder="Username" id="input-email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="input-password">Mật khẩu</label>
-                            <input type="password" name="pwd" value="" placeholder="Password" id="input-password" class="form-control" required>
-                            <a href="forgetpassword.html" class="forgot">Quên mật khẩu</a>
-                            <p style="color:red">@ViewBag.ErrorMessage</p>
-                        </div>
-                        <input type="submit" value="Đăng nhập" id="button-login" data-loading-text="Loading..." class="btn btn-primary">
-                    </div>
-                </form>
-            </div>
+                <div class="form-group">
+                    <label for="signin-password" class="control-label sr-only">Password</label>
+                    <input type="password" class="form-control round" id="login-password" value="@Session["rmbAdminPwd"]" name="pwd" placeholder="Password">
+                </div>
+                <div class="form-group clearfix">
+                    <label class="fancy-checkbox element-left">
+                        <input type="checkbox"  id="login-remember">
+                        <span>Ghi nhớ</span>
+                    </label>
+                </div>
+                @ViewBag.ErrorMessage
+                <button type="submit" id="DangNhap" class="btn btn-primary btn-round btn-block">Đăng nhập</button>
+                <div class="bottom">
+                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="/Admin/QuenMatKhau">Quên mật khẩu?</a></span>
+                    @*<span>Bạn chưa có tài khoản? <a href="/Admin/DangKy">Đăng ký</a></span>*@
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
+<script>
+    window.onload = function () {
+        debugger
+        if (document.getElementById("login-password").value == "") {
+            document.getElementById("login-remember").checked = false;
+        }
+        else {
+            document.getElementById("login-remember").checked = true;
+        }
+    };
+
+    document.getElementById('DangNhap').onclick = function (e) {
+        debugger
+        var a = 0;
+        if ($('#login-remember').is(":checked")) {
+            a = 1;
+        }
+
+        $.ajax({ //gửi dữ liệu đi
+            url: '/Admin/rmbLogin', //đường dẫn tới file xử lý
+            data: { cartModel:a }, //các dữ liệu gửi đi
+            dataType: 'json', //?
+            type: 'POST',
+
+        });
+    }
+
+</script>

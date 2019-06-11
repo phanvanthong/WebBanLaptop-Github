@@ -11,11 +11,11 @@
     <div class="row">
         @*<div style="margin-left:200px;margin-top:50px">*@
         <form action="@Url.Action("CapNhatTrangThai", "QuanLyDonHang",order)" method="post" style="margin-left:200px;margin-top:50px">
-            <h2>Đơn hàng @order.trangthai</h2>
+            <h2>Đơn hàng <span style="color:red">@order.trangthai</span></h2>
             <p>Mã đơn hàng: @order.Order_id</p>
             <p>Tên khách hàng: @ViewBag.user &nbsp;&nbsp;&nbsp;&nbsp;</p>
             <p>Ngày tạo: @order.ngaytao.</p>
-            <p>Giao hàng: @order.giaohang </p>
+            <p>Giao hàng: Ship COD </p>
             <p>Tổng hóa đơn (bao gồm VAT): @string.Format("{0:0,0đ}", order.tongtien) </p>
             <p>
                 Trạng thái: @{<select name="trangthai" required>
@@ -48,21 +48,21 @@
                     </select> }
             </p>
             @*<div><a class="btn btn-primary" href="@Url.Action("CapNhatTrangThai","QuanLyDonHang")" title="Cập nhật trạng thái">Cập nhật trạng thái</a></div>*@
-            <button type="submit">Cập nhật trạng thái</button>
+            <button type="submit" class="btn btn-primary">Cập nhật trạng thái</button>
             <span style="margin-left:15px;color:red">@ViewBag.trangthai</span>
             @*</div>*@
         </form>
 
         <div class="col-sm-9" id="content">
             <form enctype="multipart/form-data" method="post" action="#">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
+                <div class="table-responsive" style="width:1500px">
+                    <table class="table table-bordered" style="margin-left:185px;margin-top:20px;width:800px">
                         <thead>
                             <tr>
                                 <td style="text-align:center" class="text-center">Ảnh</td>
-                                <td style="text-align:center" class="text-left">Tên sản phẩm</td>
-                                <td style="text-align:center" class="text-left">Số lượng</td>
-                                <td style="text-align:center" class="text-right">Tổng tiền</td>
+                                <td style="text-align:center" class="text-center">Tên sản phẩm</td>
+                                <td style="text-align:center" class="text-center">Số lượng</td>
+                                <td style="text-align:center" class="text-center">Tổng tiền</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,11 +71,11 @@
                             {
                                 <tr>
                                     <td style="text-align:center" class="text-center"><a href="#"><img style="max-width:130px" class="img-thumbnail" title="@item.Product.Name" alt="@item.Product.Name" src="~/Content/Images/i3/@item.products_id/trc.png"></a></td>
-                                    <td style="text-align:center;padding-top:50px" class="text-left"><a href="@Url.Action("Index","ChiTietSanPham",new { @id=item.products_id })">@item.Product.Name</a></td>
-                                    <td style="text-align:center;padding-top:50px" class="text-left">
-                                        @item.soluongsp
+                                    <td style="text-align:center;padding-top:50px" class="text-center"><p style="text-align:center"><a href="@Url.Action("Index","ChiTietSanPham",new { @id=item.products_id })">@item.Product.Name</a></p></td>
+                                    <td style="text-align:center;padding-top:50px" class="text-center">
+                                        <p style="text-align:center">@item.soluongsp</p>
                                     </td>
-                                    <td style="text-align:center;padding-top:50px" class="text-right">@string.Format("{0:0,0đ}", @item.tongtien)</td>
+                                    <td style="text-align:center;padding-top:50px" class="text-right"><p style="text-align:center">@string.Format("{0:0,0đ}", @item.tongtien)</p></td>
                                 </tr>
                             }
                         </tbody>
