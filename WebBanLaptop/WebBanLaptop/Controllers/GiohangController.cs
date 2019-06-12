@@ -1,5 +1,7 @@
-﻿ using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -55,7 +57,10 @@ namespace WebBanLaptop.Controllers
 
         }
 
-        
+        public ActionResult DatHangThanhCong()
+        {
+            return View();
+        }
 
         //Thêm giỏ hang
         //public ActionResult ThemGioHang(int iMaSP,string strURL )
@@ -140,6 +145,75 @@ namespace WebBanLaptop.Controllers
                 return RedirectToAction("DangNhap", "Users");
             }
             return View();
+        }
+        [HttpPost]
+        public ActionResult ThongtinKH(Order order, string city_id, string district_id, string ward_id, string sonha_id)
+        {
+            if (city_id == "")
+            {
+                ViewBag.Address = "Vui lòng chọn thành phố!";
+                return View();
+            }
+            else if (district_id == "")
+            {
+                ViewBag.Address = "Vui lòng chọn quận huyện!";
+                return View();
+            }
+            else if (ward_id == "")
+            {
+                ViewBag.Address = "Vui lòng chọn phường xã!";
+                return View();
+            }
+            else if (sonha_id == "")
+            {
+                ViewBag.Address = "Vui lòng điền số nhà!";
+                return View();
+            }
+            //return RedirectToAction("DatHang","Cart",  new { order, sonha_id, district_id, ward_id });
+
+            List<Giohang> lstGioHang = Session["GioHang" + Session["DangNhap"]] as List<Giohang>;
+            User user = Session["User"] as User;
+
+            order.address += sonha_id;
+            Dictionary<string, RootObject> items = new Dictionary<string, RootObject>();
+            string tmp = "";
+            var pathWard = Path.Combine(Server.MapPath("~/Content/NguoiDungCssLayout/json/xa-phuong/" + district_id + ".json"));
+            using (StreamReader rd = new StreamReader(pathWard))
+            {
+                tmp = rd.ReadToEnd();
+                items = JsonConvert.DeserializeObject<Dictionary<string, RootObject>>(tmp);
+                tmp = "";
+                foreach (var item in items)
+                {
+                    if (item.Key == ward_id)
+                    {
+                        order.address += ", " + item.Value.Path_with_type;
+                        break;
+                    }
+                }
+            }
+            order.Users_id = user.Users_id;
+            order.ngaytao = DateTime.Now;
+            order.tongtien = (double)Session["TienThanhToan"];
+            order.trangthai = "Chưa xác nhận";
+
+            db.Orders.Add(order);
+            db.SaveChanges();
+            List<Giohang> gh = LayGioHang();
+
+            foreach (var item in gh)
+            {
+                Orders_Details orderD = new Orders_Details();
+                orderD.Order_id = order.Order_id;
+                orderD.products_id = item.iMaSP;
+                orderD.soluongsp = item.iSoLuong;
+                orderD.tongtien = item.dThanhTien;
+                db.Orders_Details.Add(orderD);
+                //string[] arrListStr = str.Split(',');
+            }
+            db.SaveChanges();
+            Session["GioHang" + Session["DangNhap"]] = null;
+            return Redirect("DatHangThanhCong");
         }
 
         //Xóa giỏ hàng
@@ -445,7 +519,53 @@ namespace WebBanLaptop.Controllers
         }
         #endregion
 
-        
+        #region Load dữ liệu quận huyện
+        public JsonResult LoadData_District(string city_ID)
+        {
+            string tmp = "";
+            if (city_ID != "")
+            {
+                var pathJson = Path.Combine(Server.MapPath("~/Content/NguoiDungCssLayout/json/quan-huyen/" + city_ID + ".json"));
+                //ObJson json = new ObJson();
+                using (StreamReader r = new StreamReader(pathJson))
+                {
+                    tmp = r.ReadToEnd();
+                    r.Close();
+                }
+            }
+
+
+            return Json(new
+            {
+                status = true,
+                data = tmp
+            });
+        }
+        #endregion
+
+        #region Load dữ liệu Phường xã
+        public JsonResult LoadData_Ward(string district_id)
+        {
+            string tmp = "";
+            if (district_id != "")
+            {
+                var pathJson = Path.Combine(Server.MapPath("~/Content/NguoiDungCssLayout/json/xa-phuong/" + district_id + ".json"));
+                //ObJson json = new ObJson();            
+                using (StreamReader r = new StreamReader(pathJson))
+                {
+                    tmp = r.ReadToEnd();
+                    r.Close();
+                }
+            }
+
+
+            return Json(new
+            {
+                status = true,
+                data = tmp
+            });
+        }
+        #endregion
 
     }
 }

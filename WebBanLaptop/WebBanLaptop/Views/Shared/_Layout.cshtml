@@ -101,8 +101,8 @@
                                         </ul>
                                     </li>
                                     @*<li>
-                                        <a href="@Url.Action("Index","Blog")" class="parent" id="Blog-id">Blog</a>
-                                    </li>*@
+                                            <a href="@Url.Action("Index","Blog")" class="parent" id="Blog-id">Blog</a>
+                                        </li>*@
                                     <li>
                                         <a class="active parent" id="Diadiem-id">Địa điểm</a>
                                         <ul>
@@ -130,12 +130,12 @@
         </div>
     </header>
     @*<div class="mainbanner">
-        <div id="main-banner" class="owl-carousel home-slider">
-            <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner1.jpg" alt="main-banner1" class="img-responsive" /></a> </div>
-            <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner2.jpg" alt="main-banner2" class="img-responsive" /></a> </div>
-            <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner3.jpg" alt="main-banner3" class="img-responsive" /></a> </div>
-        </div>
-    </div>*@
+            <div id="main-banner" class="owl-carousel home-slider">
+                <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner1.jpg" alt="main-banner1" class="img-responsive" /></a> </div>
+                <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner2.jpg" alt="main-banner2" class="img-responsive" /></a> </div>
+                <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner3.jpg" alt="main-banner3" class="img-responsive" /></a> </div>
+            </div>
+        </div>*@
     @RenderBody()
     <footer style="margin-top:100px">
         <div class="container">
@@ -220,21 +220,21 @@
         <a id="scrollup">Scroll</a>
     </footer>
     <div class="modal fade success-popup" id="SuccessMD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title text-center" id="myModalLabel">Thank You !</h4>
-            </div>
-            <div class="modal-body text-center">
-                <i class="fa fa-check-square-o" style="font-size: 50px;color: green;"></i>
-                <p class="lead">Sản phẩm đã được đưa vào giỏ hàng</p>
-                <a href="@Url.Action("Index","GioHang")" class="btn btn-success">Đến giỏ hàng</a>
-            </div>
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">Thank You !</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa fa-check-square-o" style="font-size: 50px;color: green;"></i>
+                    <p class="lead">Sản phẩm đã được đưa vào giỏ hàng</p>
+                    <a href="@Url.Action("Index","GioHang")" class="btn btn-success">Đến giỏ hàng</a>
+                </div>
 
+            </div>
         </div>
     </div>
-</div>  
     <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/jquery.parallax.js"></script>
     <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/bootstrap/js/bootstrap.min.js"></script>
@@ -244,5 +244,6 @@
     <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/global.js"></script>
     <script type="text/javascript" src="~/Content/NguoiDungCssLayout/javascript/owl-carousel/owl.carousel.min.js"></script>
     <script src="~/Content/NguoiDungCssLayout/javascript/Cart.js"></script>
+    <script src="~/Content/NguoiDungCssLayout/javascript/MyJavascrip.js"></script>
 </body>
 </html>
