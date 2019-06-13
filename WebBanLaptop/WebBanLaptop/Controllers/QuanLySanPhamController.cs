@@ -24,6 +24,87 @@ namespace WebBanLaptop.Controllers
         //    return View();
         //}
 
+        //[HttpPost]
+        //public ActionResult TimKiemLaptop(FormCollection f, int page = 1)
+        //{
+        //    List<Product> lstproduct1 = db.Database.SqlQuery<Product>("Select *from product").ToList<Product>();
+        //    string TuKhoaLaptop = f["TuKhoaLaptop"].ToString();
+        //    ViewBag.TuKhoaLaptop = TuKhoaLaptop;
+        //    string query = "select *from products where name like '%" + TuKhoaLaptop + "%'";
+        //    List<Product> lstKQTK = db.Database.SqlQuery<Product>(query).ToList<Product>();
+        //    if (lstKQTK.Count == 0)
+        //    {
+        //        ViewBag.TimKiem = "Không tìm thấy kết quả nào";
+        //    }
+        //    else
+        //    {
+        //        ViewBag.TimKiem = "Tìm thấy " + lstKQTK.Count + " kết quả";
+        //    }
+        //    int pageNumber = page;
+        //    int pageSize = 12;
+        //    ViewBag.SlLaptop = lstKQTK.Count();
+        //    return View(lstKQTK.ToPagedList(pageNumber, pageSize));
+        //}
+
+        [HttpGet]
+
+        public ActionResult TimKiemLaptop(string TuKhoaLaptop, int page = 1)
+        {
+            ViewBag.TuKhoaLaptop = TuKhoaLaptop;
+            string query = "select *from products where name like '%" + TuKhoaLaptop + "%'";
+            List<Product> lstKQTK = db.Database.SqlQuery<Product>(query).ToList<Product>();
+            if (lstKQTK.Count == 0)
+            {
+                ViewBag.TimKiemLaptop = "Không tìm thấy kết quả nào";
+            }
+            else
+            {
+                ViewBag.TimKiemLaptop = "Tìm thấy " + lstKQTK.Count + " kết quả";
+            }
+            int pageNumber = page;
+            int pageSize = 12;
+            //ViewBag.SlLaptop = lstKQTK.Count();
+            return View(db.Database.SqlQuery<Product>(query).ToList<Product>().ToPagedList(pageNumber, pageSize));
+            
+        }
+
+        public ActionResult TimKiemKM(string TuKhoaKM, int page = 1)
+        {
+            ViewBag.TuKhoaKM = TuKhoaKM;
+            string query = "select *from Discount where value like '%" + TuKhoaKM + "%'";
+            List<Discount> lstKQTK = db.Database.SqlQuery<Discount>(query).ToList<Discount>();
+            if (lstKQTK.Count == 0)
+            {
+                ViewBag.TimKiemKM = "Không tìm thấy kết quả nào";
+            }
+            else
+            {
+                ViewBag.TimKiemKM = "Tìm thấy " + lstKQTK.Count + " kết quả";
+            }
+            int pageNumber = page;
+            int pageSize = 12;
+            return View(db.Database.SqlQuery<Discount>(query).ToList<Discount>().ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult TimKiemHangsx(string TuKhoaHangsx, int page = 1)
+        {
+            ViewBag.TuKhoaHangsx = TuKhoaHangsx;
+            string query = "select *from Hangsx where tenhang like '%" + TuKhoaHangsx + "%'";
+            List<Hangsx> lstKQTK = db.Database.SqlQuery<Hangsx>(query).ToList<Hangsx>();
+            if (lstKQTK.Count == 0)
+            {
+                ViewBag.TimKiemHangsx = "Không tìm thấy kết quả nào";
+            }
+            else
+            {
+                ViewBag.TimKiemHangsx = "Tìm thấy " + lstKQTK.Count + " kết quả";
+            }
+            int pageNumber = page;
+            int pageSize = 12;
+            return View(lstKQTK.ToPagedList(pageNumber, pageSize));
+
+        }
 
         //Quản lý Laptop
         public ActionResult ListLaptop(int? page) //List laptop

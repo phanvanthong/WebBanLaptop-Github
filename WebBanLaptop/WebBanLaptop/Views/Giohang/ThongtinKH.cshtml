@@ -12,7 +12,7 @@
         <div class="col-sm-9" id="content">
             <form class="form-horizontal" enctype="multipart/form-data" method="post" action="ThongtinKH" name="FormDky">
                 <fieldset id="account">
-                    <legend>Thông tin khách hàng</legend>
+                    <legend>Nhập thông tin, địa chỉ nhận hàng</legend>
                     <div class="form-group required">
                         <label for="input-firstname" class="col-sm-2 control-label">Họ và tên</label>
                         <div class="col-sm-10">
@@ -136,8 +136,9 @@
                         @*I have read and agree to the <a class="agree" href="#"><b>Privacy Policy</b></a>
                         <input type="checkbox" value="1" name="agree">
                         &nbsp;*@
+                        <span style="margin-right:430px;color:red">@ViewBag.Address</span>
                         <input type="submit" class="btn btn-primary" value="Đặt hàng">
-                            <span style="margin-left:15px;color:red">@ViewBag.Address</span>
+                            
                     </div>
                 </div>
             </form>

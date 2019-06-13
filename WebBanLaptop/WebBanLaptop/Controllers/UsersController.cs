@@ -10,6 +10,7 @@ namespace WebBanLaptop.Controllers
     public class UsersController : Controller
     {
         // GET: Users
+        //HttpCookie httpCookie = new HttpCookie("UserInfo");
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
         public ActionResult DangNhap()
         {
@@ -28,8 +29,22 @@ namespace WebBanLaptop.Controllers
             User us1 = db.Users.SingleOrDefault(n => n.username == user.username && n.pwd == user.pwd);
             if(us1!=null)
             {
+                //httpCookie["Username"] = us1.Users_id.ToString();
+                //httpCookie["Pwd"] = us1.pwd.ToString();
+                //httpCookie.Expires.AddDays(3); //số ngày tồn tại cookie 
+                //Response.Cookies.Add(httpCookie);
                 Session["User"] = us1 as User;
                 Session["DangNhap"] = us1.username;
+                if (Session["rmbUser"] == "true")
+                {
+                    Session["rmbUserName"] = us1.username;
+                    Session["rmbUserPwd"] = us1.pwd;
+                }
+                else
+                {
+                    Session["rmbUserName"] = null;
+                    Session["rmbUserPwd"] = null;
+                }
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -175,6 +190,22 @@ namespace WebBanLaptop.Controllers
             Session["User"] = us1;
             ViewBag.Thongtincanhan = "Thay đổi thành công!";
             return View();
+        }
+
+        public ActionResult rmbLogin(string cartModel)
+        {
+            if (cartModel == "0")
+            {
+                Session["rmbUser"] = "false";
+            }
+            else
+            {
+                Session["rmbUser"] = "true";
+            }
+            return Json(new
+            {
+                status = true
+            });
         }
 
 

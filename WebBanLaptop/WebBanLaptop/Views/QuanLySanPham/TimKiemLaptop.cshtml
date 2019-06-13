@@ -1,0 +1,127 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using WebBanLaptop.Models;
+@model PagedList.PagedList<WebBanLaptop.Models.Product>
+
+@{
+    ViewBag.Title = "TimKiemLaptop";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    Web_ban_laptopEntities db = new Web_ban_laptopEntities();
+}
+
+<div class="body" style="width:800px;padding-bottom:20px;">
+    <form id="navbar-search" class="navbar-form search-form" action="TimKiemLaptop">
+        <div class="input-group mb-0">
+            <input type="text" class="form-control" value="@ViewBag.TuKhoaLaptop" name="TuKhoaLaptop" placeholder="Tìm kiếm..." required>
+            <div class="input-group-append">
+                @*<span class="input-group-text"><i class="icon-magnifier"></i></span>*@
+                <button type="submit" style="background-color: transparent;border-color: transparent;margin-left: -7px;margin-top: -4px;"><span style="height:36px" class="input-group-text"><i class="icon-magnifier"></i></span></button>
+            </div>
+        </div>
+    </form>
+</div>
+@if (Model.Count == 0)
+{
+    <p>@ViewBag.TimKiemLaptop</p>
+}
+else
+{
+    <p>@ViewBag.TimKiemLaptop</p>
+    <p>
+        <a href="@Url.Action("ThemMoiLaptop", "QuanLySanPham")"><input type="button" name="themmoi" value="Thêm mới laptop" class="btn btn-default" /></a>
+    </p>
+    <table class="table">
+        <tr style="background-color:#1f1c2030">
+
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.First().Products_id)
+            </th>
+            <th style="text-align:center">Ảnh sản phẩm</th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.First().Name)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.First().Gia)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.First().Soluong)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.First().Discount_id)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.First().Hangsx_id)
+            </th>
+            <th style="text-align:center"></th>
+        </tr>
+
+        @{var x = 0; }
+        @foreach (var item in Model)
+        {
+            string bg = "";
+            if (x % 2 == 0) { bg = "#363232"; }
+            else
+            {
+                bg = "#1f1c2030";
+            }
+            <tr style="background-color:@bg">
+
+                <td style="text-align:center;padding-top:35px;font-size:15px">
+                    @Html.DisplayFor(modelItem => item.Products_id)
+                    @{
+                        Html.DisplayFor(modelItem => item.Products_id);
+                        var id = item.Products_id;
+                    }
+                </td>
+                <td style="text-align:center">
+                    <img src="~/Content/Images/i3/@id/trc.png" alt="Alternate Text" style="width:100px; height:80px" />
+                </td>
+                <td style="text-align:center;padding-top:35px;font-size:15px">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="text-align:center;padding-top:35px;font-size:15px">
+
+                    @string.Format("{0:0,0đ}", item.Gia)
+                </td>
+                <td style="text-align:center;padding-top:35px;font-size:15px">
+                    @Html.DisplayFor(modelItem => item.Soluong)
+                </td>
+                <td style="text-align:center;padding-top:35px;font-size:15px">
+                    @{ 
+                        Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == item.Discount_id);
+                    }
+                    @Html.DisplayFor(modelItem => discount.value)%
+                </td>
+                <td style="text-align:center;padding-top:35px;font-size:15px">
+                    @{
+                        Hangsx hangsx = db.Hangsxes.SingleOrDefault(n => n.Hangsx_id == item.Hangsx_id);
+                    }
+                    @Html.DisplayFor(modelItem => hangsx.tenhang)
+                </td>
+                <td style="text-align:center;padding-top:35px;font-size:15px">
+                    @Html.ActionLink("Chỉnh Sửa", "ChinhSuaLaptop", new { @id = item.Products_id }) |
+                    @Html.ActionLink("Hiển Thị", "HienThiLaptop", new { @id = item.Products_id }) |
+                    @Html.ActionLink("Xóa", "XoaLaptop", new { @id = item.Products_id })
+                </td>
+            </tr>
+            x += 1;
+        }
+
+    </table>
+
+    @*Tạo link liên kết các trang*@
+    <div style=" margin-left:530px; margin-top:20px">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <div class="Menutrang">
+            @Html.PagedListPager(Model, page => Url.Action("TimKiemLaptop", "QuanLySanPham", new { @TuKhoaLaptop = ViewBag.TuKhoaLaptop, @page = page }))
+        </div>
+    </div>
+}
+<style>
+    .Menutrang li {
+        padding-left: 8px;
+        display: inline;
+    }
+</style>
+
+

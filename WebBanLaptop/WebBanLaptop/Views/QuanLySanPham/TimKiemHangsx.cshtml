@@ -1,0 +1,75 @@
+﻿
+@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.PagedList<WebBanLaptop.Models.Hangsx>
+@{
+    ViewBag.Title = "ListHangsx";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="body" style="width:800px;padding-bottom:20px;">
+    <form id="navbar-search" class="navbar-form search-form" action="TimKiemHangsx">
+        <div class="input-group mb-0">
+            <input type="text" class="form-control" value="@ViewBag.TuKhoaHangsx" name="TuKhoaHangsx" placeholder="Tìm kiếm..." required>
+            <div class="input-group-append">
+                @*<span class="input-group-text"><i class="icon-magnifier"></i></span>*@
+                <button type="submit" style="background-color: transparent;border-color: transparent;margin-left: -7px;margin-top: -4px;"><span style="height:36px" class="input-group-text"><i class="icon-magnifier"></i></span></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@if (Model.Count() == 0)
+{
+    <p>Không tìm thấy hãng sản xuất nào!</p>
+}
+else
+{
+    <p>@ViewBag.TimKiemHangsx</p>
+    <p>
+        <a href="@Url.Action("ThemMoiHangsx", "QuanLySanPham")"><input type="button" name="themmoi" value="Thêm mới hãng sản xuất" class="btn btn-default" /></a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Hangsx_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().tenhang)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hangsx_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenhang)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "ChinhSuaHangsx", new { @id = item.Hangsx_id }) |
+                    @*@Html.ActionLink("Hiển thị", "HienThiHangsx", new { @id = item.Hangsx_id }) |*@
+                    @Html.ActionLink("Xóa", "XoaHangsx", new { @id = item.Hangsx_id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @*Tạo link liên kết các trang*@
+    <div style=" margin-top:20px">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <div class="Menutrang" >
+            @Html.PagedListPager(Model, page => Url.Action("TimKiemHangsx", "QuanLySanPham", new { @TuKhoaHangsx = ViewBag.TuKhoaHangsx, @page = page }))
+        </div>
+    </div>
+}
+
+<style>
+    .Menutrang li {
+        padding-left: 8px;
+        display: inline;
+    }
+</style>

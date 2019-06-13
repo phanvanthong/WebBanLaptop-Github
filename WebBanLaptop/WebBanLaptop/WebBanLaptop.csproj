@@ -2090,6 +2090,9 @@
     <Content Include="Views\Admin\PwdComplete.cshtml" />
     <Content Include="Views\QuanLySanPham\ThemMoiLaptop.cshtml" />
     <Content Include="Views\Giohang\DatHangThanhCong.cshtml" />
+    <Content Include="Views\QuanLySanPham\TimKiemLaptop.cshtml" />
+    <Content Include="Views\QuanLySanPham\TimKiemKM.cshtml" />
+    <Content Include="Views\QuanLySanPham\TimKiemHangsx.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
