@@ -74,7 +74,6 @@
           <Property Name="CardDohoa" Type="nvarchar" MaxLength="255" />
           <Property Name="ManhHinh" Type="nvarchar" MaxLength="50" />
           <Property Name="Dophangiai" Type="nvarchar" MaxLength="50" />
-          <Property Name="Motasp" Type="nvarchar" MaxLength="255" />
           <Property Name="Gia" Type="float" />
           <Property Name="Soluong" Type="int" />
           <Property Name="Ngaytao" Type="datetime" />
@@ -262,7 +261,6 @@
           <Property Name="CardDohoa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ManhHinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Dophangiai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Motasp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Gia" Type="Double" />
           <Property Name="Soluong" Type="Int32" />
           <Property Name="Ngaytao" Type="DateTime" Precision="3" />
@@ -452,7 +450,6 @@
                 <ScalarProperty Name="CardDohoa" ColumnName="CardDohoa" />
                 <ScalarProperty Name="ManhHinh" ColumnName="ManhHinh" />
                 <ScalarProperty Name="Dophangiai" ColumnName="Dophangiai" />
-                <ScalarProperty Name="Motasp" ColumnName="Motasp" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
                 <ScalarProperty Name="Soluong" ColumnName="Soluong" />
                 <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />

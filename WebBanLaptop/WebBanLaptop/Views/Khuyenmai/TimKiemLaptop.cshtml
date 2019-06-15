@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "TimKiemLaptop";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +11,7 @@
 @model PagedList.PagedList<WebBanLaptop.Models.Product>
 
 @{ Web_ban_laptopEntities db = new Web_ban_laptopEntities();}
-<form id="navbar-search" class="navbar-form search-form" action="@Url.Action("TimKiemLaptop","Laptop")">
+<form id="navbar-search" class="navbar-form search-form" action="@Url.Action("TimKiemLaptop","KhuyenMai")">
     <div style="width:680px;margin-top:20px;margin-left:200px;background:#000">
         @{
             List<Hangsx> lsthangsx = db.Hangsxes.OrderBy(n => n.Hangsx_id).ToList();
@@ -33,22 +33,78 @@
         <label style="margin-left:22px;">Giá:</label>
         <select name="gia" style="margin-left:10px">
             <option value="">--chọn--</option>
-            <option value="1">Dưới 10,000,000đ</option>
-            <option value="2">10,000,000đ-20,000,000đ</option>
-            <option value="3">20,000,000đ-30,000,000đ</option>
-            <option value="4">30,000,000đ-40,000,000đ</option>
-            <option value="5">40,000,000đ-50,000,000đ</option>
-            <option value="6">50,000,000đ-60,000,000đ</option>
-            <option value="7">60,000,000đ-70,000,000đ</option>
-            <option value="8">70,000,000đ-80,000,000đ</option>
+            @if (ViewBag.gia == "1")
+            {
+                <option value="1" selected>Dưới 10,000,000đ</option>}
+            else
+            {
+                <option value="1">Dưới 10,000,000đ</option>}
+            @if (ViewBag.gia == "2")
+            {
+                <option value="2" selected>10,000,000đ-20,000,000đ</option>}
+            else
+            {
+                <option value="2">10,000,000đ-20,000,000đ</option>}
+            @if (ViewBag.gia == "3")
+            {
+                <option value="3" selected>20,000,000đ-30,000,000đ</option>}
+            else
+            {
+                <option value="3">20,000,000đ-30,000,000đ</option>}
+            @if (ViewBag.gia == "4")
+            {
+                <option value="4" selected>30,000,000đ-40,000,000đ</option>}
+            else
+            {
+                <option value="4">30,000,000đ-40,000,000đ</option>}
+            @if (ViewBag.gia == "5")
+            {
+                <option value="5" selected>40,000,000đ-50,000,000đ</option>}
+            else
+            {
+                <option value="5">40,000,000đ-50,000,000đ</option>}
+            @if (ViewBag.gia == "6")
+            {
+                <option value="6" selected>50,000,000đ-60,000,000đ</option>}
+            else
+            {
+                <option value="6">50,000,000đ-60,000,000đ</option>}
+            @if (ViewBag.gia == "7")
+            {
+                <option value="7" selected>60,000,000đ-70,000,000đ</option>}
+            else
+            {
+                <option value="7">60,000,000đ-70,000,000đ</option>}
+            @if (ViewBag.gia == "8")
+            {
+                <option value="8" selected>70,000,000đ-80,000,000đ</option>}
+            else
+            {
+                <option value="8">70,000,000đ-80,000,000đ</option>}
+
         </select>
 
-        <label style="margin-left:35px;">Màn hình: </label>
+        <label style="margin-left:15px;">Màn hình: </label>
         <select name="manhinh" style="margin-left:15px">
             <option value="">--chọn--</option>
-            <option value="13.3inchs">13.3inchs</option>
-            <option value="14inchs">14inchs</option>
-            <option value="15.6inchs">15.6inchs</option>
+            @if (ViewBag.manhinh == "13.3inchs")
+            {
+                <option value="13.3inchs" selected>13.3inchs</option> }
+            else
+            {
+                <option value="13.3inchs">13.3inchs</option>}
+            @if (ViewBag.manhinh == "14inchs")
+            {
+                <option value="14inchs" selected>14inchs</option>}
+            else
+            {
+                <option value="14inchs">14inchs</option>}
+            @if (ViewBag.manhinh == "15.6inchs")
+            {
+                <option value="15.6inchs" selected>15.6inchs</option>}
+            else
+            {
+                <option value="15.6inchs">15.6inchs</option>}
         </select><br />
 
     </div>
@@ -62,28 +118,58 @@
             <option value="">--chọn--</option>
             @foreach (var item in lstdiscount)
             {
-                <option value="@item.Discount_id">@item.value%</option>
+                if (ViewBag.khuyenmai == item.Discount_id.ToString())
+                {
+                    <option value="@item.Discount_id" selected>@item.value%</option> }
+                else
+                {
+                    <option value="@item.Discount_id">@item.value%</option>}
             }
         </select>
 
         <label style="margin-left:15px;">RAM: </label>
         <select name="RAM">
             <option value="">--chọn--</option>
-            <option value="4Gb">4Gb</option>
-            <option value="8Gb">8Gb</option>
-            <option value="12Gb">12Gb</option>
+            @if (ViewBag.RAM == "4Gb")
+            {
+                <option value="4Gb" selected>4Gb</option>}
+            else
+            {
+                <option value="4Gb">4Gb</option>}
+            @if (ViewBag.RAM == "8Gb")
+            {
+                <option value="8Gb" selected>8Gb</option>}
+            else
+            {
+                <option value="8Gb">8Gb</option>}
+            @if (ViewBag.RAM == "12Gb")
+            {
+                <option value="12Gb" selected>12Gb</option>}
+            else
+            {
+                <option value="12Gb">12Gb</option>}
         </select>
 
-        <label style="margin-left:140px;">Loại ổ cứng: </label>
+        <label style="margin-left:125px;">Loại ổ cứng: </label>
         <select name="ocung" style="width:85px">
             <option value="">--chọn--</option>
-            <option value="HDD">HDD</option>
-            <option value="SSD">SSD</option>
+            @if (ViewBag.ocung == "HDD")
+            {
+                <option value="HDD" selected>HDD</option>}
+            else
+            {
+                <option value="HDD">HDD</option>}
+            @if (ViewBag.ocung == "SSD")
+            {
+                <option value="SSD" selected>SSD</option>}
+            else
+            {
+                <option value="SSD">SSD</option>}
         </select>
     </div>
     <input type="submit" name="name" value="Lọc" class="btn btn-default" />
 </form>
-
+<p style="margin-left:215px;clear:left">@ViewBag.TimKiemLaptop</p>
 <div class="container">
     <div class="mainbanner">
         @*<div id="main-banner" class="owl-carousel home-slider">
@@ -117,19 +203,17 @@
                             <div class="caption product-detail">
 
                                 <h4 class="product-name"><a href="#" title="@item.Name"><span style="color:#000;font-size:15px">@item.Name</span></a></h4>
-                                @*<p class="price product-price">*@
-                                @*<span class="price-tax">Ex Tax: $100.00</span>*@
                                 @{
-                                    if (item.Discount.value == 0)
+                                    Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == item.Discount_id);
+                                    if (discount.value == 0)
                                     {
                                         <p class="price product-price" style="font-size:18px;color:red">@string.Format("{0:0,0}", item.Gia)đ </p>
                                     }
                                     else
                                     {
-                                        <p class="price product-price" style="color:red;font-size:18px"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike><span style="font-size:15px;color:#0e8497;margin-left:5px">-@item.Discount.value%</span></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
+                                        <p class="price product-price" style="font-size:18px;color:red"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike><span style="font-size:15px;color:#0e8497;margin-left:5px">-@discount.value%</span></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - discount.value / 100))đ</p>
                                     }
                                 }
-                                @*</p>*@
                             </div>
                         </div>
                     </div>
@@ -142,16 +226,20 @@
             @*Tạo link liên kết các trang*@
             @*<br />Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
             <div class="Menutrang" style="margin-left:50px;clear:left">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { @page = page }))
+                @Html.PagedListPager(Model, page => Url.Action("TimKiemLaptop", "Laptop", new { @hangsx = ViewBag.hangsx, @gia = ViewBag.gia, @manhinh = ViewBag.manhinh, @khuyenmai = ViewBag.khuyenmai, @RAM = ViewBag.RAM, @ocung = ViewBag.ocung, @page = page }))
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    const a = document.querySelector('#Laptop-id');
+    const a = document.querySelector('#Khuyenmai-id');
     a.style.color = '#ffc527';
 </script>
+
+
+
+
 
 
 

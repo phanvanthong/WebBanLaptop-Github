@@ -5,92 +5,149 @@
 }
 @using PagedList.Mvc;
 @using PagedList;
+@using WebBanLaptop.Models;
 @model PagedList.PagedList<WebBanLaptop.Models.Product>
 
-<p style="margin-left:170px">@ViewBag.TimKiem</p>
-<div class="container">
-    <div class="mainbanner">
-        <div id="main-banner" class="owl-carousel home-slider">
-            @* <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner1.jpg" alt="main-banner1" class="img-banner" /></a> </div>*@
+@{
+    Web_ban_laptopEntities db = new Web_ban_laptopEntities();
+}
+<form action="TimKiem/TimKiemLaptop">
+    <div style="width:680px;margin-top:20px;margin-left:200px;background:#000">
+        @{
+            List<Hangsx> lsthangsx = db.Hangsxes.OrderBy(n => n.Hangsx_id).ToList();
+        }
+        <label>Hãng sản xuất: </label>
+        <select name="hangsx">
+            <option value="">--chọn--</option>
+            @foreach (var item in lsthangsx)
+            {
+                <option value="@item.Hangsx_id">@item.tenhang</option>
+            }
+        </select>
 
-        </div>
+        <label style="margin-left:22px;">Giá:</label>
+        <select name="gia" style="margin-left:10px">
+            <option value="">--chọn--</option>
+            <option value="1">Dưới 10,000,000đ</option>
+            <option value="2">10,000,000đ-20,000,000đ</option>
+            <option value="3">20,000,000đ-30,000,000đ</option>
+            <option value="4">30,000,000đ-40,000,000đ</option>
+            <option value="5">40,000,000đ-50,000,000đ</option>
+            <option value="6">50,000,000đ-60,000,000đ</option>
+            <option value="7">60,000,000đ-70,000,000đ</option>
+            <option value="8">70,000,000đ-80,000,000đ</option>
+        </select>
+
+        <label style="margin-left:35px;">Màn hình: </label>
+        <select name="manhinh" style="margin-left:15px">
+            <option value="">--chọn--</option>
+            <option value="13.3inchs">13.3inchs</option>
+            <option value="14inchs">14inchs</option>
+            <option value="15.6inchs">15.6inchs</option>
+        </select><br />
+
     </div>
 
+    <div style="margin-top:10px;margin-bottom:15px;width:680px;float:left;margin-left:200px;background:#000;margin-right:15px">
+        @{
+            List<Discount> lstdiscount = db.Discounts.OrderBy(n => n.Discount_id).ToList();
+        }
+        <label>Khuyến mãi: </label>
+        <select name="khuyenmai" style="margin-left:15px;width:91px;">
+            <option value="">--chọn--</option>
+            @foreach (var item in lstdiscount)
+            {
+                <option value="@item.Discount_id">@item.value%</option>
+            }
+        </select>
 
-    <div class="row content">
+        <label style="margin-left:15px;">RAM: </label>
+        <select name="RAM">
+            <option value="">--chọn--</option>
+            <option value="4Gb">4Gb</option>
+            <option value="8Gb">8Gb</option>
+            <option value="12Gb">12Gb</option>
+        </select>
+
+        <label style="margin-left:140px;">Loại ổ cứng: </label>
+        <select name="ocung" style="width:85px">
+            <option value="">--chọn--</option>
+            <option value="HDD">HDD</option>
+            <option value="SSD">SSD</option>
+        </select>
+    </div>
+    <input type="submit" name="name" value="Lọc" class="btn btn-default" />
+</form>
+    <p style="margin-left:200px;clear:left">@ViewBag.TimKiem</p>
+    <div class="container">
+        <div class="mainbanner">
+            <div id="main-banner" class="owl-carousel home-slider">
+                @* <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner1.jpg" alt="main-banner1" class="img-banner" /></a> </div>*@
+
+            </div>
+        </div>
 
 
-        @foreach (var item in Model)
-        {
-            <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="item">
-                    <div class="product-thumb">
-                        <div class="image product-imageblock">
-                            <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/@item.Products_id/trc.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> <img src="~/Content/Images/i3/@item.Products_id/cheo.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> </a>
-                            <ul class="button-group">
-                                <li>
-                                    @*<button  type="button" class="addtocart-btn" title="Mua ngay"> <a href="@Url.Action("Index", "GioHang")">Mua ngay</a> </button>*@
-                                    <div class="pull-left">
-                                        <a class="btn btn-primary " href="@Url.Action("MuaNgay", "GioHang", new { @id=item.Products_id })" title="Mua ngay">Mua ngay</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    @*<button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><a href="@Url.Action("ThemGioHang", "GioHang", new {@iMaSP=item.Products_id,@strURl = Request.Url.ToString()})"><i class="fa fa-cart-plus"></i></a></button>*@
-                                    <div class="pull-right">
-                                        <a class="btn btn-primary Add-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id" title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="caption product-detail">
+        <div class="row content">
 
-                            <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">@item.Name</a></h4>
-                            @{
-                                if (item.Discount.value == 0)
-                                {
-                                    <p class="price product-price" style="font-size:18px;color:red">@string.Format("{0:0,0}", item.Gia)đ </p>
+
+            @foreach (var item in Model)
+            {
+                <div class="product-layout  product-grid  col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="item">
+                        <div class="product-thumb">
+                            <div class="image product-imageblock">
+                                <a href="@Url.Action("index", "ChiTietSanpham", new { @id = item.Products_id })"> <img src="~/Content/Images/i3/@item.Products_id/trc.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> <img src="~/Content/Images/i3/@item.Products_id/cheo.png" alt="@item.Name" title="@item.Name" class="img-responsive" /> </a>
+                                <ul class="button-group">
+                                    <li>
+                                        @*<button  type="button" class="addtocart-btn" title="Mua ngay"> <a href="@Url.Action("Index", "GioHang")">Mua ngay</a> </button>*@
+                                        <div class="pull-left">
+                                            <a class="btn btn-primary " href="@Url.Action("MuaNgay", "GioHang", new { @id=item.Products_id })" title="Mua ngay">Mua ngay</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        @*<button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><a href="@Url.Action("ThemGioHang", "GioHang", new {@iMaSP=item.Products_id,@strURl = Request.Url.ToString()})"><i class="fa fa-cart-plus"></i></a></button>*@
+                                        <div class="pull-right">
+                                            <a class="btn btn-primary Add-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id" title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="caption product-detail">
+
+                                <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">@item.Name</a></h4>
+                                @{
+                                    Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == item.Discount_id);
+                                    if (discount.value==0)
+                                    {
+                                        <p class="price product-price" style="font-size:18px;color:red">@string.Format("{0:0,0}", item.Gia)đ </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="price product-price" style="font-size:18px;color:red"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike><span style="font-size:15px;color:#0e8497;margin-left:5px">-@discount.value%</span></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - discount.value / 100))đ</p>
+                                    }
                                 }
-                                else
-                                {
-                                    <p class="price product-price" style="font-size:18px;color:red"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
-                                }
-                            }
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
 
 
-        @*Tạo link liên kết các trang*@
-        @*<br />Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
-        <div style=" text-align:center">
-            <div class="Menutrang" style="margin-left:50px;">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { @tukhoa = ViewBag.TuKhoa, @page = page}))
+            @*Tạo link liên kết các trang*@
+            @*<br />Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
+            <div style=" text-align:center">
+                <div class="Menutrang" style="margin-left:50px;clear:left">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { @tukhoa = ViewBag.TuKhoa, @page = page }))
+                </div>
             </div>
-        </div>
-        @*<style>
-                .Menutrang li {
-                    padding-left: 8px;
-                    display: inline;
-                }
-            </style>*@
-    </div>
-</div>
-
-<div class="modal fade success-popup" id="SuccessMD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title text-center" id="myModalLabel">Thank You !</h4>
-            </div>
-            <div class="modal-body text-center">
-                <i class="fa fa-check-square-o" style="font-size: 50px;color: green;"></i>
-                <p class="lead">Sản phẩm đã được đưa vào giỏ hàng</p>
-                <a href="@Url.Action("Index","GioHang")" class="btn btn-success">Đến giỏ hàng</a>
-            </div>
-
+            @*<style>
+                    .Menutrang li {
+                        padding-left: 8px;
+                        display: inline;
+                    }
+                </style>*@
         </div>
     </div>
-</div>
+
+  

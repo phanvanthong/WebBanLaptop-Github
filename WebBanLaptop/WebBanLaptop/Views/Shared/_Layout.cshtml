@@ -22,12 +22,12 @@
                     <div class="col-sm-12">
                         <div class="top-left pull-left">
                             <div class="wel-come-msg"> Chào mừng bạn đã đến với MoonStore! </div>
-                            @*<form action="TimKiem" method="post" style="width:1210px">*@
-                            @using (Html.BeginForm("Index", "TimKiem"))
-                            {
+                            <form action="@Url.Action("Index","TimKiem")" style="width:1210px">
+                            @*@using (Html.BeginForm("Index", "TimKiem"))
+                            {*@
                                 <div style="width:1210px">
                                     <div id="txtTimkiem">
-                                        <input type="text" name="txtTimKiem" placeholder="  Nhập vào từ khóa cần tìm..." value="@ViewBag.TuKhoa" style="width:300px" required />
+                                        <input type="text" name="Tukhoa" placeholder="  Nhập vào từ khóa cần tìm..." value="@ViewBag.TuKhoa" style="width:300px" required />
                                         @*<a href="@Url.Action("Index", "TimKiem")"><i class="fa fa-search"></i></a>*@
                                         <button type="submit" style="background-color:#ffc527"><i class="fa fa-search"></i></button>
                                     </div>
@@ -45,8 +45,8 @@
                                         }
                                     </div>
                                 </div>
-                            }
-                            @*</form>*@
+                            @*}*@
+                            </form>
                         </div>
 
                     </div>

@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebBanLaptop.Models.Admin>
+
+@{
+    ViewBag.Title = "LstAdmin";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h3 style="font-size:35px; margin-bottom:40px;margin-left:350px;color:aqua">Danh sách tài khoản admin</h3>
+
+<p>
+    <a href="@Url.Action("ThemMoiAdmin", "QuanLyTaiKhoan")"><input type="button" name="themmoi" value="Thêm mới admin" class="btn btn-default" /></a>
+</p>
+<form id="navbar-search" class="navbar-form search-form" action="TimKiemAdmin">
+    <div class="input-group mb-0">
+        <input type="text" class="form-control" value="@ViewBag.TuKhoaAd" name="TuKhoaAd" placeholder="Tên đăng nhập...">
+        <div class="input-group-append">
+            @*<span class="input-group-text"><i class="icon-magnifier"></i></span>*@
+            <button type="submit" style="background-color: transparent;border-color: transparent;margin-left: -7px;margin-top: -4px;"><span style="height:36px" class="input-group-text"><i class="icon-magnifier"></i></span></button>
+        </div>
+    </div>
+</form>
+@if (Model.Count() == 0)
+{
+    <hr />
+    <p>@ViewBag.TimKiemAdmin</p>
+}
+else
+{
+    <hr />
+    <p>@ViewBag.TimKiemAdmin</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+                @*Tên đăng nhập*@
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.pwd)
+
+                </th>*@
+            <th>
+                Họ và tên
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+                @*Email*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+                @*Địa chỉ*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
+                @*Số điện thoại*@
+            </th>
+            <th>
+                Cấp bậc
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.username)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.pwd)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.level_)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "ChinhSuaAdmin", new { @id = item.admin_id }) |
+                    @*@Html.ActionLink("Hiển thị", "HienThiAdmin", new { @id = item.admin_id }) |*@
+                    @Html.ActionLink("Xóa", "XoaAdmin", new { @id = item.admin_id })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+

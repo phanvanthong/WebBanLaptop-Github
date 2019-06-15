@@ -75,7 +75,6 @@
     <Property Name="CardDohoa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="ManhHinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Dophangiai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Motasp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Gia" Type="Double" />
     <Property Name="Soluong" Type="Int32" />
     <Property Name="Ngaytao" Type="DateTime" Precision="3" />

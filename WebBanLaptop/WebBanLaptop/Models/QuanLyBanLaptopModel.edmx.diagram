@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d8988a0af3ec4e3ea7f40a9bd39524b3" Name="Diagram1">
-        <EntityTypeShape EntityType="Web_ban_laptopModel.Admin" Width="1.5" PointX="1.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Web_ban_laptopModel.Discount" Width="1.5" PointX="10" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Web_ban_laptopModel.Hangsx" Width="1.5" PointX="10" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Web_ban_laptopModel.Order" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Web_ban_laptopModel.Orders_Details" Width="1.5" PointX="3.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Web_ban_laptopModel.Product" Width="1.5" PointX="7.875" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Web_ban_laptopModel.User" Width="1.5" PointX="3.5" PointY="1.625" IsExpanded="true" />
+      <Diagram DiagramId="f5add4d9b28e480fb42e3bda922f688f" Name="Diagram1">
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Admin" Width="1.5" PointX="5.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Discount" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Hangsx" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Order" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Orders_Details" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.Product" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_ban_laptopModel.User" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <AssociationConnector Association="Web_ban_laptopModel.FK_Pro_dis" ManuallyRouted="false" />
         <AssociationConnector Association="Web_ban_laptopModel.FK_Pro_hangsx" ManuallyRouted="false" />
         <AssociationConnector Association="Web_ban_laptopModel.FK_Order_user" ManuallyRouted="false" />

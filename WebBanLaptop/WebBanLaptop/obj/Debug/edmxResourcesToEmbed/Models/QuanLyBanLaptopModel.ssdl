@@ -69,7 +69,6 @@
     <Property Name="CardDohoa" Type="nvarchar" MaxLength="255" />
     <Property Name="ManhHinh" Type="nvarchar" MaxLength="50" />
     <Property Name="Dophangiai" Type="nvarchar" MaxLength="50" />
-    <Property Name="Motasp" Type="nvarchar" MaxLength="255" />
     <Property Name="Gia" Type="float" />
     <Property Name="Soluong" Type="int" />
     <Property Name="Ngaytao" Type="datetime" />

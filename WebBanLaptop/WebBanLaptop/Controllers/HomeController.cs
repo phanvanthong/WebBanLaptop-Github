@@ -25,7 +25,7 @@ namespace WebBanLaptop.Controllers
         {
             //List<Product> lstproduct1 = db.Database.SqlQuery<Product>("Select *from product").ToList<Product>();
             List<Product> lstproduct = db.Products.OrderByDescending(n => n.Ngaytao).Take(8).ToList();
-            var discountMAX = db.Discounts.OrderBy(n=>n.value).FirstOrDefault();
+            var discountMAX = db.Discounts.OrderByDescending(n=>n.value).FirstOrDefault();
             var productKM = db.Products.Where(n => n.Discount_id == discountMAX.Discount_id).OrderByDescending(n=>n.Ngaytao).Take(8).ToList();
             ViewBag.KM = productKM;
             return View(lstproduct);

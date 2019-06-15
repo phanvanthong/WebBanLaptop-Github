@@ -58,7 +58,7 @@
                                 }
                                 else
                                 {
-                                    <p class="price product-price" style="font-size:18px;color:red"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
+                                    <p class="price product-price" style="font-size:18px;color:red"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike><span style="font-size:15px;color:#0e8497;margin-left:5px">-@item.Discount.value%</span></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
                                 }
                             }
                         </div>
@@ -99,7 +99,7 @@
                                 }
                                 else
                                 {
-                                    <p class="price product-price" style="color:red;font-size:18px"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
+                                    <p class="price product-price" style="color:red;font-size:18px"><span style="font-size:10px;color:#000"><strike>@string.Format("{0:0,0}", item.Gia)đ</strike><span style="font-size:15px;color:#0e8497;margin-left:5px">-@item.Discount.value%</span></span>   <br />@string.Format("{0:0,0}", item.Gia * (1 - item.Discount.value / 100))đ</p>
                                 }
                             }
                         </div>

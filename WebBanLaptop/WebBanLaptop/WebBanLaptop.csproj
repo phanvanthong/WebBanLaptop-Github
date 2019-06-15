@@ -158,45 +158,45 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Discount.cs">
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Giohang.cs" />
     <Compile Include="Models\Hangsx.cs">
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Metadata\Discount.metadata.cs" />
     <Compile Include="Models\Metadata\Hangsx.metadata.cs" />
     <Compile Include="Models\Metadata\Product.metadata.cs" />
     <Compile Include="Models\Order.cs">
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Orders_Details.cs">
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuanLyBanLaptopModel.Context.cs">
+    <Compile Include="Models\QuanLyBanlaptopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyBanLaptopModel.Context.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuanLyBanLaptopModel.cs">
+    <Compile Include="Models\QuanLyBanlaptopModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuanLyBanLaptopModel.Designer.cs">
+    <Compile Include="Models\QuanLyBanlaptopModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\RootObject.cs" />
     <Compile Include="Models\User.cs">
-      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1102,15 +1102,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\QuanLyBanLaptopModel.Context.tt">
+    <Content Include="Models\QuanLyBanlaptopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
-      <LastGenOutput>QuanLyBanLaptopModel.Context.cs</LastGenOutput>
+      <DependentUpon>QuanLyBanlaptopModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanlaptopModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\QuanLyBanLaptopModel.tt">
+    <Content Include="Models\QuanLyBanlaptopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
-      <LastGenOutput>QuanLyBanLaptopModel.cs</LastGenOutput>
+      <DependentUpon>QuanLyBanlaptopModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanlaptopModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1128,13 +1128,6 @@
     <Content Include="Content\NguoiDungCssLayout\javascript\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\NguoiDungCssLayout\javascript\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\NguoiDungCssLayout\javascript\font-awesome\fonts\FontAwesome.otf" />
-    <EntityDeploy Include="Models\QuanLyBanLaptopModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QuanLyBanLaptopModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\QuanLyBanLaptopModel.edmx.diagram">
-      <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\TemplateAdmin\fonts\simple-Line-Icons.eot" />
     <Content Include="Content\TemplateAdmin\fonts\simple-Line-Icons.ttf" />
     <Content Include="Content\TemplateAdmin\fonts\simple-Line-Icons.woff" />
@@ -1163,11 +1156,6 @@
     <Content Include="Content\TemplateAdmin\vendor\themify-icons\fonts\themify9f24.ttf" />
     <Content Include="Content\TemplateAdmin\vendor\themify-icons\fonts\themify9f24.woff" />
     <Content Include="Content\TemplateAdmin\vendor\themify-icons\fonts\themifyd41d.eot" />
-    <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\NguoiDungCssLayout\json\quan-huyen\01.json" />
     <Content Include="Content\NguoiDungCssLayout\json\quan-huyen\02.json" />
     <Content Include="Content\NguoiDungCssLayout\json\quan-huyen\04.json" />
@@ -1941,6 +1929,18 @@
     <Content Include="Content\NguoiDungCssLayout\json\xa-phuong\971.json" />
     <Content Include="Content\NguoiDungCssLayout\json\xa-phuong\972.json" />
     <Content Include="Content\NguoiDungCssLayout\json\xa-phuong\973.json" />
+    <EntityDeploy Include="Models\QuanLyBanlaptopModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyBanlaptopModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QuanLyBanlaptopModel.edmx.diagram">
+      <DependentUpon>QuanLyBanlaptopModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
+    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2093,6 +2093,12 @@
     <Content Include="Views\QuanLySanPham\TimKiemLaptop.cshtml" />
     <Content Include="Views\QuanLySanPham\TimKiemKM.cshtml" />
     <Content Include="Views\QuanLySanPham\TimKiemHangsx.cshtml" />
+    <Content Include="Views\QuanLySanPham\DieuKienlaptop.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\TimKiemAdmin.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\TimKiemUser.cshtml" />
+    <Content Include="Views\Laptop\TimKiemLaptop.cshtml" />
+    <Content Include="Views\TimKiem\TimKiemLaptop.cshtml" />
+    <Content Include="Views\Khuyenmai\TimKiemLaptop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

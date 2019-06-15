@@ -20,6 +20,7 @@ namespace WebBanLaptop.Controllers
             int hangsx = id;
             int pageNumber = page;
             int pageSize = 12;
+            ViewBag.hangsx = ""+id+"";
             return View(db.Products.Where(n => n.Hangsx_id == hangsx).ToList().OrderByDescending(n => n.Ngaytao).ToPagedList(pageNumber, pageSize));
             //if (hangsx>0 && hangsx<9)
             //{
@@ -30,11 +31,31 @@ namespace WebBanLaptop.Controllers
             //    Response.StatusCode = 404;
             //    return null;
             //}
-            //hiện lên theo sản phẩm ý cái nào hang sx ấy này ấy hả
-            //ô sao nó hiểu nhỉ trong lớp san phảm
         }
 
-        
+        public ActionResult TimKiemLaptop(string hangsx, string gia, string manhinh, string khuyenmai, string RAM, string ocung, int page = 1)
+        {
+            ViewBag.hangsx = hangsx;
+            ViewBag.gia = gia;
+            ViewBag.manhinh = manhinh;
+            ViewBag.khuyenmai = khuyenmai;
+            ViewBag.RAM = RAM;
+            ViewBag.ocung = ocung;
+            string query = "exec DkLaptopUser '" + hangsx + "','" + gia + "','" + manhinh + "','" + khuyenmai + "','" + RAM + "','" + ocung + "'";
+            List<Product> lstKQTK = db.Database.SqlQuery<Product>(query).ToList<Product>();
+            if (lstKQTK.Count == 0)
+            {
+                ViewBag.TimKiemLaptop = "Không tìm thấy kết quả nào!";
+            }
+            else
+            {
+                ViewBag.TimKiemLaptop = "Tìm thấy " + lstKQTK.Count + " kết quả!";
+            }
+            int pageNumber = page;
+            int pageSize = 12;
+            return View(db.Database.SqlQuery<Product>(query).ToList<Product>().ToPagedList(pageNumber, pageSize));
+
+        }
 
     }
 }

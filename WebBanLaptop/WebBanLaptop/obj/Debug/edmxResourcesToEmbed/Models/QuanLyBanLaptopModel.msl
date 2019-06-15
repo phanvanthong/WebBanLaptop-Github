@@ -73,7 +73,6 @@
           <ScalarProperty Name="CardDohoa" ColumnName="CardDohoa" />
           <ScalarProperty Name="ManhHinh" ColumnName="ManhHinh" />
           <ScalarProperty Name="Dophangiai" ColumnName="Dophangiai" />
-          <ScalarProperty Name="Motasp" ColumnName="Motasp" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="Soluong" ColumnName="Soluong" />
           <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />

@@ -14,6 +14,45 @@ namespace WebBanLaptop.Controllers
     {
         // GET: QuanLyTaiKhoan
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
+
+        public ActionResult TimKiemAdmin(string TuKhoaAd, int page = 1)
+        {
+            ViewBag.TuKhoaAd = TuKhoaAd;
+            string query = "select *from Admin where username like '%" + TuKhoaAd + "%'";
+            List<Admin> lstKQTK = db.Database.SqlQuery<Admin>(query).ToList<Admin>();
+            if (lstKQTK.Count == 0)
+            {
+                ViewBag.TimKiemAdmin = "Không tìm thấy kết quả nào!";
+            }
+            else
+            {
+                ViewBag.TimKiemAdmin = "Tìm thấy " + lstKQTK.Count + " kết quả!";
+            }
+            int pageNumber = page;
+            int pageSize = 12;
+            return View(db.Database.SqlQuery<Admin>(query).ToList<Admin>().ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult TimKiemUser(string TuKhoaUs, int page = 1)
+        {
+            ViewBag.TuKhoaUs = TuKhoaUs;
+            string query = "select *from Users where username like '%" + TuKhoaUs + "%'";
+            List<User> lstKQTK = db.Database.SqlQuery<User>(query).ToList<User>();
+            if (lstKQTK.Count == 0)
+            {
+                ViewBag.TimKiemUser = "Không tìm thấy kết quả nào!";
+            }
+            else
+            {
+                ViewBag.TimKiemUser = "Tìm thấy " + lstKQTK.Count + " kết quả!";
+            }
+            int pageNumber = page;
+            int pageSize = 12;
+            return View(db.Database.SqlQuery<User>(query).ToList<User>().ToPagedList(pageNumber, pageSize));
+
+        }
+
         public ActionResult LstAdmin(int page=1)
         {
             if (Session["Admin"] == null)

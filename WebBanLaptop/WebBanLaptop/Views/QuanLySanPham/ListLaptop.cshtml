@@ -1,32 +1,98 @@
 ﻿@using PagedList.Mvc;
 @using PagedList;
+@using WebBanLaptop.Models;
 @model PagedList.PagedList<WebBanLaptop.Models.Product>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
+    Web_ban_laptopEntities db = new Web_ban_laptopEntities();
 }
 
-<div class="body" style="width:800px;padding-bottom:20px;">
+<a href="@Url.Action("ThemMoiLaptop", "QuanLySanPham")"><input type="button" name="themmoi" value="Thêm mới laptop" class="btn btn-default" /></a>
+
+<div class="body" style="width:800px;padding-bottom:15px;margin-top:20px">
     <form id="navbar-search" class="navbar-form search-form" action="TimKiemLaptop">
         <div class="input-group mb-0">
-            <input type="text" class="form-control" value="@ViewBag.TuKhoaLaptop" name="TuKhoaLaptop" placeholder="Tìm kiếm..." required>
+            <input type="text" class="form-control" value="@ViewBag.TuKhoaLaptop" name="TuKhoaLaptop" placeholder="Tìm kiếm...">
             <div class="input-group-append">
                 @*<span class="input-group-text"><i class="icon-magnifier"></i></span>*@
                 <button type="submit" style="background-color: transparent;border-color: transparent;margin-left: -7px;margin-top: -4px;"><span style="height:36px" class="input-group-text"><i class="icon-magnifier"></i></span></button>
             </div>
         </div>
+        @*</form>
+</div>
+    <form action="DieuKienlaptop">*@
+        <div style="width:680px;margin-top:20px">
+            @{
+                List<Hangsx> lsthangsx = db.Hangsxes.OrderBy(n => n.Hangsx_id).ToList();
+            }
+            <label>Hãng sản xuất: </label>
+            <select name="hangsx">
+                <option value="">--chọn--</option>
+                @foreach (var item in lsthangsx)
+                {
+                    <option value="@item.Hangsx_id">@item.tenhang</option>
+                }
+            </select>
+
+            <label style="margin-left:15px;">Giá:</label>
+            <select name="gia" style="margin-left:10px">
+                <option value="">--chọn--</option>
+                <option value="1">Dưới 10,000,000đ</option>
+                <option value="2">10,000,000đ-20,000,000đ</option>
+                <option value="3">20,000,000đ-30,000,000đ</option>
+                <option value="4">30,000,000đ-40,000,000đ</option>
+                <option value="5">40,000,000đ-50,000,000đ</option>
+                <option value="6">50,000,000đ-60,000,000đ</option>
+                <option value="7">60,000,000đ-70,000,000đ</option>
+                <option value="8">70,000,000đ-80,000,000đ</option>
+            </select>
+
+            <label style="margin-left:15px;">Màn hình: </label>
+            <select name="manhinh" style="margin-left:15px">
+                <option value="">--chọn--</option>
+                <option value="13.3inchs">13.3inchs</option>
+                <option value="14inchs">14inchs</option>
+                <option value="15.6inchs">15.6inchs</option>
+            </select><br />
+
+        </div>
+
+        <div style="margin-top:10px;margin-bottom:15px;width:680px;float:left">
+            @{
+                List<Discount> lstdiscount = db.Discounts.OrderBy(n => n.Discount_id).ToList();
+            }
+            <label>Khuyến mãi: </label>
+            <select name="khuyenmai" style="margin-left:15px;width:91px;">
+                <option value="">--chọn--</option>
+                @foreach (var item in lstdiscount)
+                {
+                    <option value="@item.Discount_id">@item.value%</option>
+                }
+            </select>
+
+            <label style="margin-left:15px;">RAM: </label>
+            <select name="RAM">
+                <option value="">--chọn--</option>
+                <option value="4Gb">4Gb</option>
+                <option value="8Gb">8Gb</option>
+                <option value="12Gb">12Gb</option>
+            </select>
+
+            <label style="margin-left:140px;">Loại ổ cứng: </label>
+            <select name="ocung" style="width:85px">
+                <option value="">--chọn--</option>
+                <option value="HDD">HDD</option>
+                <option value="SSD">SSD</option>
+            </select>
+        </div>
+
+
+        <input type="submit" name="name" value="Lọc" class="btn btn-default" />
     </form>
 </div>
 
-<p>
-    <a href="@Url.Action("ThemMoiLaptop", "QuanLySanPham")"><input type="button" name="themmoi" value="Thêm mới laptop" class="btn btn-default" /></a>
-    <span style="margin-left:10px"><input type="checkbox" name="giá" value="" />5,000,000đ-10,000,000đ</span>
-    <span style="margin-left:10px"><input type="checkbox" name="manhinh" value="" />Màn hình</span>
-    <span style="margin-left:10px"><input type="checkbox" name="manhinh" value="" />Màn hình</span>
-    <span style="margin-left:10px"><input type="checkbox" name="manhinh" value="" />Màn hình</span>
-    <span style="margin-left:10px"><input type="checkbox" name="manhinh" value="" />Màn hình</span>
-</p>
 <table class="table">
     <tr style="background-color:#1f1c2030">
         
@@ -101,7 +167,7 @@
 </table>
 
 @*Tạo link liên kết các trang*@
-<div style="text-align:center; margin-top:20px">
+<div style="text-align:center; margin-top:20px;clear:left">
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
     <div class="Menutrang" style="margin-left:530px">
         @Html.PagedListPager(Model, page => Url.Action("ListLaptop", new { @page = page }))

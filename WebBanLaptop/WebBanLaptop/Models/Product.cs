@@ -34,7 +34,6 @@ namespace WebBanLaptop.Models
         public string CardDohoa { get; set; }
         public string ManhHinh { get; set; }
         public string Dophangiai { get; set; }
-        public string Motasp { get; set; }
         public Nullable<double> Gia { get; set; }
         public Nullable<int> Soluong { get; set; }
         public Nullable<System.DateTime> Ngaytao { get; set; }

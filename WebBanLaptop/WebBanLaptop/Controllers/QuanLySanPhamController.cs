@@ -15,58 +15,58 @@ namespace WebBanLaptop.Controllers
         // GET: QuanLySanPham
         Web_ban_laptopEntities db = new Web_ban_laptopEntities();
 
-        //public ActionResult Index()
-        //{
-        //    if (Session["DangNhapAdmin"] == null)
-        //    {
-        //        return RedirectToAction("DangNhap", "Admin");
-        //    }
-        //    return View();
+        
         //}
 
-        //[HttpPost]
-        //public ActionResult TimKiemLaptop(FormCollection f, int page = 1)
-        //{
-        //    List<Product> lstproduct1 = db.Database.SqlQuery<Product>("Select *from product").ToList<Product>();
-        //    string TuKhoaLaptop = f["TuKhoaLaptop"].ToString();
+        
+
+        //[HttpGet]
+
+        //public ActionResult TimKiemLaptop(string TuKhoaLaptop, int page=1)
+        //{            
         //    ViewBag.TuKhoaLaptop = TuKhoaLaptop;
         //    string query = "select *from products where name like '%" + TuKhoaLaptop + "%'";
         //    List<Product> lstKQTK = db.Database.SqlQuery<Product>(query).ToList<Product>();
         //    if (lstKQTK.Count == 0)
         //    {
-        //        ViewBag.TimKiem = "Không tìm thấy kết quả nào";
+        //        ViewBag.TimKiemLaptop = "Không tìm thấy kết quả nào!";
         //    }
         //    else
         //    {
-        //        ViewBag.TimKiem = "Tìm thấy " + lstKQTK.Count + " kết quả";
+        //        ViewBag.TimKiemLaptop = "Tìm thấy " + lstKQTK.Count + " kết quả!";
         //    }
         //    int pageNumber = page;
         //    int pageSize = 12;
-        //    ViewBag.SlLaptop = lstKQTK.Count();
-        //    return View(lstKQTK.ToPagedList(pageNumber, pageSize));
+        //    //ViewBag.SlLaptop = lstKQTK.Count();
+        //    return View(db.Database.SqlQuery<Product>(query).ToList<Product>().ToPagedList(pageNumber, pageSize));         
+                        
         //}
 
-        [HttpGet]
-
-        public ActionResult TimKiemLaptop(string TuKhoaLaptop, int page = 1)
+        public ActionResult TimKiemLaptop(string TuKhoaLaptop, string hangsx, string gia, string manhinh, string khuyenmai, string RAM, string ocung, int page = 1)
         {
             ViewBag.TuKhoaLaptop = TuKhoaLaptop;
-            string query = "select *from products where name like '%" + TuKhoaLaptop + "%'";
+            ViewBag.hangsx = hangsx;
+            ViewBag.gia = gia;
+            ViewBag.manhinh = manhinh;
+            ViewBag.khuyenmai = khuyenmai;
+            ViewBag.RAM = RAM;
+            ViewBag.ocung = ocung;
+            string query = "exec DkLaptop '" + TuKhoaLaptop + "','" + hangsx + "','" + gia + "','" + manhinh + "','" + khuyenmai + "','" + RAM + "','" + ocung + "'";
             List<Product> lstKQTK = db.Database.SqlQuery<Product>(query).ToList<Product>();
             if (lstKQTK.Count == 0)
             {
-                ViewBag.TimKiemLaptop = "Không tìm thấy kết quả nào";
+                ViewBag.TimKiemLaptop = "Không tìm thấy kết quả nào!";
             }
             else
             {
-                ViewBag.TimKiemLaptop = "Tìm thấy " + lstKQTK.Count + " kết quả";
+                ViewBag.TimKiemLaptop = "Tìm thấy " + lstKQTK.Count + " kết quả!";
             }
             int pageNumber = page;
             int pageSize = 12;
-            //ViewBag.SlLaptop = lstKQTK.Count();
             return View(db.Database.SqlQuery<Product>(query).ToList<Product>().ToPagedList(pageNumber, pageSize));
             
         }
+
 
         public ActionResult TimKiemKM(string TuKhoaKM, int page = 1)
         {
@@ -75,11 +75,11 @@ namespace WebBanLaptop.Controllers
             List<Discount> lstKQTK = db.Database.SqlQuery<Discount>(query).ToList<Discount>();
             if (lstKQTK.Count == 0)
             {
-                ViewBag.TimKiemKM = "Không tìm thấy kết quả nào";
+                ViewBag.TimKiemKM = "Không tìm thấy kết quả nào!";
             }
             else
             {
-                ViewBag.TimKiemKM = "Tìm thấy " + lstKQTK.Count + " kết quả";
+                ViewBag.TimKiemKM = "Tìm thấy " + lstKQTK.Count + " kết quả!";
             }
             int pageNumber = page;
             int pageSize = 12;
@@ -94,11 +94,11 @@ namespace WebBanLaptop.Controllers
             List<Hangsx> lstKQTK = db.Database.SqlQuery<Hangsx>(query).ToList<Hangsx>();
             if (lstKQTK.Count == 0)
             {
-                ViewBag.TimKiemHangsx = "Không tìm thấy kết quả nào";
+                ViewBag.TimKiemHangsx = "Không tìm thấy kết quả nào!";
             }
             else
             {
-                ViewBag.TimKiemHangsx = "Tìm thấy " + lstKQTK.Count + " kết quả";
+                ViewBag.TimKiemHangsx = "Tìm thấy " + lstKQTK.Count + " kết quả!";
             }
             int pageNumber = page;
             int pageSize = 12;
