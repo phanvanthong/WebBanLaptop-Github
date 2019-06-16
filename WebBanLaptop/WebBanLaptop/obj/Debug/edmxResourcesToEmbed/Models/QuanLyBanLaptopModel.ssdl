@@ -55,7 +55,7 @@
     <Key>
       <PropertyRef Name="Products_id" />
     </Key>
-    <Property Name="Products_id" Type="int" Nullable="false" />
+    <Property Name="Products_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="255" />
     <Property Name="HangCPU" Type="nvarchar" MaxLength="50" />
     <Property Name="CNCPU" Type="nvarchar" MaxLength="255" />
@@ -70,6 +70,7 @@
     <Property Name="ManhHinh" Type="nvarchar" MaxLength="50" />
     <Property Name="Dophangiai" Type="nvarchar" MaxLength="50" />
     <Property Name="Gia" Type="float" />
+    <Property Name="GiaKM" Type="float" />
     <Property Name="Soluong" Type="int" />
     <Property Name="Ngaytao" Type="datetime" />
     <Property Name="Discount_id" Type="int" />

@@ -44,6 +44,7 @@
                                     @*<button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><a href="@Url.Action("ThemGioHang", "GioHang", new {@iMaSP=item.Products_id,@strURl = Request.Url.ToString()})"><i class="fa fa-cart-plus"></i></a></button>*@
                                     <div class="pull-right">
                                         <a class="btn btn-primary Add-Cart" id="Add-Cart_@item.Products_id" data-laptopid="@item.Products_id" title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>
+                                        @*<a href="@Url.Action("ThemGioHang","Giohang", new { iMaSP=item.Products_id,strURL=Request.Url.ToString() })" class="btn btn-primary" title="Thêm vào giỏ hàng"><i class="fa fa-cart-plus"></i></a>*@
                                     </div>
                                 </li>
                             </ul>

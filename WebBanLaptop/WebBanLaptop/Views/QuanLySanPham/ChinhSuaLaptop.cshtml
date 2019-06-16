@@ -6,191 +6,262 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-    <div class="container ">
-        <div class="row">
-            <div class="col-sm-9" id="content">
-                @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
-                <form class="form-horizontal" enctype="multipart/form-data" method="post" action="ChinhSuaLaptop" name="FormDky">
-                    <h2 style="font-size:50px; margin-bottom:40px;margin-left:150px;padding-top:20px;color:aqua">Chỉnh sửa laptop</h2>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Mã laptop</label>
-                        <div class="col-sm-10">
-                            <input style="background-color:#241818" type="text" class="form-control" id="input-Products_id" placeholder="Mã laptop" value="@Model.Products_id" name="Products_id" required readonly>
-                        </div>
+<div class="container ">
+    <div class="row">
+        <div class="col-sm-9" id="content">
+            @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
+            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="ChinhSuaLaptop" name="FormDky">
+                <h2 style="font-size:50px; margin-bottom:40px;margin-left:150px;padding-top:20px;color:aqua">Chỉnh sửa laptop</h2>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Mã laptop</label>
+                    <div class="col-sm-10">
+                        <input style="background-color:#241818" type="text" class="form-control" id="input-Products_id" placeholder="Mã laptop" value="@Model.Products_id" name="Products_id" required readonly>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Tên laptop</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-Name" placeholder="Tên laptop" value="@Model.Name" name="Name" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-ngaytao" class="col-sm-2 control-label">Ngày tạo</label>
+                    <div class="col-sm-10">
+                        <input style="background-color:#241818" type="text" class="form-control" id="input-ngaytao" placeholder="Ngày tạo" value="@Model.Ngaytao" name="Ngaytao" required readonly>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-password" class="col-sm-2 control-label">Hãng CPU</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-HangCPU" placeholder="Hãng CPU" value="@Model.HangCPU" name="HangCPU" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Tên laptop</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-Name" placeholder="Tên laptop" value="@Model.Name" name="Name" required>
                     </div>
-                    <div class="form-group required">
-                        <label style="white-space:nowrap" for="input-firstname" class="col-sm-2 control-label">Công nghệ CPU</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-CNCPU" placeholder="Công nghệ CPU" value="@Model.CNCPU" name="CNCPU" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-password" class="col-sm-2 control-label">Hãng CPU</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-HangCPU" placeholder="Hãng CPU" value="@Model.HangCPU" name="HangCPU" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Tốc độ max</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-TocDoMax" placeholder="Tốc độ max" value="@Model.TocDoMax" name="TocDoMax" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label style="white-space:nowrap" for="input-firstname" class="col-sm-2 control-label">Công nghệ CPU</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-CNCPU" placeholder="Công nghệ CPU" value="@Model.CNCPU" name="CNCPU" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Ram</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-MemoryRam" placeholder="Ram" value="@Model.MemoryRam" name="MemoryRam" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Tốc độ max</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-TocDoMax" placeholder="Tốc độ max" value="@Model.TocDoMax" name="TocDoMax" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Loại ram</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-LoaiRam" placeholder="Loại ram" value="@Model.LoaiRam" name="LoaiRam" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Ram</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-MemoryRam" placeholder="Ram" value="@Model.MemoryRam" name="MemoryRam" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Bus ram</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-BusRam" placeholder="Bus ram" value="@Model.BusRam" name="BusRam" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Loại ram</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-LoaiRam" placeholder="Loại ram" value="@Model.LoaiRam" name="LoaiRam" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Số khe ram</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="input-KheRam" placeholder="Số khe ram" value="@Model.KheRam" name="KheRam" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Bus ram</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-BusRam" placeholder="Bus ram" value="@Model.BusRam" name="BusRam" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Ổ đĩa</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-ODia" placeholder="Ổ đĩa" value="@Model.ODia" name="ODia" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Số khe ram</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="input-KheRam" placeholder="Số khe ram" value="@Model.KheRam" name="KheRam" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Dung lượng ổ đĩa</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-DungLuongODia" placeholder="Dung lượng ổ đĩa" value="@Model.DungLuongODia" name="DungLuongODia" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Ổ đĩa</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-ODia" placeholder="Ổ đĩa" value="@Model.ODia" name="ODia" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Card đồ họa</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-CardDohoa" placeholder="Card đồ họa" value="@Model.CardDohoa" name="CardDohoa" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label" style="white-space:nowrap">Dung lượng ổ đĩa</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-DungLuongODia" placeholder="Dung lượng ổ đĩa" value="@Model.DungLuongODia" name="DungLuongODia" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Màn hình</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-ManhHinh" placeholder="Màn hình" value="@Model.ManhHinh" name="ManhHinh" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Card đồ họa</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-CardDohoa" placeholder="Card đồ họa" value="@Model.CardDohoa" name="CardDohoa" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Độ phân giải</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-Dophangiai" placeholder="Độ phân giải" value="@Model.Dophangiai" name="Dophangiai" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Màn hình</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-ManhHinh" placeholder="Màn hình" value="@Model.ManhHinh" name="ManhHinh" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Giá</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-Gia" placeholder="Giá" value="@Model.Gia" name="Gia" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Độ phân giải</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-Dophangiai" placeholder="Độ phân giải" value="@Model.Dophangiai" name="Dophangiai" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Số lượng</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="input-Soluong" value="@Model.Soluong" name="Soluong" required>
-                        </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Giá</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-Gia" placeholder="Giá" value="@Model.Gia" name="Gia" required>
                     </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Khuyến mãi</label>
-                        <select style="padding-left:-25px;width:100px" name="Discount_id" required>
-                            @{
-                                var listdiscount = (List<Discount>)ViewBag.Discount;
-                                foreach (var item in listdiscount)
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Giá sau KM</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input-Gia" placeholder="Giá KM" value="@Model.GiaKM" name="GiaKM" required readonly>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Số lượng</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="input-Soluong" value="@Model.Soluong" name="Soluong" required>
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Khuyến mãi</label>
+                    <select style="padding-left:-25px;width:100px" name="Discount_id" required>
+                        @{
+                            var listdiscount = (List<Discount>)ViewBag.Discount;
+                            foreach (var item in listdiscount)
+                            {
+                                if (item.Discount_id == Model.Discount_id)
                                 {
-                                    if (item.Discount_id == Model.Discount_id)
-                                    {
-                                        <option value="@item.Discount_id" selected> @item.value%</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@item.Discount_id"> @item.value%</option>
-                                    }
+                                    <option value="@item.Discount_id" selected> @item.value%</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Discount_id"> @item.value%</option>
                                 }
                             }
-                        </select>
-                    </div>
-                    <div class="form-group required">
-                        <label for="input-firstname" class="col-sm-2 control-label">Hãng sản xuất</label>
-                        <select style="padding-left:-25px;width:100px" name="Hangsx_id" required>
-                            @{
-                                var listhangsx = (List<Hangsx>)ViewBag.HangSX;
-                                foreach (var item in listhangsx)
+                        }
+                    </select>
+                </div>
+                <div class="form-group required">
+                    <label for="input-firstname" class="col-sm-2 control-label">Hãng sản xuất</label>
+                    <select style="padding-left:-25px;width:100px" name="Hangsx_id" required>
+                        @{
+                            var listhangsx = (List<Hangsx>)ViewBag.HangSX;
+                            foreach (var item in listhangsx)
+                            {
+                                if (item.Hangsx_id == Model.Hangsx_id)
                                 {
-                                    if (item.Hangsx_id == Model.Hangsx_id)
-                                    {
-                                        <option value="@item.Hangsx_id" selected> @item.tenhang</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@item.Hangsx_id"> @item.tenhang</option>
-                                    }
+                                    <option value="@item.Hangsx_id" selected> @item.tenhang</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Hangsx_id"> @item.tenhang</option>
                                 }
                             }
-                        </select>
-                    </div>
-                    <div class="form-group" style="margin-top:20px;margin-bottom:20px;margin-left:-80px;width:1500px">
-                        <div class="col-md-10">
-                            @*@Html.DropDownList("MaKM")
-                @Html.ValidationMessageFor(model => model.Discount_id, "", new { @class = "text-danger" })*@
-                            <img id="imgTrc" src="~/Content/Images/i3/@Model.Products_id/trc.png" style="margin-left:70px;width:240px;height:220px" />
-                            <img id="imgCheo" src="~/Content/Images/i3/@Model.Products_id/cheo.png" style="margin-left:90px;width:240px;height:220px" />
-                            <img id="imgNgang" src="~/Content/Images/i3/@Model.Products_id/ngang.png" style="margin-left:80px;width:240px;height:220px" /><br />
-
-                            <span class="uploadImg" style="margin-left:70px"></span><input id="upTrc" type="file" name="uploadChinh" onchange="uploadTrc()" />
-                            <span style="margin-left:80px"></span><input class="uploadImg" id="upCheo" type="file" name="uploadcheo" onchange="uploadCheo()" />
-                            <span style="margin-left:80px"></span><input class="uploadImg" id="upNgang" type="file" name="uploadngang" onchange="uploadNgang()" />
+                        }
+                    </select>
+                </div>
+                <p><span style="margin-left:100px">Ảnh chính</span><span style="margin-left:250px">Ảnh phụ 1</span><span style="margin-left:250px">Ảnh phụ 2</span></p>
+                <div class="input-group mb-3" style="width:1000px;margin-left:-50px;margin-bottom:20px">
+                    <img id="imgTrc" src="~/Content/Images/i3/@Model.Products_id/trc.png" style="margin-left:70px;width:240px;height:220px" />
+                    <img id="imgCheo" src="~/Content/Images/i3/@Model.Products_id/cheo.png" style="margin-left:90px;width:240px;height:220px" />
+                    <img id="imgNgang" src="~/Content/Images/i3/@Model.Products_id/ngang.png" style="margin-left:80px;width:240px;height:220px" />
+                    <div style="width:250px;margin-left:60px">
+                        <div class="col-sm-10" style="width:150px;float:left;margin-top:15px">
+                            <input type="text" class="form-control" id="DuongDanTrc" placeholder="" value="" name="imgTrc" hidden>
                         </div>
+                        <a class="btn btn-danger" id="ImageChinh" href="#" style="margin-top:15px;margin-left: -70px;">Chọn ảnh</a>
                     </div>
 
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Lưu" class="btn btn-default" />
-                            <a href="@Url.Action("ListLaptop", "QuanLySanPham")"><input type="button" name="trolai" value="Trở lại danh sách" class="btn btn-default" /></a>
+                    <div style="width:250px;margin-left:75px">
+                        <div class="col-sm-10" style="width:150px;float:left;margin-top:15px">
+                            <input type="text" class="form-control" id="DuongDanCheo" placeholder="" value="" name="imgCheo" hidden>
                         </div>
+                        <a class="btn btn-danger" id="ImagePhu1" href="#" style="margin-top:15px;margin-left: -60px;">Chọn ảnh</a>
+                    </div>
+
+                    <div style="width:250px;margin-left:70px">
+                        <div class="col-sm-10" style="width:150px;float:left;margin-top:15px">
+                            <input type="text" class="form-control" id="DuongDanNgang" placeholder="" value="" name="imgNgang" hidden>
+                        </div>
+                        <a class="btn btn-danger" id="ImagePhu2" href="#" style="margin-top:15px;margin-left: -60px;">Chọn ảnh</a>
                     </div>
 
 
-                </form>
-            </div>
 
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Lưu" class="btn btn-default" />
+                        <a href="@Url.Action("ListLaptop", "QuanLySanPham")"><input type="button" name="trolai" value="Trở lại danh sách" class="btn btn-default" /></a>
+                        <p style="color:red">@ViewBag.SuaLaptop</p>
+                    </div>
+                </div>
+
+
+            </form>
         </div>
 
     </div>
 
+</div>
 
+@*<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>*@
+<script src="~/Content/TemplateAdmin/js/jquery-3.4.1.min.js"></script>
 <script>
-    //$('.uploadImg').off('click').on('click', function (e) 
+    $(document).ready(function () {
+        debugger
+        $('#ImageChinh').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#imgTrc").attr('src', fileUrl);
+                $("#DuongDanTrc").attr('value', fileUrl);
+                //$('#imgTrc').val(fileUrl);
+            };
+            finder.popup();
+        })
+        $('#ImagePhu1').on('click', function (e) {
+            debugger
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#imgCheo").attr('src', fileUrl);
+                $("#DuongDanCheo").attr('value', fileUrl);
+                //$('#imgCheo').val(fileUrl);
+            };
+            finder.popup();
+        })
+        $('#ImagePhu2').on('click', function (e) {
+            debugger
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#imgNgang").attr('src', fileUrl);
+                $("#DuongDanNgang").attr('value', fileUrl);
+                //$('#imgNgang').val(fileUrl);
+            };
+            finder.popup();
+        })
+    })
+
+</script>
+
+
+@*<script>
+    //$('.uploadImg').off('click').on('click', function (e)
     function uploadTrc() {
         debugger
-        var filePath = $('#upTrc').val(); 
+        var filePath = $('#upTrc').val();
         $("#imgTrc").attr('src', filePath);
     }
     function uploadCheo() {
-       // $('input[type=file]').change(function () {
-            debugger
-            var filePath = $(this).val();
-            var filePath = $('#upCheo').val(); 
-            $("#imgCheo").attr('src', filePath);
-            debugger
+        // $('input[type=file]').change(function () {
+        debugger
+        var filePath = $(this).val();
+        var filePath = $('#upCheo').val();
+        $("#imgCheo").attr('src', filePath);
+        debugger
         //});
     }
     function uploadNgang() {
@@ -201,4 +272,4 @@
             debugger
         });
     }
-</script>
+</script>*@

@@ -107,13 +107,13 @@ namespace WebBanLaptop.Controllers
         }
 
         //Quản lý Laptop
-        public ActionResult ListLaptop(int? page) //List laptop
+        public ActionResult ListLaptop(int page=1) //List laptop
         {
             if (Session["Admin"] == null)
             {
                 return RedirectToAction("DangNhap", "Admin");
             }
-            int pageNumber = (page ?? 1);
+            int pageNumber = page;
             int pageSize = 12;
             return View(db.Products.ToList().OrderBy(n=>n.Products_id).ToPagedList(pageNumber,pageSize));
         }
@@ -134,29 +134,89 @@ namespace WebBanLaptop.Controllers
             ViewBag.Discount = db.Discounts.OrderBy(n => n.value).ToList();
             return View();
         }
+        //[HttpPost]
+        //public ActionResult ThemMoiLaptop(Product product, HttpPostedFileBase fileupload)
+        //{
+        //    string directoryPath = "E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/" + product.Products_id;
+        //    if (!System.IO.Directory.Exists(directoryPath))
+        //    {
+        //        System.IO.Directory.CreateDirectory(directoryPath);
+        //    }
+        //    var fileName = Path.GetFileName(fileupload.FileName);
+        //    var path = Path.Combine(Server.MapPath("~/Content/Images/i3/" + product.Products_id), fileName);//đây là gán tên vào đường dẫn
+
+        //    if (System.IO.File.Exists(path))
+        //    {
+        //        ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+        //    }
+        //    else
+        //    {
+        //        fileupload.SaveAs(path);
+        //    }
+        //    db.Products.Add(product);
+        //    db.SaveChanges();
+        //    return Redirect("ListLaptop"); 
+        //}
+
         [HttpPost]
-        public ActionResult ThemMoiLaptop(Product product, HttpPostedFileBase fileupload)
+        public ActionResult ThemMoiLaptop(Product product, string imgTrc, string imgCheo, string imgNgang)
         {
-            string directoryPath = "E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/" + product.Products_id;
-            if (!System.IO.Directory.Exists(directoryPath))
+            //string fileNguon = "/Upload/images/Product";
+            string nguonTrc = @"E:\Ki_2_nam_3\Cong nghe web\MVC\WebBanLaptop-Github\WebBanLaptop\WebBanLaptop", 
+                   nguonCheo = @"E:\Ki_2_nam_3\Cong nghe web\MVC\WebBanLaptop-Github\WebBanLaptop\WebBanLaptop", 
+                   nguonNgang = @"E:\Ki_2_nam_3\Cong nghe web\MVC\WebBanLaptop-Github\WebBanLaptop\WebBanLaptop";
+            string[] anhTrc = imgTrc.Split('/');
+            string[] anhCheo = imgCheo.Split('/');
+            string[] anhNgang = imgNgang.Split('/');
+            string tenTrc = anhTrc[anhTrc.Length-1], tenCheo = anhCheo[anhCheo.Length-1], tenNgang = anhNgang[anhNgang.Length-1];
+            for (int i=1;i<anhTrc.Length-1;i++)
             {
-                System.IO.Directory.CreateDirectory(directoryPath);
+                nguonTrc += @"\" +anhTrc[i];
             }
-            var fileName = Path.GetFileName(fileupload.FileName);
-            var path = Path.Combine(Server.MapPath("~/Content/Images/i3/" + product.Products_id), fileName);//đây là gán tên vào đường dẫn
+            for (int i = 1; i < anhCheo.Length - 1; i++)
+            {
+                nguonCheo += @"\" + anhCheo[i];
+            }
+            for (int i = 1; i < anhNgang.Length - 1; i++)
+            {
+                nguonNgang += @"\" + anhNgang[i];
+            }
+            Product pr = db.Products.OrderByDescending(n => n.Products_id).FirstOrDefault();
+            int x = pr.Products_id + 1;
+            string dich = "E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/" + x.ToString();
+            while (true)
+            {
+                if (!System.IO.Directory.Exists(dich))
+                {
+                    System.IO.Directory.CreateDirectory(dich);
+                    break;
+                }
+                else
+                {
+                    x++;
+                    dich = "E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/" + x.ToString();
+                }
+            }
             
-            if (System.IO.File.Exists(path))
-            {
-                ViewBag.ThongBao = "Hình ảnh đã tồn tại";
-            }
-            else
-            {
-                fileupload.SaveAs(path);
-            }
+            string fileNguon = System.IO.Path.Combine(nguonTrc, tenTrc);
+            string fileDich = System.IO.Path.Combine(dich, "trc.png");
+            System.IO.File.Copy(fileNguon, fileDich, true);
+
+             fileNguon = System.IO.Path.Combine(nguonCheo, tenCheo);
+             fileDich = System.IO.Path.Combine(dich, "cheo.png");
+            System.IO.File.Copy(fileNguon, fileDich, true);
+
+             fileNguon = System.IO.Path.Combine(nguonNgang, tenNgang);
+             fileDich = System.IO.Path.Combine(dich, "ngang.png");
+            System.IO.File.Copy(fileNguon, fileDich, true);
+
+            product.Ngaytao = DateTime.Now;
+            product.GiaKM = product.Gia * (1 - product.Discount.value / 100);
             db.Products.Add(product);
             db.SaveChanges();
-            return Redirect("ListLaptop"); 
+            return Redirect("ListLaptop");
         }
+
 
         //---------- 
 
@@ -177,15 +237,58 @@ namespace WebBanLaptop.Controllers
             return View(product);
         }
         [HttpPost, ActionName("ChinhSuaLaptop")]
-        public ActionResult XacNhanChinhSuaLaptop(Product product)
+        public ActionResult XacNhanChinhSuaLaptop(Product product, string imgTrc, string imgCheo, string imgNgang)
         {
+            string dich = "E:/Ki_2_nam_3/Cong nghe web/MVC/WebBanLaptop-Github/WebBanLaptop/WebBanLaptop/Content/Images/i3/" + product.Products_id;
+            if (imgTrc!="")
+            {
+                string nguonTrc = @"E:\Ki_2_nam_3\Cong nghe web\MVC\WebBanLaptop-Github\WebBanLaptop\WebBanLaptop";
+                string[] anhTrc = imgTrc.Split('/');
+                for (int i = 1; i < anhTrc.Length - 1; i++)
+                {
+                    nguonTrc += @"\" + anhTrc[i];
+                }
+                string tenTrc = anhTrc[anhTrc.Length - 1];
+                string fileNguon = System.IO.Path.Combine(nguonTrc, tenTrc);
+                string fileDich = System.IO.Path.Combine(dich, "trc.png");
+                System.IO.File.Copy(fileNguon, fileDich, true);
+            }
+            if(imgCheo!="")
+            {
+                string nguonCheo = @"E:\Ki_2_nam_3\Cong nghe web\MVC\WebBanLaptop-Github\WebBanLaptop\WebBanLaptop";
+                string[] anhCheo = imgCheo.Split('/');
+                for (int i = 1; i < anhCheo.Length - 1; i++)
+                {
+                    nguonCheo += @"\" + anhCheo[i];
+                }
+                string tenCheo = anhCheo[anhCheo.Length - 1];
+                string fileNguon = System.IO.Path.Combine(nguonCheo, tenCheo);
+                string fileDich = System.IO.Path.Combine(dich, "cheo.png");
+                System.IO.File.Copy(fileNguon, fileDich, true);
+            }
+            if (imgNgang != "")
+            {
+                string nguonNgang = @"E:\Ki_2_nam_3\Cong nghe web\MVC\WebBanLaptop-Github\WebBanLaptop\WebBanLaptop";
+                string[] anhNgang = imgNgang.Split('/');
+                for (int i = 1; i < anhNgang.Length - 1; i++)
+                {
+                    nguonNgang += @"\" + anhNgang[i];
+                }
+                string tenCheo = anhNgang[anhNgang.Length - 1];
+                string fileNguon = System.IO.Path.Combine(nguonNgang, tenCheo);
+                string fileDich = System.IO.Path.Combine(dich, "ngang.png");
+                System.IO.File.Copy(fileNguon, fileDich, true);
+            }
             //product.Hangsx_id = Hangsx_id;
             //product.Discount_id = Discount_id; 
             //if (ModelState.IsValid)
             //{
                 db.Entry(product).State = System.Data.Entity.EntityState.Modified; 
+                Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == product.Discount_id);
+                product.GiaKM = product.Gia * (1 - discount.value / 100);
                 db.SaveChanges();
             //}
+            ViewBag.SuaLaptop = "Chỉnh sửa thành công!";
             return RedirectToAction("ListLaptop");
         }
 

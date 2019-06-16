@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="Products_id" />
           </Key>
-          <Property Name="Products_id" Type="int" Nullable="false" />
+          <Property Name="Products_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="HangCPU" Type="nvarchar" MaxLength="50" />
           <Property Name="CNCPU" Type="nvarchar" MaxLength="255" />
@@ -75,6 +75,7 @@
           <Property Name="ManhHinh" Type="nvarchar" MaxLength="50" />
           <Property Name="Dophangiai" Type="nvarchar" MaxLength="50" />
           <Property Name="Gia" Type="float" />
+          <Property Name="GiaKM" Type="float" />
           <Property Name="Soluong" Type="int" />
           <Property Name="Ngaytao" Type="datetime" />
           <Property Name="Discount_id" Type="int" />
@@ -247,7 +248,7 @@
           <Key>
             <PropertyRef Name="Products_id" />
           </Key>
-          <Property Name="Products_id" Type="Int32" Nullable="false" />
+          <Property Name="Products_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="HangCPU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CNCPU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -262,6 +263,7 @@
           <Property Name="ManhHinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Dophangiai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gia" Type="Double" />
+          <Property Name="GiaKM" Type="Double" />
           <Property Name="Soluong" Type="Int32" />
           <Property Name="Ngaytao" Type="DateTime" Precision="3" />
           <Property Name="Discount_id" Type="Int32" />
@@ -451,6 +453,7 @@
                 <ScalarProperty Name="ManhHinh" ColumnName="ManhHinh" />
                 <ScalarProperty Name="Dophangiai" ColumnName="Dophangiai" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="GiaKM" ColumnName="GiaKM" />
                 <ScalarProperty Name="Soluong" ColumnName="Soluong" />
                 <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
                 <ScalarProperty Name="Discount_id" ColumnName="Discount_id" />

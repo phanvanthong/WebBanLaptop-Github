@@ -63,34 +63,39 @@ namespace WebBanLaptop.Controllers
         }
 
         //Thêm giỏ hang
-        //public ActionResult ThemGioHang(int iMaSP,string strURL )
-        //{
-        //    if (Session["DangNhap"] == null)
-        //    {
-        //        return RedirectToAction("DangNhap", "Users");
-        //    }
-        //    Product product = db.Products.SingleOrDefault(n => n.Products_id == iMaSP);
-        //    if(product==null)
-        //    {
-        //        Response.StatusCode = 404;
-        //        return null;
-        //    }
-        //    //Lấy ra session giỏ hàng
-        //    List<Giohang> lstGioHang = LayGioHang();
-        //    Giohang gh = lstGioHang.Find(n => n.iMaSP == iMaSP);
-        //    if(gh==null)
-        //    {
-        //        gh = new Giohang(iMaSP);
-        //        lstGioHang.Add(gh);
-        //        return Redirect(strURL);
-        //    }
-        //    else
-        //    {
-        //        gh.iSoLuong ++;
-        //        return Redirect(strURL);
-        //    }
+        public ActionResult ThemGioHang(int iMaSP, string strURL)
+        {
+            Product product = db.Products.SingleOrDefault(n => n.Products_id == iMaSP);
+            if (product == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            //Lấy ra session giỏ hàng
+            List<Giohang> lstGioHang = LayGioHang();
+            Giohang gh = lstGioHang.Find(n => n.iMaSP == iMaSP);
+            if (gh == null)
+            {
+                //gh = new Giohang(iMaSP);
+                gh = new Giohang();
+                Product prod = db.Products.SingleOrDefault(n => n.Products_id == product.Products_id);
+                gh.iMaSP = prod.Products_id;
+                gh.sHinhAnh = "img";
+                gh.sTenSP = prod.Name;
+                Discount discount = db.Discounts.SingleOrDefault(n => n.Discount_id == product.Discount_id);
+                gh.dKhuyenMai = (Double)discount.value;
+                gh.dDonGia = Convert.ToDouble(prod.Gia);
+                gh.iSoLuong++;
+                lstGioHang.Add(gh);
+                return Redirect(strURL);
+            }
+            else
+            {
+                gh.iSoLuong++;
+                return Redirect(strURL);
+            }
 
-        //}
+        }
 
         //public ActionResult CapnhatGioHang(int iMaSP,FormCollection f)
         //{
@@ -323,19 +328,6 @@ namespace WebBanLaptop.Controllers
         #region Thêm vào giỏ hàng
         public JsonResult AddItem(string cartModel)
         {
-            //
-            //ngon r :V làm thêm cái thông báo nữa uk cũng đag tìm để thêm đây hiểu cái ajaax kia chưa chưa r0x ;là sao chưa rõ lắm// để mai goiuj Mess giờ đi ngủ uk ngủ đê
-            // đây để t thử cách này/ ook rooid ô sửa j r >? gọi sự kiện click của class, nhưng vì có this.dataid nên nó hiểu đấy là của thẻ a nào luôn để thuwwe xem
-            //vẫn phải để id chứ đê ở dưới lấy truyề vào kiểu gì để thế à ok ở đấy ô để class đc r còn id là hàm dưới gọi sửa thữ xem t không hiểu định làm như nào
-            //Biết vì sao lõi rồi, vì cai thẻ a của ô đáy nó nhiều thẻ méo ổn rồi, không ô thêm 2 class vào là oke 1 id theo id cua sản phẩm
-            // lỗi gì thế nà, ko vào 0c Giở hàng// trùng t3n dkm à rsao lỗi chính tả @@ dến View đi // ok rồi đáy đâu rồi đây thấy vì sao cái lớp Cart của t có đối tượng product chưa à r
-            // Hình như do truyền vào là chuỗi mà bên kia của ô là một số để t tìm hiểu cái này, chwof tí/ ừm 0ể coi
-            // Đây này vì nó từ cái id kia nó ko hiểu đc hàm khởi tạo một Giỏ hàng mới lỗi// wtf sao lịa gọi 0ến hàm này nhỉ đang k hiểu  :v
-            //Đợi t debug lại cái của t xem sao nó laikj lỗi/ đâu rồi ê Thông ddaay sao r à timg thấy rồi chờ tí đã oke :))
-
-            //hàm này lzi đấy sao vào giỏ hàng cung gọi, chuyển đổi dữ liệu Json sang text/ ok
-            //cái addItem í sao hàm này lzi đấy sao vào giỏ hàng cung , gọi mỗi chõ ajax thôi mà ô debug nó gọi mafthif đan để  t4
-            //sao đăng nhapapj cùng gọi cái nay thế, 0ể ciu
             var jsonCart = new JavaScriptSerializer().Deserialize<Giohang>(cartModel);
             Product product = db.Products.SingleOrDefault(n => n.Products_id == jsonCart.iMaSP);
             List<Giohang> Cart = LayGioHang();

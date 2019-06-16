@@ -72,6 +72,9 @@ namespace WebBanLaptop.Models
             [Required(ErrorMessage = "Vui lòng nhập lại dữ liệu cho bảng này.")]
             [Display(Name = "Giá")]
             public Nullable<double> Gia { get; set; }
+            
+            [Display(Name = "Giá sau KM")]
+            public Nullable<double> GiaKM { get; set; }
 
             [Required(ErrorMessage = "Vui lòng nhập lại dữ liệu cho bảng này.")]
             [Display(Name = "Số lượng")]

@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="form-group required">
-                    <label for="input-firstname" class="col-sm-2 control-label">Dung lượng ổ đĩa</label>
+                    <label for="input-firstname" class="col-sm-2 control-label" style="white-space:nowrap">Dung lượng ổ đĩa</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="input-DungLuongODia" placeholder="Dung lượng ổ đĩa" value="" name="DungLuongODia" required>
                     </div>
@@ -128,22 +128,47 @@
                     </select>
                 </div>
                 @*<div class="form-group" style="margin-top:20px;margin-bottom:20px;margin-left:-80px;width:1500px">
-                    <div class="col-md-10">
-                        <span class="uploadImg" style="margin-left:70px"></span><input id="upTrc" type="file" name="uploadChinh" onchange="uploadTrc()" required/>
-                        <span style="margin-left:80px"></span><input class="uploadImg" id="upCheo" type="file" name="uploadcheo" onchange="uploadCheo()" required />
-                        <span style="margin-left:80px"></span><input class="uploadImg" id="upNgang" type="file" name="uploadngang" onchange="uploadNgang()" required />
+                        <div class="col-md-10">
+                            <span class="uploadImg" style="margin-left:70px"></span><input id="upTrc" type="file" name="uploadChinh" onchange="uploadTrc()" required/>
+                            <span style="margin-left:80px"></span><input class="uploadImg" id="upCheo" type="file" name="uploadcheo" onchange="uploadCheo()" required />
+                            <span style="margin-left:80px"></span><input class="uploadImg" id="upNgang" type="file" name="uploadngang" onchange="uploadNgang()" required />
+                        </div>
+                    </div>*@
+                @*<div class="input-group mb-3">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtImage" placeholder="Ảnh" value="" name="txtImage" required>
+                        </div>
+                        <a class="btn btn-danger" id="tbImage" href="#">Chọn ảnh</a>
+                    </div>*@
+                <p><span style="margin-left:100px">Ảnh chính</span><span style="margin-left:250px">Ảnh phụ 1</span><span style="margin-left:250px">Ảnh phụ 2</span></p>
+                <div class="input-group mb-3" style="width:1000px;margin-left:-50px;margin-bottom:20px">
+                    <img id="imgTrc" src="" style="margin-left:70px;width:240px;height:220px" />
+                    <img id="imgCheo" src="" style="margin-left:90px;width:240px;height:220px" />
+                    <img id="imgNgang" src="" style="margin-left:80px;width:240px;height:220px" />
+                    <div style="width:250px;margin-left:60px">
+                        <div class="col-sm-10" style="width:150px;float:left;margin-top:15px">
+                            <input type="text" class="form-control" id="DuongDanTrc" placeholder="" value="" name="imgTrc" readonly required hidden>
+                        </div>
+                        <a class="btn btn-danger" id="ImageChinh" href="#" style="margin-top:15px;margin-left: -70px;">Chọn ảnh</a>
                     </div>
-                </div>*@
-                <div class="input-group mb-3">
-                    @*<div class="input-group-prepend">
-                        <span class="input-group-text"></span>
+
+                    <div style="width:250px;margin-left:75px">
+                        <div class="col-sm-10" style="width:150px;float:left;margin-top:15px">
+                            <input type="text" class="form-control" id="DuongDanCheo" placeholder="" value="" name="imgCheo" readonly required hidden>
+                        </div>
+                        <a class="btn btn-danger" id="ImagePhu1" href="#" style="margin-top:15px;margin-left: -60px;">Chọn ảnh</a>
                     </div>
-                    <input type="text" class="form-control round" id="txtImage" name="Image" placeholder="Image">*@
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="input-Soluong" placeholder="Ảnh" value="" name="Soluong" required>
+
+                    <div style="width:250px;margin-left:70px">
+                        <div class="col-sm-10" style="width:150px;float:left;margin-top:15px">
+                            <input type="text" class="form-control" id="DuongDanNgang" placeholder="" value="" name="imgNgang" readonly required hidden>
+                        </div>
+                        <a class="btn btn-danger" id="ImagePhu2" href="#" style="margin-top:15px;margin-left: -60px;">Chọn ảnh</a>
                     </div>
-                     <a class="btn btn-danger" id="tbImage" href="#">Chọn ảnh</a>
-                 </div>
+
+
+
+                </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
@@ -160,17 +185,42 @@
 
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
+@*<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>*@
+<script src="~/Content/TemplateAdmin/js/jquery-3.4.1.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#tbImage').on('click', function (e) {
+        debugger
+        $('#ImageChinh').on('click', function (e) {
             e.preventDefault();
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
-                //alert(fileUrl);
-                $('#txtImage').val(fileUrl);
+                $("#imgTrc").attr('src', fileUrl);
+                $("#DuongDanTrc").attr('value', fileUrl);
+                //$('#imgTrc').val(fileUrl);
+            };
+            finder.popup();
+        })
+        $('#ImagePhu1').on('click', function (e) {
+            debugger
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#imgCheo").attr('src', fileUrl);
+                $("#DuongDanCheo").attr('value', fileUrl);
+                //$('#imgCheo').val(fileUrl);
+            };
+            finder.popup();
+        })
+        $('#ImagePhu2').on('click', function (e) {
+            debugger
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#imgNgang").attr('src', fileUrl);
+                $("#DuongDanNgang").attr('value', fileUrl);
+                //$('#imgNgang').val(fileUrl);
             };
             finder.popup();
         })

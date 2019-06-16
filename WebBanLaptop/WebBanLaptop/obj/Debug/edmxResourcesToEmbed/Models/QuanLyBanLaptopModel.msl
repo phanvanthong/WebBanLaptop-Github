@@ -74,6 +74,7 @@
           <ScalarProperty Name="ManhHinh" ColumnName="ManhHinh" />
           <ScalarProperty Name="Dophangiai" ColumnName="Dophangiai" />
           <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="GiaKM" ColumnName="GiaKM" />
           <ScalarProperty Name="Soluong" ColumnName="Soluong" />
           <ScalarProperty Name="Ngaytao" ColumnName="Ngaytao" />
           <ScalarProperty Name="Discount_id" ColumnName="Discount_id" />

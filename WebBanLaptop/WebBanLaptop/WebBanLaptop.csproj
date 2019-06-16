@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CKFinder">
+      <HintPath>..\..\dll\CKFinder.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -158,45 +161,45 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Discount.cs">
-      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Giohang.cs" />
     <Compile Include="Models\Hangsx.cs">
-      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Metadata\Discount.metadata.cs" />
     <Compile Include="Models\Metadata\Hangsx.metadata.cs" />
     <Compile Include="Models\Metadata\Product.metadata.cs" />
     <Compile Include="Models\Order.cs">
-      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Orders_Details.cs">
-      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuanLyBanlaptopModel.Context.cs">
+    <Compile Include="Models\QuanLyBanLaptopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyBanlaptopModel.Context.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuanLyBanlaptopModel.cs">
+    <Compile Include="Models\QuanLyBanLaptopModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuanLyBanlaptopModel.Designer.cs">
+    <Compile Include="Models\QuanLyBanLaptopModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyBanlaptopModel.edmx</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\RootObject.cs" />
     <Compile Include="Models\User.cs">
-      <DependentUpon>QuanLyBanlaptopModel.tt</DependentUpon>
+      <DependentUpon>QuanLyBanLaptopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -259,8 +262,6 @@
     <Content Include="Content\TemplateAdmin\ckfinder\config.ascx" />
     <Content Include="Content\TemplateAdmin\ckfinder\config.js" />
     <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\connector.aspx" />
-    <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\FileUploads\images\Untitled.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\FileUploads\_thumbs\Images\Untitled.png" />
     <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\lang\bg.xml" />
     <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\lang\ca.xml" />
     <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\lang\cs.xml" />
@@ -301,8 +302,6 @@
     <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\lang\vi.xml" />
     <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\lang\zh-cn.xml" />
     <Content Include="Content\TemplateAdmin\ckfinder\core\connector\aspx\lang\zh-tw.xml" />
-    <Content Include="Content\TemplateAdmin\ckfinder\core\connector\UploadFile\images\c.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\core\connector\UploadFile\_thumbs\Images\c.png" />
     <Content Include="Content\TemplateAdmin\ckfinder\help\cs\files\001.html" />
     <Content Include="Content\TemplateAdmin\ckfinder\help\cs\files\002.html" />
     <Content Include="Content\TemplateAdmin\ckfinder\help\cs\files\003.html" />
@@ -623,6 +622,10 @@
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\dummy\lang\en.js" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\dummy\lang\pl.js" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\dummy\plugin.js" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\bin\Debug\CKFinder_FileEditor.dll" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\bin\Debug\CKFinder_FileEditor.pdb" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\bin\Release\CKFinder_FileEditor.dll" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\bin\Release\CKFinder_FileEditor.pdb" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\codemirror\addon\mode\overlay.js" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\codemirror\lib\codemirror.css" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\codemirror\lib\codemirror.js" />
@@ -640,6 +643,8 @@
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\codemirror\mode\stex\stex.js" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\codemirror\mode\xml\xml.js" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\plugin.js" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\flashupload\flash\Uploader.swf" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\flashupload\Uploader.html" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\gallery\colorbox\colorbox.css" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\gallery\colorbox\images\border.png" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\gallery\colorbox\images\controls.png" />
@@ -657,69 +662,17 @@
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\gallery\colorbox\jquery.colorbox-min.js" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\gallery\colorbox\jquery.min.js" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\gallery\colorbox\license.txt" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\imageresize\bin\Debug\CKFinder_ImageResize.dll" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\imageresize\bin\Debug\CKFinder_ImageResize.pdb" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\imageresize\bin\Release\CKFinder_ImageResize.dll" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\imageresize\bin\Release\CKFinder_ImageResize.pdb" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\imageresize\images\mini.gif" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\imageresize\plugin.js" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\watermark\bin\Debug\CKFinder_Watermark.dll" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\watermark\bin\Debug\CKFinder_Watermark.pdb" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\watermark\bin\Release\CKFinder_Watermark.dll" />
+    <Content Include="Content\TemplateAdmin\ckfinder\plugins\watermark\bin\Release\CKFinder_Watermark.pdb" />
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\watermark\logo.gif" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\app.css" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\host.css" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\ai.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\avi.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\bmp.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\cs.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\default.icon.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\dll.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\doc.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\docx.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\exe.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\fla.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\gif.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\jpg.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\js.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\mdb.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\mp3.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\ogg.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\pdf.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\ppt.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\pptx.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\rdp.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\swf.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\swt.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\txt.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\vsd.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\xls.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\xlsx.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\xml.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\16\zip.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\ai.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\avi.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\cs.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\default.icon.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\dll.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\doc.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\docx.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\exe.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\fla.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\gif.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\jpg.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\js.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\mdb.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\mp3.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\ogg.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\pdf.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\ppt.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\pptx.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\rdp.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\swf.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\swt.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\txt.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\vsd.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\xls.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\xlsx.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\xml.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\images\icons\32\zip.png" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\skin.js" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\uipanel.css" />
     <Content Include="Content\TemplateAdmin\ckfinder\skins\kama\app.css" />
     <Content Include="Content\TemplateAdmin\ckfinder\skins\kama\host.css" />
     <Content Include="Content\TemplateAdmin\ckfinder\skins\kama\images\ckffolder.gif" />
@@ -1102,15 +1055,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\QuanLyBanlaptopModel.Context.tt">
+    <Content Include="Models\QuanLyBanLaptopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyBanlaptopModel.edmx</DependentUpon>
-      <LastGenOutput>QuanLyBanlaptopModel.Context.cs</LastGenOutput>
+      <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanLaptopModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\QuanLyBanlaptopModel.tt">
+    <Content Include="Models\QuanLyBanLaptopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyBanlaptopModel.edmx</DependentUpon>
-      <LastGenOutput>QuanLyBanlaptopModel.cs</LastGenOutput>
+      <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanLaptopModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1929,18 +1882,14 @@
     <Content Include="Content\NguoiDungCssLayout\json\xa-phuong\971.json" />
     <Content Include="Content\NguoiDungCssLayout\json\xa-phuong\972.json" />
     <Content Include="Content\NguoiDungCssLayout\json\xa-phuong\973.json" />
-    <EntityDeploy Include="Models\QuanLyBanlaptopModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QuanLyBanlaptopModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\QuanLyBanlaptopModel.edmx.diagram">
-      <DependentUpon>QuanLyBanlaptopModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\TemplateAdmin\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\TemplateAdmin\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <EntityDeploy Include="Models\QuanLyBanLaptopModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyBanLaptopModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QuanLyBanLaptopModel.edmx.diagram">
+      <DependentUpon>QuanLyBanLaptopModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2041,12 +1990,10 @@
     <Content Include="Views\QuanLySanPham\ThemMoiHangsx.cshtml" />
     <Content Include="Views\QuanLySanPham\ChinhSuaHangsx.cshtml" />
     <Content Include="Views\QuanLySanPham\XoaHangsx.cshtml" />
-    <Content Include="Views\QuanLySanPham\HienThiHangsx.cshtml" />
     <Content Include="Views\QuanLySanPham\ListKM.cshtml" />
     <Content Include="Views\QuanLySanPham\ThemMoiKM.cshtml" />
     <Content Include="Views\QuanLySanPham\ChinhSuaKM.cshtml" />
     <Content Include="Views\QuanLySanPham\XoaKM.cshtml" />
-    <Content Include="Views\QuanLySanPham\HienThiKM.cshtml" />
     <Content Include="Views\QuanLySanPham\ListLaptop.cshtml" />
     <Content Include="Views\ChiTietSanPham\Index.cshtml" />
     <Content Include="Views\Diadiem\Index.cshtml" />
@@ -2080,7 +2027,6 @@
     <Content Include="Views\Home\PartialGioHang.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\TimKiem\Index.cshtml" />
-    <Content Include="Views\Home\Index_old.cshtml" />
     <Content Include="Views\QuanLyDonHang\DonHangChuaXacNhan.cshtml" />
     <Content Include="Views\QuanLyDonHang\DonHangDangXuLy.cshtml" />
     <Content Include="Views\QuanLyDonHang\DonHangDaGiao.cshtml" />
@@ -2093,7 +2039,6 @@
     <Content Include="Views\QuanLySanPham\TimKiemLaptop.cshtml" />
     <Content Include="Views\QuanLySanPham\TimKiemKM.cshtml" />
     <Content Include="Views\QuanLySanPham\TimKiemHangsx.cshtml" />
-    <Content Include="Views\QuanLySanPham\DieuKienlaptop.cshtml" />
     <Content Include="Views\QuanLyTaiKhoan\TimKiemAdmin.cshtml" />
     <Content Include="Views\QuanLyTaiKhoan\TimKiemUser.cshtml" />
     <Content Include="Views\Laptop\TimKiemLaptop.cshtml" />
@@ -2103,9 +2048,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\i3\" />
-    <Folder Include="Content\TemplateAdmin\ckfinder\core\connector\UploadFile\files\" />
-    <Folder Include="Content\TemplateAdmin\ckfinder\core\connector\UploadFile\flash\" />
-    <Folder Include="Content\TemplateAdmin\ckfinder\core\connector\UploadFile\_thumbs\Files\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

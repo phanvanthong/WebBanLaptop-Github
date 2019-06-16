@@ -20,7 +20,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <td style="text-align:center"><input type="checkbox" name="chontatcasp" value="" /></td>
+                                    @*<td style="text-align:center"><input type="checkbox" name="chontatcasp" value="" /></td>*@
                                     <td style="text-align:center" class="text-center">Ảnh</td>
                                     <td style="text-align:center" class="text-left">Tên sản phẩm</td>
                                     <td style="text-align:center" class="text-left">Khuyến mại(%)</td>
@@ -39,7 +39,7 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td style="text-align:center"><input type="checkbox" name="chonsp" value="" /></td>
+                                        @*<td style="text-align:center"><input type="checkbox" name="chonsp" value="" /></td>*@
                                         <td style="text-align:center" class="text-center"><a href="#"><img style="max-width:130px" class="img-thumbnail" title="@item.sTenSP" alt="@item.sTenSP" src="~/Content/Images/i3/@item.iMaSP/trc.png"></a></td>
                                         <td style="text-align:center" class="text-left"><a href="@Url.Action("Index","ChiTietSanPham",new { @id=item.iMaSP })">@item.sTenSP</a></td>
                                         <td style="text-align:center" class="text-left">@item.dKhuyenMai</td>
