@@ -76,9 +76,18 @@ namespace WebBanLaptop.Controllers
         [HttpPost]
         public ActionResult ThemMoiAdmin(Admin admin)
         {
-            db.Admins.Add(admin);
-            db.SaveChanges();
-            return Redirect("LstAdmin");
+            Admin ad = db.Admins.SingleOrDefault(n => n.username == admin.username);
+            if(ad!=null)
+            {
+                ViewBag.DangKy = "Tên đăng nhập trùng!";
+                return View();
+            }
+            else
+            {
+                db.Admins.Add(admin);
+                db.SaveChanges();
+                return Redirect("LstAdmin");
+            }
         }
 
         //----------

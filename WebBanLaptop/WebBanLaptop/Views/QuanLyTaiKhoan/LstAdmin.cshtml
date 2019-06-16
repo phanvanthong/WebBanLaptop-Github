@@ -73,7 +73,15 @@
             @Html.DisplayFor(modelItem => item.phone)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.level_)
+            @*@Html.DisplayFor(modelItem => item.level_)*@
+            @if (item.level_ == 0)
+            {
+                <p>Admin</p>
+            }
+            else
+            {
+                <p>Nhân viên</p>
+            }
         </td>
 
         <td>

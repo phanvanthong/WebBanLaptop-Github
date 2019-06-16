@@ -123,7 +123,11 @@ namespace WebBanLaptop.Controllers
         public ActionResult ThayDoiMK(User user,string pwdnew, string pwdconfirm)
         {
             User us = db.Users.SingleOrDefault(n => n.username == user.username);
-            if (pwdnew !=pwdconfirm)
+            if(us.pwd!=user.pwd)
+            {
+                @ViewBag.thaydoimk = "Mật khẩu cũ không chính xác!";
+            }
+            else if (pwdnew !=pwdconfirm)
             {
                 @ViewBag.thaydoimk = "Mật khẩu không trung khớp!";
             }

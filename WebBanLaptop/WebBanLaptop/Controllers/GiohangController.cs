@@ -197,17 +197,18 @@ namespace WebBanLaptop.Controllers
                     }
                 }
             }
+            List<Giohang> gh = LayGioHang();
             order.Users_id = user.Users_id;
             order.ngaytao = DateTime.Now;
-            order.tongtien = (double)Session["TienThanhToan"];
+            //order.tongtien = (double)Session["TienThanhToan"];
             order.trangthai = "Chưa xác nhận";
-
-            db.Orders.Add(order);
-            db.SaveChanges();
-            List<Giohang> gh = LayGioHang();
-
+            //db.Orders.Add(order);
+            //db.SaveChanges();
+            //List<Giohang> gh = LayGioHang();
+            int giatien=0;
             foreach (var item in gh)
             {
+                giatien += Convert.ToInt32(item.dThanhTien);
                 Orders_Details orderD = new Orders_Details();
                 orderD.Order_id = order.Order_id;
                 orderD.products_id = item.iMaSP;
@@ -216,6 +217,8 @@ namespace WebBanLaptop.Controllers
                 db.Orders_Details.Add(orderD);
                 //string[] arrListStr = str.Split(',');
             }
+            order.tongtien = giatien * 1.1;
+            db.Orders.Add(order);
             db.SaveChanges();
             Session["GioHang" + Session["DangNhap"]] = null;
             return Redirect("DatHangThanhCong");

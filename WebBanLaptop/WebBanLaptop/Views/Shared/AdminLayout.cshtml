@@ -717,7 +717,7 @@
                         </ul>
                     </div>
                 </div>
-                <nav id="left-sidebar-nav" class="sidebar-nav">
+                <nav id="left-sidebar-nav" class="sidebar-nav" style="margin-bottom:200px">
                     <ul id="main-menu" class="metismenu">
                         <li class="header">Chính</li>
                         <li>
@@ -725,41 +725,27 @@
                         </li>
                         <li class="active open"><a href="/Admin/Index"><i class="icon-speedometer"></i><span>Trang Admin</span></a></li>
                         <!--User-->
-                        <li class="header">Tài khoản</li>
-                        <li>
-                            <a href="" class="has-arrow"><i class="icon-shield"></i><span>Admins</span></a>
-                            <ul>
-                                <li><a href="/QuanLyTaiKhoan/lstAdmin">Danh sách admin</a></li>
-                                <li><a href="/QuanLyTaiKhoan/ThemMoiAdmin">Thêm mới admin</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="" class="has-arrow"><i class="icon-user"></i><span>Users</span></a>
-                            <ul>
-                                <li><a href="/QuanLyTaiKhoan/lstUser">Danh sách người dùng</a></li>
-                            </ul>
-                        </li>
-
-                        <!--Product-->
-                        @*<li class="header">Sản phẩm</li>
+                        @if (obj.level_ == 0)
+                        {
+                            <li class="header">Tài khoản</li>
                             <li>
-                                <a href="#uiIcons" class="has-arrow"><i class="icon-tag"></i><span>Quản lý sản phẩm</span></a>
+                                <a href="" class="has-arrow"><i class="icon-shield"></i><span>Admins</span></a>
                                 <ul>
-                                    <li><a href="/QuanLySanPham/ListLaptop">Danh sách Laptop</a></li>
-                                    <li><a href="/QuanLySanPham/ListHangsx">Danh sách hãng sản xuất</a></li>
-                                    <li><a href="/QuanLySanPham/ListKM">Danh sách khuyến mãi</a></li>
+                                    <li><a href="/QuanLyTaiKhoan/lstAdmin">Danh sách admin</a></li>
+                                    <li><a href="/QuanLyTaiKhoan/ThemMoiAdmin">Thêm mới admin</a></li>
                                 </ul>
-                            </li>*@
-                        <li class="header">Sản phẩm</li>
-                        <li><a href="/QuanLySanPham/ListLaptop"><i class="icon-screen-desktop"></i><span>Danh sách Laptop</span></a></li>
-                        <li><a href="/QuanLySanPham/ListHangsx"><i class="icon-bag"></i><span>Hãng sản xuất</span></a></li>
-                        <li><a href="/QuanLySanPham/ListKM"><i class="icon-disc"></i><span>Khuyến mãi</span></a></li>
-                        @*<li>
-                                <a href="#uiIcons" class="has-arrow"><i class="icon-tag"></i><span>Quản lý sản phẩm</span></a>
+                            </li>
+                            <li>
+                                <a href="" class="has-arrow"><i class="icon-user"></i><span>Users</span></a>
                                 <ul>
-
+                                    <li><a href="/QuanLyTaiKhoan/lstUser">Danh sách người dùng</a></li>
                                 </ul>
-                            </li>*@
+                            </li>
+                            <li class="header">Sản phẩm</li>
+                            <li><a href="/QuanLySanPham/ListLaptop"><i class="icon-screen-desktop"></i><span>Danh sách Laptop</span></a></li>
+                            <li><a href="/QuanLySanPham/ListHangsx"><i class="icon-bag"></i><span>Hãng sản xuất</span></a></li>
+                            <li><a href="/QuanLySanPham/ListKM"><i class="icon-disc"></i><span>Khuyến mãi</span></a></li>
+                        }
                         <li>
                             <a href="#forms" class="has-arrow"><i class="icon-pencil"></i><span>Quản lý đơn hàng</span></a>
                             <ul>

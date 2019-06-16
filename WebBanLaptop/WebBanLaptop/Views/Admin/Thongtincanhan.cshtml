@@ -30,24 +30,36 @@
                             <input style="background-color:#241818" type="text" class="form-control" id="input-firstname" placeholder="Tên đăng nhập" value="@ad.username" name="username" readonly required>
                         </div>
                     </div>
-
+                    <div class="form-group required">
+                        <label style="white-space:nowrap;" for="input-firstname" class="col-sm-2 control-label">Cấp bậc</label>
+                        <div class="col-sm-10">
+                            @if (ad.level_ == 0)
+                            {
+                                <input style="background-color:#241818" type="text" class="form-control" id="input-level" placeholder="Cấp bậc" value="Admin" name="level_" readonly required>
+                            }
+                            else
+                            {
+                                <input style="background-color:#241818" type="text" class="form-control" id="input-level" placeholder="Cấp bậc" value="Nhân viên" name="level_" readonly required>
+                            }
+                        </div>
+                    </div>
 
                     <div class="form-group required">
                         <label style="white-space:nowrap" for="input-email" class="col-sm-2 control-label">E-Mail</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="@ad.email" name="email" required>
+                            <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="@ad.email" name="email">
                         </div>
                     </div>
                     <div class="form-group required">
                         <label style="white-space:nowrap" for="input-telephone" class="col-sm-2 control-label">Số điện thoại</label>
                         <div class="col-sm-10">
-                            <input type="tel" class="form-control" id="input-telephone" placeholder="Số điện thoại" value="@ad.phone" name="phone" required>
+                            <input type="number" class="form-control" id="input-telephone" placeholder="Số điện thoại" value="@ad.phone" name="phone">
                         </div>
                     </div>
                     <div class="form-group required">
                         <label style="white-space:nowrap" for="input-address-1" class="col-sm-2 control-label">Địa chỉ</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-address-1" placeholder="Nhập địa chỉ" value="@ad.address" name="address" required>
+                            <input type="text" class="form-control" id="input-address-1" placeholder="Nhập địa chỉ" value="@ad.address" name="address">
                         </div>
                     </div>
 

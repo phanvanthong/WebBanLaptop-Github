@@ -158,9 +158,13 @@ namespace WebBanLaptop.Controllers
         public ActionResult ThayDoiMK(Admin admin, string pwdnew, string pwdconfirm)
         {
             Admin ad = db.Admins.SingleOrDefault(n => n.username == admin.username);
-            if (pwdnew != pwdconfirm)
+            if(ad.pwd!=admin.pwd)
             {
-                @ViewBag.thaydoimk = "Mật khẩu không trung khớp!";
+                @ViewBag.thaydoimk = "Mật khẩu cũ không chính xác!";
+            }
+            else if (pwdnew != pwdconfirm)
+            {
+                @ViewBag.thaydoimk = "Mật khẩu không trùng khớp!";
             }
             else
             {

@@ -23,8 +23,8 @@
                         <div class="top-left pull-left">
                             <div class="wel-come-msg"> Chào mừng bạn đã đến với MoonStore! </div>
                             <form action="@Url.Action("Index","TimKiem")" style="width:1210px">
-                            @*@using (Html.BeginForm("Index", "TimKiem"))
-                            {*@
+                                @*@using (Html.BeginForm("Index", "TimKiem"))
+                                    {*@
                                 <div style="width:1210px">
                                     <div id="txtTimkiem">
                                         <input type="text" name="Tukhoa" placeholder="  Nhập vào từ khóa cần tìm..." value="@ViewBag.TuKhoa" style="width:300px" required />
@@ -45,7 +45,7 @@
                                         }
                                     </div>
                                 </div>
-                            @*}*@
+                                @*}*@
                             </form>
                         </div>
 
@@ -136,6 +136,9 @@
                 <div class="item"> <a href="#"><img src="~/Content/Images/Main-Banner3.jpg" alt="main-banner3" class="img-responsive" /></a> </div>
             </div>
         </div>*@
+    @*@RenderSection("Test",required:false)*@
+    @*@RenderPage("~/Views/Shared/RenderPage.cshtml") chia nhỏ layout
+    @RenderPage("RenderPage.cshtml") cùng thư mục*@
     @RenderBody()
     <footer style="margin-top:100px">
         <div class="container">

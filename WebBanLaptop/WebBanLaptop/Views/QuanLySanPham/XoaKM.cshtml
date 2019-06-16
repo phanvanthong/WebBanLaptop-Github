@@ -8,29 +8,30 @@
 <div>
     <h4>Bạn có muốn xáo khuyến mại này?</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Discount_id)
-        </dt>
+    <div class="form-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Discount_id)
-        </dd>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Discount_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-sm-10">
+                <input style="background-color:#241818" type="text" class="form-control" id="input-Discount_id" placeholder="Mã khuyến mại" value="@Model.Discount_id" name="Discount_id" required readonly>
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.value)
-        </dt>
+        <div class="form-group">
+            @Html.LabelFor(model => model.value, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="input-value" placeholder="Giá trị" value="@Model.value" name="value" required>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.value)
-        </dd>
-
-    </dl>
+        
+    </div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color" style="margin-left:15px">
             <input type="submit" value="Xóa" class="btn btn-default" /> |
             @Html.ActionLink("Trở về danh sách", "ListKM")
         </div>

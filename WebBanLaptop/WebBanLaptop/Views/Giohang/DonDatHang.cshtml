@@ -90,7 +90,7 @@
                                         <td style="text-align:center" class="text-center"><a href="#"><img style="max-width:130px" class="img-thumbnail" title="@product.Name" alt="@product.Name" src="~/Content/Images/i3/@item1.products_id/trc.png"></a></td>
                                         <td style="text-align:center" class="text-left">  @product.Name</td>
                                         <td style="text-align:center" class="text-left">  @item1.soluongsp</td>
-                                        <td style="text-align:center" class="text-left">  @item1.tongtien</td>
+                                        <td style="text-align:center" class="text-left">  @string.Format("{0:0,0đ}", @item1.tongtien)</td>
 
                                         @*<td style="text-align:center" class="text-left">  @item.giaohang</td>*@
                                         @if (ktra == 0)

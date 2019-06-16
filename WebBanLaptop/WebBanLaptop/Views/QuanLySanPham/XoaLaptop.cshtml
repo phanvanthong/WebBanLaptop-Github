@@ -1,165 +1,157 @@
-﻿@model WebBanLaptop.Models.Product
+﻿
+@model WebBanLaptop.Models.Product
 
 @{
     ViewBag.Title = "XoaLaptop";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h3>Bạn có muốn xóa sản phẩm này?</h3>
+
 <div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Products_id)
-        </dt>
+    <div class="container ">
+        <div class="row">
+            <div class="col-sm-9" id="content">
+                @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
+                <form class="form-horizontal" enctype="multipart/form-data" method="post" action="ChinhSuaLaptop" name="ChinhSuaLaptop">
+                    <h2 style="font-size:50px; margin-bottom:40px;padding-top:20px;color:aqua;width:1000px">Bạn có muốn xóa sản phẩm này?</h2>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Mã laptop</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-Products_id" placeholder="Mã laptop" value="@Model.Products_id" name="Products_id" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Tên laptop</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-Name" placeholder="Tên laptop" value="@Model.Name" name="Name" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-password" class="col-sm-2 control-label">Hãng CPU</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-HangCPU" placeholder="Hãng CPU" value="@Model.HangCPU" name="HangCPU" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label style="white-space:nowrap" for="input-firstname" class="col-sm-2 control-label">Công nghệ CPU</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-CNCPU" placeholder="Công nghệ CPU" value="@Model.CNCPU" name="CNCPU" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Tốc độ max</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-TocDoMax" placeholder="Tốc độ max" value="@Model.TocDoMax" name="TocDoMax" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Ram</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-MemoryRam" placeholder="Ram" value="@Model.MemoryRam" name="MemoryRam" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Loại ram</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-LoaiRam" placeholder="Loại ram" value="@Model.LoaiRam" name="LoaiRam" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Bus ram</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-BusRam" placeholder="Bus ram" value="@Model.BusRam" name="BusRam" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Số khe ram</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="number" class="form-control" id="input-KheRam" placeholder="Số khe ram" value="@Model.KheRam" name="KheRam" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Ổ đĩa</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-ODia" placeholder="Ổ đĩa" value="@Model.ODia" name="ODia" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Dung lượng ổ đĩa</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-DungLuongODia" placeholder="Dung lượng ổ đĩa" value="@Model.DungLuongODia" name="DungLuongODia" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Card đồ họa</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-CardDohoa" placeholder="Card đồ họa" value="@Model.CardDohoa" name="CardDohoa" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Màn hình</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-ManhHinh" placeholder="Màn hình" value="@Model.ManhHinh" name="ManhHinh" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Độ phân giải</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-Dophangiai" placeholder="Độ phân giải" value="@Model.Dophangiai" name="Dophangiai" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Giá</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-Gia" placeholder="Giá" value="@string.Format("{0:0,0đ}",Model.Gia)" name="Gia" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Giá sau KM</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-Gia" placeholder="Giá KM" value="@Model.GiaKM" name="GiaKM" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Số lượng</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-Soluong" value="" placeholder="Số lượng" name="Soluong" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Khuyến mãi</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-Discount_id" value="@Model.Discount.value" name="Discount_id" required readonly>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label for="input-firstname" class="col-sm-2 control-label">Hãng sản xuất</label>
+                        <div class="col-sm-10">
+                            <input style="background-color:#241818" type="text" class="form-control" id="input-Hangsx_id" value="@Model.Hangsx.tenhang" name="Hangsx_id" required readonly>
+                        </div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Products_id)
-        </dd>
+                    <div class="form-group" style="margin-top:30px;margin-bottom:20px;margin-left:-70px;width:1500px">
+                        <div class="col-md-10">
+                            @*@Html.DropDownList("MaKM")
+                            @Html.ValidationMessageFor(model => model.Discount_id, "", new { @class = "text-danger" })*@
+                            <img id="imgTrc" src="~/Content/Images/i3/@Model.Products_id/trc.png" style="margin-left:70px;width:240px;height:220px" />
+                            <img id="imgCheo" src="~/Content/Images/i3/@Model.Products_id/cheo.png" style="margin-left:90px;width:240px;height:220px" />
+                            <img id="imgNgang" src="~/Content/Images/i3/@Model.Products_id/ngang.png" style="margin-left:80px;width:240px;height:220px" /><br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+                        </div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                    
+                </form>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HangCPU)
-        </dt>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.HangCPU)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CNCPU)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CNCPU)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TocDoMax)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TocDoMax)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MemoryRam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MemoryRam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiRam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LoaiRam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BusRam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BusRam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KheRam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KheRam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ODia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ODia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DungLuongODia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DungLuongODia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CardDohoa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CardDohoa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ManhHinh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ManhHinh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Dophangiai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Dophangiai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Soluong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Soluong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Discount_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Discount_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hangsx_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hangsx_id)
-        </dd>
-
-    </dl>
+    </div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color" style="margin-left:90px">
             <input type="submit" value="Xóa" class="btn btn-default" /> |
             @Html.ActionLink("Trở về danh sách", "ListLaptop")
         </div>

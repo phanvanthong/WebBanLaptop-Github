@@ -10,7 +10,7 @@
 
         <div class="col-sm-9" id="content">
             @*<p>If you already have an account with us, please login at the <a href="login.html">login page</a>.</p>*@
-            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="DangKy" name="FormDky" onsubmit="return pwdconfirm()">
+            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="ThemMoiAdmin" name="FormDky" onsubmit="return pwdconfirm()">
                 <fieldset id="account">
 
                     <div class="form-group required">
@@ -42,7 +42,7 @@
                     <div class="form-group required">
                         <label style="white-space:nowrap;text-align:left" for="input-email" class="col-sm-2 control-label pull-left">Cấp bậc</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="input-country" name="country_id">
+                            <select class="form-control" id="input-country" name="level_">
                                 <option value="0">Admin</option>
                                 <option value="1">Nhân viên</option>
                             </select>
@@ -65,7 +65,7 @@
                     <div class="form-group required">
                         <label style="white-space:nowrap;text-align:left" for="input_city" class="col-sm-2 control-label pull-left">Tỉnh/Thành phố</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="input_city" name="city_id">
+                            <select class="form-control" id="input_city" name="country_id">
                                 <option value="">Chọn Thành/Phố</option>
                                 <option value="01">Hà Nội</option>
                                 <option value="79">TP.Hồ Chí Minh</option>
@@ -160,7 +160,7 @@
                     </div>*@
 
                 </fieldset>
-                <p style="color:red">@ViewBag.DangKy</p>
+                <p style="color:red;margin-left: -620px;">@ViewBag.DangKy</p>
                 <div class="buttons">
                     <div class="pull-left" style="margin-left:200px;">
                         <input style="width:96.26px" type="submit" class="btn btn-primary" value="Tạo">
